@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Host: https://anhnnp.github.io/
+Sitemap: https://anhnnp.github.io/sitemap-index.xml
