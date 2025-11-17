@@ -1,0 +1,473 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_1028147408676', sans-serif; } @font-face { font-family: '_font_fallback_1028147408676'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_539481455303', sans-serif; } @font-face { font-family: '_font_fallback_539481455303'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_1714742631561', sans-serif; } @font-face { font-family: '_font_fallback_1714742631561'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_921779929011', serif; } @font-face { font-family: '_font_fallback_921779929011'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_1389864617920', serif; } @font-face { font-family: '_font_fallback_1389864617920'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Triển khai Blog Astro + CI/CD Đa Nền Tảng"><meta name="description" content="Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/"><meta property="og:title" content="Triển khai Blog Astro + CI/CD Đa Nền Tảng"><meta property="og:description" content="Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/trien-khai-blog-astro-ci-cd-da-nen-tang.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/"><meta property="twitter:title" content="Triển khai Blog Astro + CI/CD Đa Nền Tảng"><meta property="twitter:description" content="Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/trien-khai-blog-astro-ci-cd-da-nen-tang.png"><link rel="canonical" href="https://anhnnp.github.io/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Triển khai Blog Astro + CI/CD Đa Nền Tảng</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=14-2a46102"></script><link rel="stylesheet" href="/_astro/_slug_.ByeENLhH.css?v=14-2a46102">
+<style>.astro-code.github-dark code{color:#e1e4e8}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=14-2a46102">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-kiến-trúc-tổng-thể"> 1. Kiến trúc tổng thể </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-repo-a--private"> 🔹 Repo A – Private </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-repo-b--public-anhnnpgithubio"> 🔹 Repo B – Public (anhnnp.github.io) </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-cicd-flow"> 🔹 CI/CD Flow </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-chuẩn-bị-astro-project"> 2. Chuẩn bị Astro project </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-cấu-hình-astroconfigjs-để-linh-hoạt-base_url"> 3. Cấu hình astro.config.js để linh hoạt BASE_URL </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-packagejson-chuẩn-hoá-build"> 4. Package.json: chuẩn hoá build </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#5-tạo-deploy-key-cho-repo-b"> 5. Tạo Deploy Key cho Repo B </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#6-tạo-secrets-cho-các-nền-tảng"> 6. Tạo Secrets cho các nền tảng </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#7-workflow-cicd-hoàn-chỉnh"> 7. Workflow CI/CD HOÀN CHỈNH </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#full-workflow-bản-hoàn-chỉnh-nhất"> FULL WORKFLOW (bản hoàn chỉnh nhất) </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#8-triển-khai-từng-host"> 8. Triển khai từng host </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-github-pages"> (1) GitHub Pages </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-render"> (2) Render </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-vercel"> (3) Vercel </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-digitalocean-app-platform"> (4) DigitalOcean App Platform </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#5-cloudflare-pages"> (5) Cloudflare Pages </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#6-neocities"> (6) Neocities </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#7-netlify"> (7) Netlify </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#8-surge"> (8) Surge </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#9-wasmer"> (9) Wasmer </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#9-xử-lý-cache-bằng-cache-busting"> 9. Xử lý cache bằng cache busting </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#10-cách-quản-lý-baseurl-tốt-nhất"> 10. Cách quản lý baseURL tốt nhất </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#11-kết-luận"> 11. Kết luận </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#mở-rộng-hơn-nữa"> Mở rộng hơn nữa </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#template-readmemd-cho-repo-a"> Template README.md cho Repo A </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#tối-ưu-seo-cho-multi-domain-là-gì"> Tối ưu SEO cho multi domain là gì? </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#chiến-lược-seo-tốt-nhất"> Chiến lược SEO tốt nhất? </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <p><strong>(Từ A → Z: GitHub Pages, Vercel, Render, DO App Platform, Cloudflare Pages, Netlify, Neocities, Surge, Wasmer)</strong></p>
+<p>Đây là bài tổng hợp lại toàn bộ quá trình mình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), build từ Repo A Private, publish sang Repo B Public (anhnnp.github.io), sau đó tự động multi deploy ra hàng loạt nền tảng hosting khác nhau – tất cả chỉ với 1 lần push.</p>
+<p><img src="/uploads/Configure%20CICD%20on%20Astronomer%20Software.webp?v=14-2a46102" alt=""></p>
+<p>Bài viết phù hợp với anh em muốn:</p>
+<ul>
+<li>Giữ source code private</li>
+<li>Chỉ public /dist/ ra các host tĩnh</li>
+<li>Dùng GitHub Actions làm CI/CD trung tâm</li>
+<li>Deploy 1 lần &#x26; xuất bản ở 5 - 10 nền tảng khác nhau</li>
+<li>Chuẩn SEO, có sitemap đúng baseURL theo từng host</li>
+<li>Chống cache bằng cache-busting (?v=RUN-SHA)</li>
+</ul>
+<h1 id="1-kiến-trúc-tổng-thể">1. Kiến trúc tổng thể</h1>
+<h2 id="-repo-a--private">🔹 Repo A – Private</h2>
+<p>Chứa:</p>
+<ul>
+<li>Source Astro</li>
+<li>Markdown</li>
+<li>Theme</li>
+<li>Sveltia CMS</li>
+<li>Code build (vite)</li>
+</ul>
+<p><em>→ Repo này là trung tâm điều khiển: build &#x26; deploy.</em></p>
+<h2 id="-repo-b--public-anhnnpgithubio">🔹 Repo B – Public (<code>anhnnp.github.io</code>)</h2>
+<p>Chỉ chứa:</p>
+<ul>
+<li><strong>/dist/</strong> sau build</li>
+<li>index.html, asset, sitemap, css/js đã fingerprint và cache-busting</li>
+<li>Không chứa source</li>
+</ul>
+<p><em>→ Repo B được dùng làm “artifact host” cho GitHub Pages và các nền tảng dạng “pull from repo” như Render, DigitalOcean, Wasmer.</em></p>
+<h2 id="-cicd-flow">🔹 CI/CD Flow</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Repo A (private)</span></span>
+<span class="line"><span>      │</span></span>
+<span class="line"><span>      ├── GitHub Actions build Astro</span></span>
+<span class="line"><span>      │</span></span>
+<span class="line"><span>      ├── Chạy cache-busting assets</span></span>
+<span class="line"><span>      │</span></span>
+<span class="line"><span>      ├── Push dist/ ➝ Repo B (public)</span></span>
+<span class="line"><span>      │</span></span>
+<span class="line"><span>      ├── Trigger:</span></span>
+<span class="line"><span>      │      ├── Render Deploy Hook</span></span>
+<span class="line"><span>      │      ├── DO App Deployment</span></span>
+<span class="line"><span>      │      ├── Wasmer Auto Deploy</span></span>
+<span class="line"><span>      │</span></span>
+<span class="line"><span>      ├── Direct Upload:</span></span>
+<span class="line"><span>      │      ├── Vercel</span></span>
+<span class="line"><span>      │      ├── Cloudflare Pages</span></span>
+<span class="line"><span>      │      ├── Netlify</span></span>
+<span class="line"><span>      │      ├── Neocities</span></span>
+<span class="line"><span>      │      ├── Surge</span></span>
+<span class="line"><span>      │</span></span>
+<span class="line"><span>      └── Multi-deploy hoàn tất.</span></span></code></pre>
+<h1 id="2-chuẩn-bị-astro-project">2. Chuẩn bị Astro project</h1>
+<p>Tạo project</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>npm create astro@latest</span></span>
+<span class="line"><span>npm install</span></span></code></pre>
+<p>Cài thêm modules cần thiết</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>npm i -D cross-env</span></span>
+<span class="line"><span>npm i @astrojs/sitemap unocss</span></span></code></pre>
+<h1 id="3-cấu-hình-astroconfigjs-để-linh-hoạt-base_url">3. Cấu hình <code>astro.config.js</code> để linh hoạt BASE_URL</h1>
+<p>Đây là phiên bản chuẩn giúp thay đổi baseURL dựa trên biến môi trường:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>import { defineConfig } from 'astro/config';</span></span>
+<span class="line"><span>import sitemap from '@astrojs/sitemap';</span></span>
+<span class="line"><span>import UnoCSS from 'unocss/astro';</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function slash(url) {</span></span>
+<span class="line"><span>  if (!url) return undefined;</span></span>
+<span class="line"><span>  return url.endsWith('/') ? url : `${url}/`;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export default defineConfig({</span></span>
+<span class="line"><span>  site: slash(process.env.BASE_URL) || 'https://anhnnp.github.io/',</span></span>
+<span class="line"><span>  trailingSlash: 'always',</span></span>
+<span class="line"><span>  integrations: [sitemap(), UnoCSS({ injectReset: true })],</span></span>
+<span class="line"><span>});</span></span></code></pre>
+<p>→ Lúc build, CI đặt <code>BASE_URL</code> tương ứng với host:</p>
+<ul>
+<li>GitHub Pages → <code>BASE_URL=https://anhnnp.github.io/</code></li>
+<li>Render → <code>BASE_URL=https://anhnnp.onrender.com/</code></li>
+<li>Vercel → <code>BASE_URL=https://anhnnp.vercel.app/</code></li>
+</ul>
+<h1 id="4-packagejson-chuẩn-hoá-build">4. Package.json: chuẩn hoá build</h1>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>"scripts": {</span></span>
+<span class="line"><span>  "dev": "astro dev",</span></span>
+<span class="line"><span>  "build": "cross-env NODE_ENV=production astro build",</span></span>
+<span class="line"><span>  "preview": "astro preview"</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<h1 id="5-tạo-deploy-key-cho-repo-b">5. Tạo Deploy Key cho Repo B</h1>
+<p><strong>🔹 Repo B (<code>anhnnp.github.io</code>)</strong></p>
+<p><strong>Add Deploy Key (Allow Write)</strong>
+→ dán public key (<code>.pub</code>)</p>
+<p><strong>🔹 Repo A (private)</strong></p>
+<p><strong>Add Secret</strong>
+→ <code>ACTIONS_DEPLOY_KEY = private key</code></p>
+<h1 id="6-tạo-secrets-cho-các-nền-tảng">6. Tạo Secrets cho các nền tảng</h1>
+<p><strong>Luôn đặt trong Repo A:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Secret</th><th>Dùng cho</th></tr></thead><tbody><tr><td>ACTIONS_DEPLOY_KEY</td><td>Push dist → Repo B</td></tr><tr><td>VERCEL_TOKEN</td><td>Deploy Vercel</td></tr><tr><td>VERCEL_SCOPE</td><td>username/team</td></tr><tr><td>VERCEL_PROJECT_NAME</td><td>tên project</td></tr><tr><td>RENDER_DEPLOY_HOOK_URL</td><td>Trigger render build</td></tr><tr><td>DIGITALOCEAN_ACCESS_TOKEN</td><td>Trigger DO deploy</td></tr><tr><td>DO_APP_ID</td><td>App ID platform</td></tr><tr><td>CLOUDFLARE_API_TOKEN</td><td>Deploy Cloudflare</td></tr><tr><td>CLOUDFLARE_ACCOUNT_ID</td><td>CF account</td></tr><tr><td>CLOUDFLARE_PROJECT_NAME</td><td>Project CF Pages</td></tr><tr><td>NETLIFY_AUTH_TOKEN</td><td>Netlify</td></tr><tr><td>NETLIFY_SITE_ID</td><td>Netlify</td></tr><tr><td>NEOCITIES_API_TOKEN</td><td>Neocities</td></tr><tr><td>SURGE_TOKEN</td><td>Surge</td></tr><tr><td>SURGE_DOMAIN</td><td>Surge domain</td></tr></tbody></table>
+<h1 id="7-workflow-cicd-hoàn-chỉnh">7. Workflow CI/CD HOÀN CHỈNH</h1>
+<p>“Build mỗi host một baseURL khác nhau” – <strong>chuyên nghiệp nhất</strong></p>
+<p>Bản workflow này:</p>
+<ul>
+<li>Build SỐ LẦN TƯƠNG ỨNG số host (để site đúng URL từng nền tảng)</li>
+<li>Auto cache-busting (?v=RUN-SHA)</li>
+<li>Push dist → Repo B</li>
+<li>Trigger Render &#x26; DO</li>
+<li>Upload trực tiếp lên Vercel, Netlify, Cloudflare, Neocities, Surge</li>
+</ul>
+<h2 id="full-workflow-bản-hoàn-chỉnh-nhất">FULL WORKFLOW (bản hoàn chỉnh nhất)</h2>
+<p>📍 Vị trí file: <code>.github/workflows/deploy-multi-static.yml</code></p>
+<p>📍 Tên file: <code>Multi host Build &#x26; Deploy (Astro)</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>name: Multi-host Build &#x26; Deploy (Astro)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>on:</span></span>
+<span class="line"><span>  push:</span></span>
+<span class="line"><span>    branches: [ main ]</span></span>
+<span class="line"><span>  workflow_dispatch:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>concurrency:</span></span>
+<span class="line"><span>  group: deploy-${{ github.ref }}</span></span>
+<span class="line"><span>  cancel-in-progress: true</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>jobs:</span></span>
+<span class="line"><span>  build-deploy:</span></span>
+<span class="line"><span>    runs-on: ubuntu-latest</span></span>
+<span class="line"><span>    strategy:</span></span>
+<span class="line"><span>      matrix:</span></span>
+<span class="line"><span>        include:</span></span>
+<span class="line"><span>          - target: github</span></span>
+<span class="line"><span>            base_url: https://anhnnp.github.io/</span></span>
+<span class="line"><span>          - target: vercel</span></span>
+<span class="line"><span>            base_url: https://anhnnp.vercel.app/</span></span>
+<span class="line"><span>          - target: render</span></span>
+<span class="line"><span>            base_url: https://anhnnp.onrender.com/</span></span>
+<span class="line"><span>    steps:</span></span>
+<span class="line"><span>      - uses: actions/checkout@v4</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - uses: actions/setup-node@v4</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          node-version: 20</span></span>
+<span class="line"><span>          cache: npm</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - run: npm ci</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Set BASE_URL for host</span></span>
+<span class="line"><span>        run: echo "BASE_URL=${{ matrix.base_url }}" >> $GITHUB_ENV</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      - name: Build Astro</span></span>
+<span class="line"><span>        run: npm run build</span></span>
+<span class="line"><span>        env:</span></span>
+<span class="line"><span>          NODE_ENV: production</span></span>
+<span class="line"><span>          BASE_URL: ${{ matrix.base_url }}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      # Cache-busting</span></span>
+<span class="line"><span>      - name: Add version query-string</span></span>
+<span class="line"><span>        shell: bash</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          VERSION="${GITHUB_RUN_NUMBER}-${GITHUB_SHA::7}"</span></span>
+<span class="line"><span>          find dist -type f -name "*.html" -print0 | while IFS= read -r -d '' f; do</span></span>
+<span class="line"><span>            perl -0777 -i -pe "s/href=\"(?!https?:\/\/)([^\"?]+\.css)\"/href=\"\$1?v=$VERSION\"/g;</span></span>
+<span class="line"><span>                                s/src=\"(?!https?:\/\/)([^\"?]+\.js)\"/src=\"\$1?v=$VERSION\"/g;</span></span>
+<span class="line"><span>                                s/src=\"(?!https?:\/\/)([^\"?]+\.(?:png|jpe?g|gif|webp|svg))\"/src=\"\$1?v=$VERSION\"/g;" "$f"</span></span>
+<span class="line"><span>          done</span></span>
+<span class="line"><span>          touch dist/.nojekyll</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      # Deploy GitHub Pages</span></span>
+<span class="line"><span>      - name: Deploy to GitHub Pages repo (Repo B)</span></span>
+<span class="line"><span>        if: matrix.target == 'github'</span></span>
+<span class="line"><span>        uses: peaceiris/actions-gh-pages@v3</span></span>
+<span class="line"><span>        with:</span></span>
+<span class="line"><span>          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}</span></span>
+<span class="line"><span>          external_repository: anhnnp/anhnnp.github.io</span></span>
+<span class="line"><span>          publish_dir: ./dist</span></span>
+<span class="line"><span>          publish_branch: main</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      # Vercel</span></span>
+<span class="line"><span>      - name: Deploy to Vercel</span></span>
+<span class="line"><span>        if: matrix.target == 'vercel'</span></span>
+<span class="line"><span>        env:</span></span>
+<span class="line"><span>          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}</span></span>
+<span class="line"><span>          VERCEL_SCOPE: ${{ secrets.VERCEL_SCOPE }}</span></span>
+<span class="line"><span>          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}</span></span>
+<span class="line"><span>        run: |</span></span>
+<span class="line"><span>          npm i -g vercel</span></span>
+<span class="line"><span>          vercel deploy dist --prod --yes \</span></span>
+<span class="line"><span>            --token "$VERCEL_TOKEN" \</span></span>
+<span class="line"><span>            --scope "$VERCEL_SCOPE" \</span></span>
+<span class="line"><span>            --name "$VERCEL_PROJECT_NAME"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      # Render</span></span>
+<span class="line"><span>      - name: Trigger Render Deploy Hook</span></span>
+<span class="line"><span>        if: matrix.target == 'render'</span></span>
+<span class="line"><span>        env:</span></span>
+<span class="line"><span>          RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}</span></span>
+<span class="line"><span>        run: curl -fsS -X POST "$RENDER_DEPLOY_HOOK_URL"</span></span></code></pre>
+<p>Nếu bạn muốn thêm Netlify / Cloudflare / DO / Neocities / Surge → mình đã viết đầy đủ ở các phần trên, chỉ cần ghép thêm vào matrix hoặc sau bước deploy.</p>
+<p><em>⚠️ (Nếu bạn muốn bản tối giản thì hãy xoá những deploy config không cần thiết để chỉ sử dụng các nền tảng các muốn cho lên thôi)</em></p>
+<h1 id="8-triển-khai-từng-host">8. Triển khai từng host</h1>
+<h2 id="1-github-pages">(1) GitHub Pages</h2>
+<p>Repo B → Settings → Pages → Deploy from branch → <code>main</code>.</p>
+<h2 id="2-render">(2) Render</h2>
+<ul>
+<li>Create Static Site</li>
+<li>Source = Repo B</li>
+<li>Build command = <em>blank</em></li>
+<li>Publish directory = <code>/</code></li>
+</ul>
+<h2 id="3-vercel">(3) Vercel</h2>
+<ul>
+<li>Create Project → “Continue without Git”</li>
+<li>Name = blog</li>
+<li>Output dir = dist</li>
+<li>Deploy bằng CLI + API Token.</li>
+</ul>
+<h2 id="4-digitalocean-app-platform">(4) DigitalOcean App Platform</h2>
+<ul>
+<li>Create App → Static Site</li>
+<li>Source = Repo B</li>
+<li>Build = blank</li>
+<li>Output path = <code>/</code></li>
+</ul>
+<h2 id="5-cloudflare-pages">(5) Cloudflare Pages</h2>
+<ul>
+<li>Project name = blog</li>
+<li>Deploy từ workflow bằng wrangler-action.</li>
+</ul>
+<h2 id="6-neocities">(6) Neocities</h2>
+<ul>
+<li>Tạo API key → secret <code>NEOCITIES_API_TOKEN</code>.</li>
+</ul>
+<h2 id="7-netlify">(7) Netlify</h2>
+<ul>
+<li>Deploy bằng <code>netlify deploy</code>.</li>
+</ul>
+<h2 id="8-surge">(8) Surge</h2>
+<ul>
+<li><code>surge ./dist domain --token TOKEN</code>.</li>
+</ul>
+<h2 id="9-wasmer">(9) Wasmer</h2>
+<ul>
+<li>GitHub Integration → Repo B.</li>
+</ul>
+<h1 id="9-xử-lý-cache-bằng-cache-busting">9. Xử lý cache bằng cache busting</h1>
+<p>Cơ chế:</p>
+<ul>
+<li>Mỗi build sinh version:
+<code>VERSION = GITHUB_RUN_NUMBER + short SHA</code></li>
+<li>Tự động update link:
+<code>main.css?v=42-a1b2c3d</code></li>
+<li>Browser/CDN coi đây là asset mới → không cache sai.</li>
+</ul>
+<h1 id="10-cách-quản-lý-baseurl-tốt-nhất">10. Cách quản lý baseURL tốt nhất</h1>
+<ul>
+<li>Build <strong>riêng từng host</strong> bằng matrix → đúng canonical từng nơi.</li>
+<li>Sitemap / RSS luôn đúng domain host.</li>
+</ul>
+<h1 id="11-kết-luận">11. Kết luận</h1>
+<p>Sau tất cả, bạn chỉ cần <strong>push lên Repo A</strong></p>
+<p>Từ giờ trở đi:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>git add .</span></span>
+<span class="line"><span>git commit -m "update bài mới"</span></span>
+<span class="line"><span>git push</span></span></code></pre>
+<p>→ GitHub Actions tự động:</p>
+<ul>
+<li>Build 1 lần / mỗi host</li>
+<li>Chống cache</li>
+<li>Push dist → Repo B</li>
+<li>Trigger Render / DO</li>
+<li>Deploy thẳng Vercel / Cloudflare / Netlify / Neocities / Surge</li>
+<li>Wasmer tự cập nhật</li>
+</ul>
+<p><strong>Blog Astro của bạn luôn đồng bộ trên tất cả nền tảng.</strong></p>
+<p><img src="/uploads/astro-template-theme.webp?v=14-2a46102" alt=""></p>
+<h1 id="mở-rộng-hơn-nữa"><strong>Mở rộng hơn nữa</strong></h1>
+<h2 id="template-readmemd-cho-repo-a">Template <code>README.md</code> cho Repo A</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># anhnnp Astro Blog – CI/CD</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Kiến trúc</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>- Repo A (private): Source Astro + Sveltia + content</span></span>
+<span class="line"><span>- Repo B (public): `anhnnp.github.io` → chứa **dist** đã build</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>### Flow</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. Push code lên branch `main` (Repo A)</span></span>
+<span class="line"><span>2. GitHub Actions:</span></span>
+<span class="line"><span>   - Set BASE_URL theo host (GitHub/Vercel/Render)</span></span>
+<span class="line"><span>   - `npm run build`</span></span>
+<span class="line"><span>   - Cache-busting (?v=RUN-SHA)</span></span>
+<span class="line"><span>3. Deploy:</span></span>
+<span class="line"><span>   - Push `dist/` → Repo B (`anhnnp.github.io`)</span></span>
+<span class="line"><span>   - Trigger Render Deploy Hook</span></span>
+<span class="line"><span>   - Deploy Vercel bằng CLI</span></span>
+<span class="line"><span>   - (Tuỳ chọn) Netlify, Cloudflare, Neocities, Surge, DO, Wasmer</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## CI/CD</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Workflow chính: `.github/workflows/deploy-multi-static.yml`</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>- Trigger: `on: push` vào `main`</span></span>
+<span class="line"><span>- Jobs:</span></span>
+<span class="line"><span>  - `build-deploy` (matrix cho github / vercel / render)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Secrets cần có (Repo A)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>- `ACTIONS_DEPLOY_KEY` – deploy Repo B</span></span>
+<span class="line"><span>- `VERCEL_TOKEN`, `VERCEL_SCOPE`, `VERCEL_PROJECT_NAME`</span></span>
+<span class="line"><span>- `RENDER_DEPLOY_HOOK_URL`</span></span>
+<span class="line"><span>- `DIGITALOCEAN_ACCESS_TOKEN`, `DO_APP_ID`</span></span>
+<span class="line"><span>- `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_PROJECT_NAME`</span></span>
+<span class="line"><span>- `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID`</span></span>
+<span class="line"><span>- `NEOCITIES_API_TOKEN`</span></span>
+<span class="line"><span>- `SURGE_TOKEN`, `SURGE_DOMAIN`</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>## Dev commands</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>```bash</span></span>
+<span class="line"><span>npm install</span></span>
+<span class="line"><span>npm run dev    # local</span></span>
+<span class="line"><span>npm run build  # build production</span></span></code></pre>
+<h2 id="tối-ưu-seo-cho-multi-domain-là-gì">Tối ưu SEO cho multi domain là gì?</h2>
+<p>Vì bạn deploy cùng 1 content ra nhiều domain:</p>
+<ul>
+<li><code>https://anhnnp.github.io/</code></li>
+<li><code>https://anhnnp.onrender.com/</code></li>
+<li><code>https://anhnnp.vercel.app/</code></li>
+<li>(và có thể thêm Netlify, Cloudflare…)</li>
+</ul>
+<p>→ Về SEO, nếu để vậy thì Google có thể coi là trùng lặp nội dung (duplicate content) giữa nhiều domain.</p>
+<h2 id="chiến-lược-seo-tốt-nhất">Chiến lược SEO tốt nhất?</h2>
+<p><strong>1. Chọn 1 canonical domain</strong></p>
+<p>Ví dụ: bạn chọn:</p>
+<blockquote>
+<p><code>https://anhnnp.github.io/</code> là canonical.</p>
+</blockquote>
+<p>Tức là: Toàn bộ <strong><code>&#x3C;link rel="canonical"></code></strong> trong HTML, <strong><code>sitemap.xml</code></strong>, <strong>OpenGraph</strong>,… đều trỏ về domain này.</p>
+<p>Trong Astro, dùng <code>site</code> = canonical:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>// astro.config.js</span></span>
+<span class="line"><span>export default defineConfig({</span></span>
+<span class="line"><span>  site: 'https://anhnnp.github.io/',</span></span>
+<span class="line"><span>  ...</span></span>
+<span class="line"><span>});</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Khi đó, dù bạn deploy lên Vercel/Render, canonical URL vẫn trỏ về github.io → Google hiểu “đây là bản chính”, các bản kia coi như “bản mirror/CDN”.</p>
+<p><strong>2. Sử dụng <code>&#x3C;link rel="canonical"></code></strong></p>
+<p>Trong layout chính (vd: <code>src/layouts/Layout.astro</code>):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>---</span></span>
+<span class="line"><span>const { title = 'Blog', url } = Astro.props;</span></span>
+<span class="line"><span>const canonical = new URL(Astro.url.pathname, Astro.site);</span></span>
+<span class="line"><span>---</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&#x3C;html lang="vi"></span></span>
+<span class="line"><span>  &#x3C;head></span></span>
+<span class="line"><span>    &#x3C;meta charset="utf-8" /></span></span>
+<span class="line"><span>    &#x3C;title>{title}&#x3C;/title></span></span>
+<span class="line"><span>    &#x3C;link rel="canonical" href={canonical.toString()} /></span></span>
+<span class="line"><span>  &#x3C;/head></span></span>
+<span class="line"><span>  &#x3C;body></span></span>
+<span class="line"><span>    &#x3C;slot /></span></span>
+<span class="line"><span>  &#x3C;/body></span></span>
+<span class="line"><span>&#x3C;/html></span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Astro tự cung cấp <code>Astro.site</code> từ <code>astro.config.js</code> → canonical luôn đúng.</p>
+<p><strong>3. Có nên chặn index các domain phụ không?</strong></p>
+<p>Option “hardcore SEO”:</p>
+<ul>
+<li>Cho Google chỉ index canonical bằng cách:
+→ Làm vậy Render/Vercel chỉ làm “CDN / mirror cho người dùng”, không cạnh tranh SEO với domain chính.
+<ul>
+<li>
+<p>Trên các host phụ (Render, Vercel…), cấu hình <code>robots.txt</code> như:User-agent: *
+Disallow: /</p>
+</li>
+<li>
+<p>Hoặc thêm meta:<meta name="robots" content="noindex,follow"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Cách nhẹ hơn:</p>
+<ul>
+<li>Không chặn index, nhưng canonical luôn trỏ về 1 nơi → Google vẫn hiểu đâu là bản gốc.</li>
+</ul>
+<p><strong>4. Multi language / multi region (nâng cao)</strong></p>
+<p>Nếu sau này bạn có:</p>
+<ul>
+<li><code>anhnnp.com</code> (EN)</li>
+<li><code>anhnnp.vn</code> (VI)</li>
+</ul>
+<p>Thì có thể dùng <code>hreflang</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>&#x3C;link rel="alternate" href="https://anhnnp.com/post-x" hreflang="en" /></span></span>
+<span class="line"><span>&#x3C;link rel="alternate" href="https://anhnnp.vn/post-x" hreflang="vi" /></span></span></code></pre>
+<p>Nhưng hiện tại bạn chỉ đang nhân bản 1 ngôn ngữ nhiều host → dùng canonical là đủ.</p>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #facc15;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #2dd4bf;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Clean and Optimize your WordPress Database (with Perfmatters Plugin).webp?v=14-2a46102" alt="Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng wp_options... Tất cả âm thầm khiến website nặng nề hơn mỗi ngày. Trong bài này, mình sẽ hướng dẫn toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin).</p>  <div class="flex justify-end my-4"> <a href="/blog/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/mysql/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> MySQL </span> </a> </li><li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> WordPress </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=14-2a46102" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> GitHub </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Công cụ mã nguồn mở kích hoạt Windows và Office kèm tính năng debug nâng cao</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Microsoft-Activation-Script-mini.jpg?v=14-2a46102" alt="Công cụ mã nguồn mở kích hoạt Windows và Office kèm tính năng debug nâng cao" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Hỗ trợ các phương thức kích hoạt như HWID, Ohook, KMS38 và Online KMS. Công cụ này cung cấp khả năng xử lý sự cố mạnh mẽ và kích hoạt sản phẩm Microsoft hiệu quả, đáp ứng nhiều nhu cầu người dùng theo cách linh hoạt, có thể tùy biến.</p>  <div class="flex justify-end my-4"> <a href="/blog/microsoft-activation-script/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #e879f9;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/microsoft offices/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> Microsoft Offices </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Kích hoạt tất cả phiên bản Windows Server mà không cần Product Key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/instructions-how-to-activate-windows-server-without-product-key-9.jpg?v=14-2a46102" alt="Kích hoạt tất cả phiên bản Windows Server mà không cần Product Key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Hướng dẫn kích hoạt miễn phí mọi phiên bản Windows Server 2022, 2019, 2016... bằng key KMS với 2 phương pháp cũ và mới. Có sẵn lệnh CMD và hình ảnh chi tiết mẹo xử lý lỗi.</p>  <div class="flex justify-end my-4"> <a href="/blog/kich-hoat-tat-ca-phien-ban-windows-server-ma-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f87171;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows server/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Windows Server </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/product key/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #60a5fa;"> Product Key </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/windows-11-the-operating-system-for-hybrid-work-and-learning.webp?v=14-2a46102" alt="Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Chia sẻ kích hoạt Windows 11 bằng key KMS client miễn phí gồm các bước hoàn toàn giống với hướng dẫn cách kích hoạt Windows 10 miễn phí, chỉ khác là lần này mình thực hiện trên Windows 11.</p>  <div class="flex justify-end my-4"> <a href="/blog/nhung-cach-kich-hoat-windows-11-mien-phi-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows 11/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Windows 11 </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Git-based vs API-first CMS Exploring the Headless CMS Landscape.webp?v=14-2a46102" alt="Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đây là một chủ đề cực kỳ hữu ích cho các dev hiện đại, đặc biệt là những ai đang chuyển từ WordPress sang mô hình headless CMS. Nếu CMS truyền thống là tất cả trong một (cả backend lẫn frontend), thì headless CMS chỉ tập trung vào phần quản lý nội dung (backend), còn phần hiển thị (frontend) sẽ do bạn tự do chọn framework hoặc build theo ý muốn.</p>  <div class="flex justify-end my-4"> <a href="/blog/mien-phi-9-nen-tang-headless-cms-luu-tru-tren-git-cho-cac-blog-website-don-gian/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb923c;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/opensource/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Opensource </span> </a> </li><li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/git base/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Git base </span> </a> </li><li> <a class="sanchez" href="/blog/tags/headless cms/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Headless CMS </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>

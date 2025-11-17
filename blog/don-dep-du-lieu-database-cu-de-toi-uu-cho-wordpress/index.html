@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_48448901981', sans-serif; } @font-face { font-family: '_font_fallback_48448901981'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_589922528716', sans-serif; } @font-face { font-family: '_font_fallback_589922528716'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_335942814441', sans-serif; } @font-face { font-family: '_font_fallback_335942814441'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_697009107387', serif; } @font-face { font-family: '_font_fallback_697009107387'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_1688958404998', serif; } @font-face { font-family: '_font_fallback_1688958404998'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress"><meta name="description" content="Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng wp_options... Tất cả âm thầm khiến website nặng nề hơn mỗi ngày. Trong bài này, mình sẽ hướng dẫn toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin)."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress/"><meta property="og:title" content="Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress"><meta property="og:description" content="Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng wp_options... Tất cả âm thầm khiến website nặng nề hơn mỗi ngày. Trong bài này, mình sẽ hướng dẫn toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin)."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress/"><meta property="twitter:title" content="Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress"><meta property="twitter:description" content="Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng wp_options... Tất cả âm thầm khiến website nặng nề hơn mỗi ngày. Trong bài này, mình sẽ hướng dẫn toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin)."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress.png"><link rel="canonical" href="https://anhnnp.github.io/blog/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=14-2a46102"></script><link rel="stylesheet" href="/_astro/_slug_.ByeENLhH.css?v=14-2a46102">
+<style>.astro-code.github-dark code{color:#e1e4e8}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=14-2a46102">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-trước-khi-bắt-đầu-luôn-backup-toàn-bộ-website"> 1. Trước Khi Bắt Đầu: Luôn Backup Toàn Bộ Website </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#cách-đơn-giản-nhất"> Cách đơn giản nhất: </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-cấu-trúc-database-wordpress-để-hiểu-bạn-đang-dọn-gì"> 2. Cấu Trúc Database WordPress (để hiểu bạn đang dọn gì) </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-vì-sao-database-của-bạn-ngày-càng-nặng"> 3. Vì Sao Database Của Bạn Ngày Càng Nặng? </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-dọn-dẹp-database-thủ-công-bằng-phpmyadmin-hoặc-sql"> 4. Dọn Dẹp Database Thủ Công (bằng phpMyAdmin hoặc SQL) </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-xóa-transients-và-option-rác"> (1) Xóa transients và option rác </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-kiểm-tra-và-giảm-autoload-nặng"> (2) Kiểm tra và giảm autoload nặng </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-xóa-option-cũ-của-plugin-đã-gỡ"> (3) Xóa option cũ của plugin đã gỡ </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-xóa-dữ-liệu-mồ-côi-orphaned-meta"> (4) Xóa dữ liệu “mồ côi” (orphaned meta) </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#5-woocommerce--xóa-session-log-scheduled-actions-cũ"> (5) WooCommerce – Xóa session, log, scheduled actions cũ </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#6-xóa-bảng-plugin-cũ"> (6) Xóa bảng plugin cũ </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#7-tối-ưu-lại-bảng"> (7) Tối ưu lại bảng </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#5-dọn-bằng-wp-cli-cách-an-toàn--nhanh-cho-dev"> 5. Dọn Bằng WP-CLI (Cách An Toàn &amp; Nhanh Cho Dev) </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-lệnh-cơ-bản"> (1) Lệnh cơ bản </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-backup-trước-khi-dọn"> (2) Backup trước khi dọn </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#6-dọn-bằng-plugin-cách-dễ-dành-cho-người-không-rành-kỹ-thuật"> 6. Dọn Bằng Plugin (Cách Dễ Dành Cho Người Không Rành Kỹ Thuật) </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#7-quy-trình-gợi-ý-thực-tế"> 7. Quy Trình Gợi Ý Thực Tế </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#8-kiểm-tra-hiệu-suất-sau-khi-dọn"> 8. Kiểm Tra Hiệu Suất Sau Khi Dọn </a> </li><li class="py-1">  <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#lời-kết"> Lời kết </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <p>Nếu website WordPress của bạn ngày càng chạy ì ạch, vào admin chậm như rùa bò, hoặc mỗi lần backup phải chờ hàng chục phút — thủ phạm có thể nằm ở <strong>database đã phình to vì rác cũ</strong>. Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng <code>wp_options</code>… Tất cả âm thầm khiến website nặng nề hơn mỗi ngày.</p>
+<p>Trong bài này, mình sẽ hướng dẫn <strong>toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ</strong>, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin).</p>
+<p><img src="/uploads/WP-Optimize%20-%20Clean%20Up%20and%20Optimize%20Your%20WordPress%20Database.webp?v=14-2a46102" alt=""></p>
+<h1 id="1-trước-khi-bắt-đầu-luôn-backup-toàn-bộ-website">1. Trước Khi Bắt Đầu: Luôn Backup Toàn Bộ Website</h1>
+<p>Trước mọi thao tác, <strong>bắt buộc phải sao lưu (backup)</strong> cả website và database.
+Vì chỉ cần một lệnh sai là có thể mất sạch dữ liệu.</p>
+<h3 id="cách-đơn-giản-nhất">Cách đơn giản nhất:</h3>
+<ul>
+<li>Dùng plugin: <strong>UpdraftPlus</strong>, <strong>WPvivid</strong>, hoặc <strong>All-in-One WP Migration</strong>.</li>
+<li>Hoặc dùng WP-CLI:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>wp db export backup-before-clean.sql</span></span></code></pre>
+<h1 id="2-cấu-trúc-database-wordpress-để-hiểu-bạn-đang-dọn-gì">2. Cấu Trúc Database WordPress (để hiểu bạn đang dọn gì)</h1>
+<p>WordPress mặc định có 11 bảng chính:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Bảng</th><th>Chức năng</th></tr></thead><tbody><tr><td><code>wp_posts</code></td><td>Bài viết, trang, custom post type</td></tr><tr><td><code>wp_postmeta</code></td><td>Metadata của bài viết</td></tr><tr><td><code>wp_comments</code></td><td>Bình luận</td></tr><tr><td><code>wp_commentmeta</code></td><td>Metadata của bình luận</td></tr><tr><td><code>wp_terms</code>, <code>wp_term_taxonomy</code>, <code>wp_term_relationships</code></td><td>Dữ liệu phân loại (tags, category)</td></tr><tr><td><code>wp_options</code></td><td>Cài đặt website, plugin, theme</td></tr><tr><td><code>wp_users</code>, <code>wp_usermeta</code></td><td>Người dùng và metadata</td></tr><tr><td><code>wp_links</code></td><td>Dữ liệu blogroll (ít dùng)</td></tr></tbody></table>
+<p>Ngoài ra, mỗi plugin có thể thêm bảng riêng: WooCommerce (<code>wp_woocommerce_sessions</code>), Elementor (<code>wp_e_submissions</code>), Rank Math (<code>wp_rank_math_*</code>), v.v.</p>
+<h1 id="3-vì-sao-database-của-bạn-ngày-càng-nặng">3. Vì Sao Database Của Bạn Ngày Càng Nặng?</h1>
+<p>Một số nguyên nhân phổ biến:</p>
+<ol>
+<li>Plugin đã xóa nhưng vẫn để lại dữ liệu.</li>
+<li>Bản nháp, bản tự lưu (revision, autosave) chiếm chỗ.</li>
+<li>Spam, bình luận chưa duyệt.</li>
+<li>Transients (cache tạm thời) không được xóa.</li>
+<li>Dữ liệu autoload trong <code>wp_options</code> quá nặng.</li>
+<li>WooCommerce log, scheduled actions, session cũ.</li>
+<li>Cron, log, meta mồ côi không còn cha.</li>
+</ol>
+<h1 id="4-dọn-dẹp-database-thủ-công-bằng-phpmyadmin-hoặc-sql">4. Dọn Dẹp Database Thủ Công (bằng phpMyAdmin hoặc SQL)</h1>
+<p>Phương án này dành cho ai hiểu MySQL một chút — triệt để, mạnh mẽ, nhưng <strong>phải cực kỳ cẩn trọng</strong>.</p>
+<blockquote>
+<p>🔸 <em>Nhớ thay `wp</em>` bằng prefix thật trong site của bạn._</p>
+</blockquote>
+<h2 id="1-xóa-transients-và-option-rác">(1) Xóa transients và option rác</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>DELETE FROM wp_options WHERE option_name LIKE '_transient_%';</span></span>
+<span class="line"><span>DELETE FROM wp_options WHERE option_name LIKE '_site_transient_%';</span></span></code></pre>
+<h2 id="2-kiểm-tra-và-giảm-autoload-nặng">(2) Kiểm tra và giảm autoload nặng</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>SELECT option_name, LENGTH(option_value) AS size</span></span>
+<span class="line"><span>FROM wp_options WHERE autoload='yes'</span></span>
+<span class="line"><span>ORDER BY size DESC LIMIT 50;</span></span></code></pre>
+<p>Nếu có option nào nặng hàng MB, hãy set lại:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>UPDATE wp_options SET autoload='no'</span></span>
+<span class="line"><span>WHERE option_name='ten_option' LIMIT 1;</span></span></code></pre>
+<h2 id="3-xóa-option-cũ-của-plugin-đã-gỡ">(3) Xóa option cũ của plugin đã gỡ</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>DELETE FROM wp_options WHERE option_name LIKE 'rank_math_%';</span></span>
+<span class="line"><span>DELETE FROM wp_options WHERE option_name LIKE 'elementor_%';</span></span></code></pre>
+<h2 id="4-xóa-dữ-liệu-mồ-côi-orphaned-meta">(4) Xóa dữ liệu “mồ côi” (orphaned meta)</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>-- postmeta mồ côi</span></span>
+<span class="line"><span>DELETE pm FROM wp_postmeta pm</span></span>
+<span class="line"><span>LEFT JOIN wp_posts p ON p.ID = pm.post_id</span></span>
+<span class="line"><span>WHERE p.ID IS NULL;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- commentmeta mồ côi</span></span>
+<span class="line"><span>DELETE cm FROM wp_commentmeta cm</span></span>
+<span class="line"><span>LEFT JOIN wp_comments c ON c.comment_ID = cm.comment_id</span></span>
+<span class="line"><span>WHERE c.comment_ID IS NULL;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- usermeta mồ côi</span></span>
+<span class="line"><span>DELETE um FROM wp_usermeta um</span></span>
+<span class="line"><span>LEFT JOIN wp_users u ON u.ID = um.user_id</span></span>
+<span class="line"><span>WHERE u.ID IS NULL;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- termmeta mồ côi</span></span>
+<span class="line"><span>DELETE tm FROM wp_termmeta tm</span></span>
+<span class="line"><span>LEFT JOIN wp_terms t ON t.term_id = tm.term_id</span></span>
+<span class="line"><span>WHERE t.term_id IS NULL;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- term_relationships mồ côi</span></span>
+<span class="line"><span>DELETE tr FROM wp_term_relationships tr</span></span>
+<span class="line"><span>LEFT JOIN wp_posts p ON p.ID = tr.object_id</span></span>
+<span class="line"><span>WHERE p.ID IS NULL;</span></span></code></pre>
+<h2 id="5-woocommerce--xóa-session-log-scheduled-actions-cũ">(5) WooCommerce – Xóa session, log, scheduled actions cũ</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>-- Session hết hạn</span></span>
+<span class="line"><span>DELETE FROM wp_woocommerce_sessions</span></span>
+<span class="line"><span>WHERE session_expiry &#x3C; UNIX_TIMESTAMP();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- Scheduled Actions hoàn tất >30 ngày</span></span>
+<span class="line"><span>DELETE FROM wp_actionscheduler_actions</span></span>
+<span class="line"><span>WHERE status IN ('complete','failed','canceled')</span></span>
+<span class="line"><span>AND scheduled_date_gmt &#x3C; DATE_SUB(UTC_TIMESTAMP(), INTERVAL 30 DAY);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>-- Log không còn action</span></span>
+<span class="line"><span>DELETE l FROM wp_actionscheduler_logs l</span></span>
+<span class="line"><span>LEFT JOIN wp_actionscheduler_actions a ON a.action_id = l.action_id</span></span>
+<span class="line"><span>WHERE a.action_id IS NULL;</span></span></code></pre>
+<h2 id="6-xóa-bảng-plugin-cũ">(6) Xóa bảng plugin cũ</h2>
+<p>Tìm bảng còn sót:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>SELECT table_name FROM information_schema.tables</span></span>
+<span class="line"><span>WHERE table_schema = DATABASE()</span></span>
+<span class="line"><span>AND table_name LIKE 'wp_%elementor\%';</span></span></code></pre>
+<p>Nếu chắc chắn không cần:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>DROP TABLE wp_elementor_css, wp_e_submissions;</span></span></code></pre>
+<h2 id="7-tối-ưu-lại-bảng">(7) Tối ưu lại bảng</h2>
+<p>Sau khi xóa rác, chạy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>OPTIMIZE TABLE wp_options, wp_posts, wp_postmeta, wp_comments, wp_commentmeta, wp_usermeta, wp_terms, wp_term_taxonomy, wp_term_relationships;</span></span></code></pre>
+<h1 id="5-dọn-bằng-wp-cli-cách-an-toàn--nhanh-cho-dev">5. Dọn Bằng WP-CLI (Cách An Toàn &#x26; Nhanh Cho Dev)</h1>
+<p>Nếu server hỗ trợ WP-CLI, đây là lựa chọn cực an toàn.</p>
+<h2 id="1-lệnh-cơ-bản">(1) Lệnh cơ bản</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># Xóa toàn bộ transients</span></span>
+<span class="line"><span>wp transient delete --all</span></span>
+<span class="line"><span>wp site transient delete --all</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Kiểm tra option autoload nặng</span></span>
+<span class="line"><span>wp db query "SELECT option_name, LENGTH(option_value) AS size FROM wp_options WHERE autoload='yes' ORDER BY size DESC LIMIT 50;"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Tối ưu toàn bộ bảng</span></span>
+<span class="line"><span>wp db optimize</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Liệt kê cron &#x26; xóa cron cũ</span></span>
+<span class="line"><span>wp cron event list</span></span>
+<span class="line"><span>wp cron event delete old_plugin_hook</span></span></code></pre>
+<h2 id="2-backup-trước-khi-dọn">(2) Backup trước khi dọn</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>wp db export before-clean.sql</span></span></code></pre>
+<h1 id="6-dọn-bằng-plugin-cách-dễ-dành-cho-người-không-rành-kỹ-thuật">6. Dọn Bằng Plugin (Cách Dễ Dành Cho Người Không Rành Kỹ Thuật)</h1>
+<p>Nếu bạn ngại SQL hoặc WP-CLI, hãy dùng <strong>plugin dọn dẹp an toàn</strong>.
+Dưới đây là 5 lựa chọn hàng đầu:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Plugin</th><th>Điểm nổi bật</th><th>Ưu điểm</th></tr></thead><tbody><tr><td><strong>WP-Optimize</strong></td><td>Dọn DB + cache + nén ảnh</td><td>Có auto cleanup định kỳ</td></tr><tr><td><strong>WP-Sweep</strong></td><td>Dọn orphan meta, revision</td><td>Dùng hàm gốc WP, rất an toàn</td></tr><tr><td><strong>Advanced Database Cleaner</strong></td><td>Xóa cron, option mồ côi, bảng cũ</td><td>Bản Pro rất mạnh</td></tr><tr><td><strong>Perfmatters</strong></td><td>Có tab Database riêng</td><td>Có thể giới hạn revision</td></tr><tr><td><strong>WP Rocket</strong></td><td>Có tính năng tối ưu DB sẵn</td><td>Tích hợp backup tự động</td></tr></tbody></table>
+<p><strong>Ví dụ với WP-Optimize</strong></p>
+<ul>
+<li>Vào <strong>WP-Admin → WP-Optimize → Database</strong>.</li>
+<li>Tick chọn: xóa revision, spam, transient, draft cũ.</li>
+<li>Bấm <strong><code>Run Optimization</code></strong>.</li>
+<li>(Tuỳ chọn) bật “Schedule weekly optimization”.</li>
+</ul>
+<h1 id="7-quy-trình-gợi-ý-thực-tế">7. Quy Trình Gợi Ý Thực Tế</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Bước</th><th>Hành động</th><th>Công cụ đề xuất</th></tr></thead><tbody><tr><td>1</td><td>Backup toàn bộ database</td><td>UpdraftPlus / WP-CLI</td></tr><tr><td>2</td><td>Xóa transients &#x26; autoload rác</td><td>SQL / WP-CLI / WP-Optimize</td></tr><tr><td>3</td><td>Xóa meta mồ côi</td><td>WP-Sweep / SQL</td></tr><tr><td>4</td><td>Dọn WooCommerce (logs, sessions, actions)</td><td>SQL thủ công</td></tr><tr><td>5</td><td>Gỡ bảng plugin cũ</td><td>phpMyAdmin</td></tr><tr><td>6</td><td>Tối ưu bảng</td><td>WP-CLI hoặc phpMyAdmin</td></tr><tr><td>7</td><td>Kiểm tra lại kích thước DB</td><td>WP-Optimize / phpMyAdmin</td></tr></tbody></table>
+<p><strong>Mẹo &#x26; Lưu Ý Nâng Cao</strong></p>
+<ul>
+<li><strong>Giới hạn số revision:</strong> <code>define('WP_POST_REVISIONS', 5);</code></li>
+<li><strong>Tự động dọn định kỳ:</strong> chạy WP-CLI bằng cron mỗi tuần.</li>
+<li><strong>Giữ autoload dưới 500KB</strong> để trang admin không lag.</li>
+<li><strong>Không nên dùng nhiều plugin dọn cùng lúc.</strong></li>
+</ul>
+<h1 id="8-kiểm-tra-hiệu-suất-sau-khi-dọn">8. Kiểm Tra Hiệu Suất Sau Khi Dọn</h1>
+<p>Sau khi dọn database:</p>
+<ul>
+<li>Dung lượng DB có thể giảm 30–70%.</li>
+<li>Thời gian load trang &#x26; truy vấn giảm rõ rệt.</li>
+<li>WP Admin phản hồi nhanh hơn hẳn.</li>
+</ul>
+<p>Dụng cụ kiểm tra:</p>
+<ul>
+<li><strong>Query Monitor</strong> (đếm số truy vấn).</li>
+<li><strong>GTmetrix / PageSpeed Insights</strong> (so sánh thời gian load).</li>
+<li><strong>WP Rocket Insights</strong> (đo Core Web Vitals sau tối ưu).</li>
+</ul>
+<p>Dọn dẹp database không phải việc làm cho vui mà là một phần bảo trì bắt buộc nếu bạn muốn WordPress của mình sống lâu, chạy nhanh và ổn định.</p>
+<p>Hãy nhớ:</p>
+<blockquote>
+<p>“Database sạch – website khỏe – Google cũng thích.”</p>
+</blockquote>
+<ul>
+<li>Luôn backup trước.</li>
+<li>Chỉ xóa dữ liệu chắc chắn không còn dùng.</li>
+<li>Duy trì lịch dọn định kỳ (1–3 tháng/lần).</li>
+<li>Ưu tiên WP-CLI hoặc plugin có uy tín như WP-Optimize, Perfmatters.</li>
+</ul>
+<h1 id="lời-kết">Lời kết</h1>
+<p>Dọn database WordPress giống như dọn phòng làm việc: không phải việc ai cũng thích làm, nhưng sau khi làm xong, bạn sẽ thấy mọi thứ thở được hơn.
+Nếu bạn từng ngại dọn DB vì sợ lỗi, hãy thử theo đúng hướng dẫn trên. Mình đảm bảo site của bạn sẽ nhẹ hơn, nhanh hơn và sạch sẽ hơn hẳn.</p>
+<p><strong>Tham khảo thêm các bài viết sau:</strong></p>
+<ul>
+<li><a href="https://perfmatters.io/features/">https://perfmatters.io/features/</a></li>
+<li><a href="https://accelerawp.com/how-to-clean-up-the-wordpress-database/">https://accelerawp.com/how-to-clean-up-the-wordpress-database/</a></li>
+<li><a href="https://wpdatatables.com/wordpress-database-cleanup/">https://wpdatatables.com/wordpress-database-cleanup/</a></li>
+<li><a href="https://wp-rocket.me/blog/make-wordpress-database-clean-whistle/">https://wp-rocket.me/blog/make-wordpress-database-clean-whistle/</a></li>
+<li><a href="https://www.wpbeginner.com/plugins/optimize-your-wordpress-database-with-one-click/">https://www.wpbeginner.com/plugins/optimize-your-wordpress-database-with-one-click/</a></li>
+<li><a href="https://onlinemediamasters.com/clean-wordpress-database/">https://onlinemediamasters.com/clean-wordpress-database/</a></li>
+<li><a href="https://kiravo.net/clean-wordpress-database/">https://kiravo.net/clean-wordpress-database/</a></li>
+</ul>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #60a5fa;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f472b6;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Clean and Optimize your WordPress Database (with Perfmatters Plugin).webp?v=14-2a46102" alt="Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng wp_options... Tất cả âm thầm khiến website nặng nề hơn mỗi ngày. Trong bài này, mình sẽ hướng dẫn toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin).</p>  <div class="flex justify-end my-4"> <a href="/blog/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/mysql/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> MySQL </span> </a> </li><li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> WordPress </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=14-2a46102" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb7185;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> GitHub </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Công cụ mã nguồn mở kích hoạt Windows và Office kèm tính năng debug nâng cao</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Microsoft-Activation-Script-mini.jpg?v=14-2a46102" alt="Công cụ mã nguồn mở kích hoạt Windows và Office kèm tính năng debug nâng cao" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Hỗ trợ các phương thức kích hoạt như HWID, Ohook, KMS38 và Online KMS. Công cụ này cung cấp khả năng xử lý sự cố mạnh mẽ và kích hoạt sản phẩm Microsoft hiệu quả, đáp ứng nhiều nhu cầu người dùng theo cách linh hoạt, có thể tùy biến.</p>  <div class="flex justify-end my-4"> <a href="/blog/microsoft-activation-script/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #c084fc;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/microsoft offices/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> Microsoft Offices </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Kích hoạt tất cả phiên bản Windows Server mà không cần Product Key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/instructions-how-to-activate-windows-server-without-product-key-9.jpg?v=14-2a46102" alt="Kích hoạt tất cả phiên bản Windows Server mà không cần Product Key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Hướng dẫn kích hoạt miễn phí mọi phiên bản Windows Server 2022, 2019, 2016... bằng key KMS với 2 phương pháp cũ và mới. Có sẵn lệnh CMD và hình ảnh chi tiết mẹo xử lý lỗi.</p>  <div class="flex justify-end my-4"> <a href="/blog/kich-hoat-tat-ca-phien-ban-windows-server-ma-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #38bdf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows server/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> Windows Server </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/product key/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> Product Key </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/windows-11-the-operating-system-for-hybrid-work-and-learning.webp?v=14-2a46102" alt="Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Chia sẻ kích hoạt Windows 11 bằng key KMS client miễn phí gồm các bước hoàn toàn giống với hướng dẫn cách kích hoạt Windows 10 miễn phí, chỉ khác là lần này mình thực hiện trên Windows 11.</p>  <div class="flex justify-end my-4"> <a href="/blog/nhung-cach-kich-hoat-windows-11-mien-phi-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a3e635;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows 11/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Windows 11 </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Git-based vs API-first CMS Exploring the Headless CMS Landscape.webp?v=14-2a46102" alt="Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đây là một chủ đề cực kỳ hữu ích cho các dev hiện đại, đặc biệt là những ai đang chuyển từ WordPress sang mô hình headless CMS. Nếu CMS truyền thống là tất cả trong một (cả backend lẫn frontend), thì headless CMS chỉ tập trung vào phần quản lý nội dung (backend), còn phần hiển thị (frontend) sẽ do bạn tự do chọn framework hoặc build theo ý muốn.</p>  <div class="flex justify-end my-4"> <a href="/blog/mien-phi-9-nen-tang-headless-cms-luu-tru-tren-git-cho-cac-blog-website-don-gian/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f472b6;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/opensource/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Opensource </span> </a> </li><li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/git base/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Git base </span> </a> </li><li> <a class="sanchez" href="/blog/tags/headless cms/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Headless CMS </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>

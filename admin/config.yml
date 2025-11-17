@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: yourusername/yourrepo
+  repo: anhnnp/anhnnp.github.io
   branch: main
 
 local_backend: true
@@ -8,12 +8,17 @@ local_backend: true
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: "blog"
     label: "Blog Posts"
     folder: "src/data/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Author", name: "author", widget: "string" }
