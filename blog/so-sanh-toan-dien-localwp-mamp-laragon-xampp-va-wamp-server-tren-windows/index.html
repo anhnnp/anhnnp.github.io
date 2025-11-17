@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_606865507268', sans-serif; } @font-face { font-family: '_font_fallback_606865507268'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_376004029305', sans-serif; } @font-face { font-family: '_font_fallback_376004029305'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_739915652319', sans-serif; } @font-face { font-family: '_font_fallback_739915652319'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_745003411077', serif; } @font-face { font-family: '_font_fallback_745003411077'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_1380830978025', serif; } @font-face { font-family: '_font_fallback_1380830978025'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows"><meta name="description" content="Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/"><meta property="og:title" content="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows"><meta property="og:description" content="Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/"><meta property="twitter:title" content="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows"><meta property="twitter:description" content="Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows.png"><link rel="canonical" href="https://anhnnp.github.io/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=15-487d43d"></script><link rel="stylesheet" href="/_astro/_slug_.ByeENLhH.css?v=15-487d43d">
+<style>.astro-code.github-dark code{color:#e1e4e8}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=15-487d43d">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-localwp--lựa-chọn-hàng-đầu-cho-wordpress-developer"> 1. LocalWP — Lựa chọn hàng đầu cho WordPress developer </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-ưu-điểm"> ✅ Ưu điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-nhược-điểm"> ❌ Nhược điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phù-hợp-với"> 🎯 Phù hợp với: </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-mamp--dễ-dùng-đa-nền-tảng-ổn-định"> 2. MAMP — Dễ dùng, đa nền tảng, ổn định </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-ưu-điểm-1"> ✅ Ưu điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-nhược-điểm-1"> ❌ Nhược điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phù-hợp-với-1"> 🎯 Phù hợp với </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-laragon--ông-vua-local-server-trên-windows"> 3. Laragon — Ông vua local server trên Windows </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-ưu-điểm-2"> ✅ Ưu điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-nhược-điểm-2"> ❌ Nhược điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phù-hợp-với-2"> 🎯 Phù hợp với </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-xampp--cổ-điển-dễ-dùng-nhưng-hơi-nặng-nề"> 4. XAMPP — Cổ điển, dễ dùng, nhưng hơi nặng nề </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-ưu-điểm-3"> ✅ Ưu điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-nhược-điểm-3"> ❌ Nhược điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phù-hợp-với-3"> 🎯 Phù hợp với: </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#5-wamp-server--lựa-chọn-cổ-điển-cho-php-thuần"> 5. WAMP Server — Lựa chọn cổ điển cho PHP thuần </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-ưu-điểm-4"> ✅ Ưu điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-nhược-điểm-4"> ❌ Nhược điểm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phù-hợp-với-4"> 🎯 Phù hợp với </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bảng-so-sánh-tổng-quan"> Bảng So Sánh Tổng Quan </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#kết-luận"> Kết luận </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <p>Khi bắt đầu phát triển web bằng PHP hoặc WordPress, việc lựa chọn môi trường local server (cài đặt trên máy tính cá nhân) là bước đầu tiên cực kỳ quan trọng. Nó ảnh hưởng trực tiếp đến tốc độ làm việc, hiệu suất dự án và trải nghiệm của bạn với code.</p>
+<p>Trên Windows, có 5 công cụ phổ biến nhất hiện nay: LocalWP, MAMP, Laragon, XAMPP, và WAMP Server</p>
+<p><img src="/uploads/PHP%20Javascript%20website%20to%20a%20windows%20application.webp?v=15-487d43d" alt=""></p>
+<p>Mỗi công cụ có ưu, nhược điểm riêng, tùy vào mục đích sử dụng (PHP thuần, WordPress, Laravel, WooCommerce, v.v).</p>
+<h2 id="1-localwp--lựa-chọn-hàng-đầu-cho-wordpress-developer">1. LocalWP — Lựa chọn hàng đầu cho WordPress developer</h2>
+<p><img src="/uploads/ocal-wp-one-click-min.webp?v=15-487d43d" alt="LocalWP"></p>
+<h3 id="-ưu-điểm">✅ Ưu điểm</h3>
+<ul>
+<li>Tạo website WordPress chỉ trong vài cú click — không cần cài đặt thủ công.</li>
+<li>Giao diện đồ họa thân thiện, dễ dùng cho người mới.</li>
+<li>Hỗ trợ Live Links: chia sẻ site local của bạn cho khách hàng xem qua URL.</li>
+<li>Có thể chọn Apache hoặc Nginx, và thay đổi phiên bản PHP dễ dàng.</li>
+<li>Tích hợp sẵn SSL cho môi trường HTTPS.</li>
+</ul>
+<h3 id="-nhược-điểm">❌ Nhược điểm</h3>
+<ul>
+<li>Chạy hơi nặng nếu bạn mở nhiều site cùng lúc.</li>
+<li>Tập trung 100% cho WordPress — nếu bạn code PHP framework khác (Laravel, Symfony) sẽ bị giới hạn.</li>
+<li>Một số tính năng nâng cao yêu cầu bản Pro.</li>
+</ul>
+<h3 id="-phù-hợp-với">🎯 Phù hợp với:</h3>
+<p>Người làm WordPress, WooCommerce, theme, plugin, hoặc site POD cần demo nhanh cho khách.</p>
+<h2 id="2-mamp--dễ-dùng-đa-nền-tảng-ổn-định">2. MAMP — Dễ dùng, đa nền tảng, ổn định</h2>
+<p><img src="/uploads/MAMP%20de%20dung%20on%20dinh.webp?v=15-487d43d" alt="MAMP"></p>
+<h3 id="-ưu-điểm-1">✅ Ưu điểm</h3>
+<ul>
+<li>Có bản cho Windows và macOS.</li>
+<li>Cài đặt dễ, cấu hình nhẹ.</li>
+<li>Phiên bản MAMP PRO hỗ trợ nhiều PHP versions, Apache/Nginx, và quản lý nhiều site.</li>
+</ul>
+<h3 id="-nhược-điểm-1">❌ Nhược điểm</h3>
+<ul>
+<li>Bản miễn phí hạn chế tính năng.</li>
+<li>Giao diện không tối ưu cho dev chuyên sâu (không có auto virtual hosts).</li>
+<li>Không mạnh về hiệu suất như Laragon.</li>
+</ul>
+<h3 id="-phù-hợp-với-1">🎯 Phù hợp với</h3>
+<p>Người mới học PHP hoặc WordPress, hoặc ai cần môi trường đơn giản, đa hệ điều hành.</p>
+<h2 id="3-laragon--ông-vua-local-server-trên-windows">3. Laragon — Ông vua local server trên Windows</h2>
+<p><img src="/uploads/laragon-apache-quick-ssl.webp?v=15-487d43d" alt="Laragon"></p>
+<h3 id="-ưu-điểm-2">✅ Ưu điểm</h3>
+<ul>
+<li>Hiệu suất cực nhanh: khởi động nhẹ, chiếm ít RAM (chỉ ~10MB idle).</li>
+<li>Auto Virtual Host: tạo domain <code>.test</code> tự động như <code>mysite.test</code>.</li>
+<li>Đổi nhanh giữa nhiều phiên bản PHP, MySQL, Nginx/Apache.</li>
+<li>Hỗ trợ Node.js, Python, Ruby, Go — môi trường dev toàn diện.</li>
+<li>Portable – không cần cài đặt sâu vào Windows, có thể copy cả folder đi máy khác.</li>
+<li>Tự động SSL cho local domain.</li>
+<li>Hỗ trợ Composer, npm, Git sẵn.</li>
+</ul>
+<h3 id="-nhược-điểm-2">❌ Nhược điểm</h3>
+<ul>
+<li>Chỉ dành cho Windows.</li>
+<li>Giao diện hơi khô khan hơn so với LocalWP.</li>
+<li>Update các gói (PHP, Node, MySQL) đôi khi cần thao tác thủ công.</li>
+</ul>
+<h3 id="-phù-hợp-với-2">🎯 Phù hợp với</h3>
+<p>Developer chuyên nghiệp, làm nhiều project PHP/WordPress, cần tốc độ, độ ổn định và khả năng tùy biến cao.</p>
+<h2 id="4-xampp--cổ-điển-dễ-dùng-nhưng-hơi-nặng-nề">4. XAMPP — Cổ điển, dễ dùng, nhưng hơi nặng nề</h2>
+<p><img src="/uploads/Windows-XAMPP-interface.webp?v=15-487d43d" alt="XAMPP"></p>
+<h3 id="-ưu-điểm-3">✅ Ưu điểm</h3>
+<ul>
+<li>Cài nhanh, phổ biến, hỗ trợ <strong>Apache + MySQL + PHP + Perl</strong>.</li>
+<li>Dễ cấu hình, phù hợp cho người mới.</li>
+<li>Chạy được trên cả Windows, macOS và Linux.</li>
+</ul>
+<h3 id="-nhược-điểm-3">❌ Nhược điểm</h3>
+<ul>
+<li>Không có auto virtual host, phải chỉnh file thủ công.</li>
+<li>Chậm hơn Laragon khi load site WordPress.</li>
+<li>Không tối ưu khi làm nhiều site cùng lúc.</li>
+</ul>
+<h3 id="-phù-hợp-với-3">🎯 Phù hợp với:</h3>
+<p>Người mới học PHP hoặc sinh viên cần môi trường “cài là chạy”.</p>
+<h2 id="5-wamp-server--lựa-chọn-cổ-điển-cho-php-thuần">5. WAMP Server — Lựa chọn cổ điển cho PHP thuần</h2>
+<p><img src="/uploads/What%20is%20WAMP%20Server.webp?v=15-487d43d" alt=""></p>
+<h3 id="-ưu-điểm-4">✅ Ưu điểm</h3>
+<ul>
+<li>Nhẹ, dễ cài, cấu hình cơ bản.</li>
+<li>Thích hợp nếu bạn chỉ làm PHP thuần, không cần framework phức tạp.</li>
+<li>Giao diện đơn giản, không chiếm nhiều tài nguyên.</li>
+</ul>
+<h3 id="-nhược-điểm-4">❌ Nhược điểm</h3>
+<ul>
+<li>Cấu hình nâng cao phải làm thủ công.</li>
+<li>Không hỗ trợ nhiều site độc lập (multi-project).</li>
+<li>Thiếu các tính năng hiện đại như auto-SSL, multi PHP version.</li>
+</ul>
+<h3 id="-phù-hợp-với-4">🎯 Phù hợp với</h3>
+<p>Người học PHP, dev nhỏ lẻ, hoặc ai muốn môi trường cực kỳ đơn giản để test code.</p>
+<h2 id="bảng-so-sánh-tổng-quan">Bảng So Sánh Tổng Quan</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tiêu chí</th><th>LocalWP</th><th>MAMP</th><th>Laragon</th><th>XAMPP</th><th>WAMP</th></tr></thead><tbody><tr><td>Giao diện</td><td>✅ Đẹp, thân thiện</td><td>✅ Dễ dùng</td><td>⚙️ Cơ bản</td><td>⚙️ Trung bình</td><td>⚙️ Cổ điển</td></tr><tr><td>Tốc độ &#x26; hiệu suất</td><td>⚡ Khá nhanh</td><td>⚡ Ổn định</td><td>🚀 Rất nhanh</td><td>⏳ Trung bình</td><td>⏳ Trung bình</td></tr><tr><td>Hỗ trợ đa site</td><td>✅ Có</td><td>⚙️ Giới hạn</td><td>✅ Xuất sắc</td><td>❌ Không tự động</td><td>❌ Không</td></tr><tr><td>Auto Virtual Host</td><td>✅ (WP)</td><td>❌</td><td>✅ Có</td><td>❌</td><td>❌</td></tr><tr><td>SSL &#x26; HTTPS</td><td>✅ Có sẵn</td><td>⚙️ Thủ công</td><td>✅ Auto SSL</td><td>⚙️ Thủ công</td><td>❌ Không</td></tr><tr><td>Đa PHP version</td><td>✅ Dễ đổi</td><td>⚙️ Có bản Pro</td><td>✅ Nhanh</td><td>⚙️ Có nhưng thủ công</td><td>❌ Không</td></tr><tr><td>Nền tảng</td><td>Win/Mac</td><td>Win/Mac</td><td><strong>Windows only</strong></td><td>Win/Mac/Linux</td><td>Windows only</td></tr><tr><td>Phù hợp cho</td><td>WordPress dev</td><td>Beginner</td><td>Pro dev</td><td>Student</td><td>Basic PHP</td></tr></tbody></table>
+<p><strong>Lời khuyên chọn lựa</strong></p>
+<ul>
+<li>Người mới học: chọn XAMPP hoặc MAMP</li>
+<li>Dev WordPress chuyên: chọn LocalWP</li>
+<li>Dev PHP chuyên nghiệp, nhiều site: chọn Laragon</li>
+<li>Test nhanh, code nhỏ: chọn WAMP</li>
+</ul>
+<h2 id="kết-luận">Kết luận</h2>
+<p>Mỗi công cụ đều có giá trị riêng:</p>
+<ul>
+<li><strong>LocalWP</strong>: WordPress first, dễ dùng, giao diện đẹp.</li>
+<li><strong>Laragon</strong>: nhanh nhất, mạnh nhất trên Windows, linh hoạt nhất.</li>
+<li><strong>MAMP</strong>: cân bằng, ổn định, có bản Pro.</li>
+<li><strong>XAMPP</strong>: phổ thông, dễ học.</li>
+<li><strong>WAMP</strong>: đơn giản, nhẹ.</li>
+</ul>
+<p>Nếu bạn là dev Windows chuyên về WordPress, PHP, WooCommerce hay các website bán hàng thì <strong>Laragon là lựa chọn tốt nhất</strong> để làm việc nhanh, hiệu quả, và dễ quản lý nhiều site.</p>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #c084fc;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #4ade80;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=15-487d43d" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Dùng MySQL CLI trên Windows (WAMP) &amp; Cách Import Database Lớn (10GB+)</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/MySQL Benefits and Use Cases.webp?v=15-487d43d" alt="Dùng MySQL CLI trên Windows (WAMP) &#38; Cách Import Database Lớn (10GB+)" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Dưới đây là bài viết hướng dẫn chi tiết và hoàn chỉnh tổng hợp toàn bộ kinh nghiệm khi làm việc với MySQL CLI trên Windows với WAMP, đặc biệt là khi import dữ liệu lớn (10GB+) hoặc file nén (.zip/.gz).
+Bài viết này phù hợp cho cả developer và administrator khi cần thao tác MySQL ở cấp độ hệ thống.</p>  <div class="flex justify-end my-4"> <a href="/blog/dung-mysql-cli-tren-windows-wamp-cach-import-database-lon-10gb/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> Lập Trình </span> </a> </li><li> <a class="sanchez" href="/blog/tags/mysql/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> MySQL </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Clean and Optimize your WordPress Database (with Perfmatters Plugin).webp?v=15-487d43d" alt="Dọn Dẹp Dữ Liệu Database Cũ Để Tối Ưu Cho WordPress" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Plugin gỡ rồi nhưng dữ liệu vẫn còn, log và cron cũ vẫn chạy, transients đầy bảng wp_options... Tất cả âm thầm khiến website nặng nề hơn mỗi ngày. Trong bài này, mình sẽ hướng dẫn toàn bộ quy trình dọn dẹp và tối ưu database WordPress cũ, từ thủ công (MySQL, phpMyAdmin, WP-CLI) đến tự động (plugin).</p>  <div class="flex justify-end my-4"> <a href="/blog/don-dep-du-lieu-database-cu-de-toi-uu-cho-wordpress/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #c084fc;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/mysql/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> MySQL </span> </a> </li><li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> WordPress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Công cụ mã nguồn mở kích hoạt Windows và Office kèm tính năng debug nâng cao</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Microsoft-Activation-Script-mini.jpg?v=15-487d43d" alt="Công cụ mã nguồn mở kích hoạt Windows và Office kèm tính năng debug nâng cao" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Hỗ trợ các phương thức kích hoạt như HWID, Ohook, KMS38 và Online KMS. Công cụ này cung cấp khả năng xử lý sự cố mạnh mẽ và kích hoạt sản phẩm Microsoft hiệu quả, đáp ứng nhiều nhu cầu người dùng theo cách linh hoạt, có thể tùy biến.</p>  <div class="flex justify-end my-4"> <a href="/blog/microsoft-activation-script/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/microsoft offices/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Microsoft Offices </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Kích hoạt tất cả phiên bản Windows Server mà không cần Product Key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/instructions-how-to-activate-windows-server-without-product-key-9.jpg?v=15-487d43d" alt="Kích hoạt tất cả phiên bản Windows Server mà không cần Product Key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Hướng dẫn kích hoạt miễn phí mọi phiên bản Windows Server 2022, 2019, 2016... bằng key KMS với 2 phương pháp cũ và mới. Có sẵn lệnh CMD và hình ảnh chi tiết mẹo xử lý lỗi.</p>  <div class="flex justify-end my-4"> <a href="/blog/kich-hoat-tat-ca-phien-ban-windows-server-ma-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows server/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Windows Server </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/product key/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #60a5fa;"> Product Key </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #60a5fa;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=15-487d43d" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #38bdf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>
