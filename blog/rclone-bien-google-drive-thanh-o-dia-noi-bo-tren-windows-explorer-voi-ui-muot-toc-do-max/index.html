@@ -1,0 +1,465 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_213031113613', sans-serif; } @font-face { font-family: '_font_fallback_213031113613'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_1268373465402', sans-serif; } @font-face { font-family: '_font_fallback_1268373465402'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_574545714221', sans-serif; } @font-face { font-family: '_font_fallback_574545714221'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_1756513835040', serif; } @font-face { font-family: '_font_fallback_1756513835040'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_120714503223', serif; } @font-face { font-family: '_font_fallback_120714503223'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max"><meta name="description" content="Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/"><meta property="og:title" content="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max"><meta property="og:description" content="Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/"><meta property="twitter:title" content="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max"><meta property="twitter:description" content="Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max.png"><link rel="canonical" href="https://anhnnp.github.io/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=26-1d2abf3"></script><link rel="stylesheet" href="/_astro/_slug_.ByeENLhH.css?v=26-1d2abf3">
+<style>.astro-code.github-dark code{color:#e1e4e8}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=26-1d2abf3">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#phần-1-tải-và-cài-đặt-rclone-trên-windows"> Phần 1: Tải và cài đặt Rclone trên Windows </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#tạo-client-id-và-client-secret-trong-google-cloud"> Tạo Client ID và Client Secret trong Google Cloud </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#cấu-hình-rclone-remote-trên-windows-có-ui-oauth"> Cấu Hình Rclone Remote Trên Windows (Có UI OAuth) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#lấy-file-rcloneconf-để-dùng-cho-vpshosting"> Lấy File rclone.conf Để Dùng Cho VPS/Hosting </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#best-practices-bảo-mật-rclone"> Best Practices Bảo Mật Rclone </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#chống-rate-limit-google-drive"> Chống Rate Limit Google Drive </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#rclone-cheat-sheet-full-60-command"> Rclone Cheat Sheet (Full 60 Command) </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#phần-2---tích-hợp-rclone-với-windows-explorer-ui-đầy-đủ"> Phần 2 - Tích hợp rclone với Windows Explorer (UI đầy đủ) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#ưu-điểm-khi-dùng-rclone-trên-windows"> Ưu điểm khi dùng rclone trên Windows </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#mount-cloud-thành-ổ-đĩa-windows"> Mount Cloud Thành Ổ Đĩa Windows </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#tích-hợp-với-ổ-d-e-f-hoặc-phân-vùng-bất-kỳ"> Tích hợp với ổ D:, E:, F: hoặc phân vùng bất kỳ </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#dùng-rclone-với-windows-task-scheduler-tự-động-hóa-100"> Dùng rclone với Windows Task Scheduler (tự động hóa 100%) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#windows-shortcut-auto-mount-khi-mở-máy"> Windows shortcut (auto-mount khi mở máy) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#có-thể-dùng-rclone-để-tạo-ổ-đĩa-ảo-virtual-folder"> Có thể dùng rclone để tạo ổ đĩa ảo (Virtual Folder) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#các-lệnh-windows-hữu-ích-khi-làm-việc-với-rclone"> Các lệnh Windows hữu ích khi làm việc với rclone </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#hiện-ổ-rclone-trong-windows-explorer-nếu-bị-ẩn"> Hiện ổ rclone trong Windows Explorer nếu bị ẩn </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#so-sánh-rclone-mount-vs-google-drive-for-desktop"> So sánh rclone mount vs Google Drive for Desktop? </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#tương-thích-với-mọi-folder-windows-như-thế-nào"> Tương thích với mọi folder Windows như thế nào? </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#nên-mount-ổ-rclone-bằng-winfsp"> Nên mount ổ rclone bằng WinFsp </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#kết-luận"> KẾT LUẬN </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <h2 id="phần-1-tải-và-cài-đặt-rclone-trên-windows">Phần 1: Tải và cài đặt Rclone trên Windows</h2>
+<p><img src="https://tse2.mm.bing.net/th/id/OIP.ErB8Kea1z2pwbBMm_7JpPwHaDa?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://std.rocks/images/rclone/005-rclone-windows-download-option.png"></p>
+<p><img src="https://tse1.mm.bing.net/th/id/OIP._OjnQWcWeOvmcNCBuVnbyQHaEF?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://github.com/kapitainsky/RcloneBrowser/wiki/images/screenshot25.PNG"></p>
+<p>🔹<strong>1. Truy cập trang tải rclone:</strong> <a href="https://rclone.org/downloads/">https://rclone.org/downloads/</a></p>
+<p>🔹<strong>2. Chọn bản phù hợp:</strong> <code>rclone-vxx-windows-amd64.zip</code> (đa số PC dùng bản này)</p>
+<p>🔹<strong>3. Giải nén file ZIP</strong></p>
+<ul>
+<li>Nhấp chuột phải → Extract All</li>
+<li>Bạn sẽ có file:
+<ul>
+<li><code>rclone.exe</code></li>
+<li><code>rclone.exe.sig</code></li>
+<li>README</li>
+</ul>
+</li>
+</ul>
+<p>🔹<strong>4. (Tùy chọn) Thêm rclone vào PATH</strong></p>
+<ul>
+<li>Giúp chạy rclone ở mọi nơi trong CMD/Powershell.</li>
+<li>Nháy phải This PC → Properties</li>
+<li>Advanced system settings</li>
+<li>Environment Variables</li>
+<li>Tìm Path → Edit → Add  <code>C:\path-to-rclone\folder</code></li>
+</ul>
+<h3 id="tạo-client-id-và-client-secret-trong-google-cloud">Tạo Client ID và Client Secret trong Google Cloud</h3>
+<p><img src="https://tse1.mm.bing.net/th/id/OIP.fWDAMxcdxXcM3i_egKfr3AHaHa?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://awxdocs.com/wp-content/uploads/2023/07/OAuth-2-1024x1024.png"></p>
+<p><img src="https://tse1.mm.bing.net/th/id/OIP.z2dk8N7EeQkexmrJwS8yrgHaD-?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://devopedia.org/images/article/351/4686.1632913213.png"></p>
+<p>🔹<strong>1. Truy cập Google Cloud Console:</strong> <a href="https://console.cloud.google.com/">https://console.cloud.google.com/</a></p>
+<p>Login bằng tài khoản GMail bạn dùng với Google Drive.</p>
+<p>🔹<strong>2. Tạo Project mới</strong></p>
+<ul>
+<li>“Select a project” → “New Project”</li>
+<li>Đặt tên ví dụ: Rclone OAuth</li>
+<li>Nhấn Create</li>
+</ul>
+<p>🔹<strong>3. Kích hoạt API Google Drive</strong></p>
+<ul>
+<li>Bên trái: “APIs &#x26; Services → Library”</li>
+<li>Tìm Google Drive API → Enable</li>
+</ul>
+<p>🔹<strong>4. Tạo OAuth Consent Screen</strong></p>
+<ul>
+<li>“APIs &#x26; Services → OAuth consent screen”</li>
+<li>Chọn loại: External</li>
+<li>App Name: “Rclone OAuth”</li>
+<li>User support email → chọn email của bạn</li>
+<li>Developer contact email → email của bạn</li>
+<li>Save &#x26; Continue đến hết (không cần thêm scope)</li>
+<li>Publish app (nếu thấy TUY CHỌN — không phải lúc nào cũng yêu cầu)</li>
+</ul>
+<p>🔹<strong>5. Tạo Credentials (Client ID &#x26; Client Secret)</strong></p>
+<ul>
+<li>“APIs &#x26; Services → Credentials”</li>
+<li>Nhấn nút: Create Credentials</li>
+<li>Chọn: OAuth Client ID</li>
+<li>Application type: Desktop App</li>
+<li>Name: “Rclone”</li>
+<li>Nhấn Create</li>
+</ul>
+<p><strong>Bạn sẽ nhận được:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Client ID: xxxxx.apps.googleusercontent.com</span></span>
+<span class="line"><span>Client Secret: xxxxxxxx</span></span></code></pre>
+<p><strong>=> Lưu lại cẩn thận</strong></p>
+<h3 id="cấu-hình-rclone-remote-trên-windows-có-ui-oauth">Cấu Hình Rclone Remote Trên Windows (Có UI OAuth)</h3>
+<p>Mở CMD hoặc PowerShell:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config</span></span></code></pre>
+<p>Bạn sẽ thấy giao diện CLI tương tự:</p>
+<p><img src="https://tse4.mm.bing.net/th/id/OIP.XWeUEAnJFlkfxLwDieNFpgHaD2?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://www.coretechnologies.com/products/AlwaysUp/Apps/rclone-config.png"></p>
+<p><img src="https://tse2.mm.bing.net/th/id/OIP.liFMrxT4_3UgZcn0mXIngwHaCt?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://static.idriveonlinebackup.com/s3-storage-e2/source/images/rclone_command_config.png"></p>
+<p>🔹<strong>Bước 1: Chọn “n” để tạo remote mới</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>n) New remote</span></span>
+<span class="line"><span>s) Set configuration password</span></span>
+<span class="line"><span>q) Quit config</span></span>
+<span class="line"><span>n/s/q> n</span></span></code></pre>
+<p>Đặt tên:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>name> gdrive</span></span></code></pre>
+<p>🔹<strong>Bước 2: Chọn storage “Google Drive”</strong></p>
+<p>Google Drive thường là số <strong>18</strong>
+(rclone sẽ show list, bạn chọn số theo danh sách hiển thị)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Storage> 18</span></span></code></pre>
+<p>🔹<strong>Bước 3: Nhập Client ID và Client Secret bạn đã tạo</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>client_id> xxxxx.apps.googleusercontent.com</span></span>
+<span class="line"><span>client_secret> xxxxxxxxx</span></span></code></pre>
+<p>🔹<strong>Bước 4: Scope cho Drive</strong></p>
+<p>Chọn “full access” (thường là số 1):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>scope> 1</span></span></code></pre>
+<p>🔹<strong>Bước 5: Root folder</strong></p>
+<p>Để trống → enter</p>
+<p>🔹<strong>Bước 6: Service Account file</strong></p>
+<p>Để trống → enter</p>
+<p>🔹<strong>Bước 7: Xác thực OAuth với trình duyệt</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Use auto config?</span></span>
+<span class="line"><span>y) Yes</span></span>
+<span class="line"><span>n) No</span></span>
+<span class="line"><span>y/n> y</span></span></code></pre>
+<p>Windows sẽ tự bật trình duyệt:</p>
+<p><img src="https://tse1.mm.bing.net/th/id/OIP._OjnQWcWeOvmcNCBuVnbyQHaEF?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://github.com/kapitainsky/RcloneBrowser/wiki/images/screenshot25.PNG"></p>
+<p><img src="https://tse4.mm.bing.net/th/id/OIP.RYfVyfi98phetYFiYpAGuwHaFb?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://raw.githubusercontent.com/wiki/mmozeiko/RcloneBrowser/screenshot6.png"></p>
+<ul>
+<li>Chọn đúng tài khoản Google Drive</li>
+<li>Nhấn <strong>Allow</strong></li>
+<li>Khi xác thực xong → Terminal hiển thị “Success!”</li>
+</ul>
+<p>🔹<strong>Bước 8: Chọn team drive hay không</strong></p>
+<p>Nếu dùng Drive cá nhân:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Configure this as a Shared Drive?</span></span>
+<span class="line"><span>y/n> n</span></span></code></pre>
+<p>Hoàn tất, rclone lưu remote: <strong>gdrive</strong></p>
+<h3 id="lấy-file-rcloneconf-để-dùng-cho-vpshosting">Lấy File <code>rclone.conf</code> Để Dùng Cho VPS/Hosting</h3>
+<p>Đây là phần quan trọng nhất.</p>
+<p><strong>Vị trí file rclone.conf trên Windows</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>C:\Users\&#x3C;TênUser>\AppData\Roaming\rclone\rclone.conf</span></span></code></pre>
+<p>Hoặc chạy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config file</span></span></code></pre>
+<p>Kết quả hiển thị đường dẫn file.</p>
+<p>Nội dung <code>rclone.conf</code> sẽ giống thế này:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>[gdrive]</span></span>
+<span class="line"><span>type = drive</span></span>
+<span class="line"><span>client_id = xxxxxxx.apps.googleusercontent.com</span></span>
+<span class="line"><span>client_secret = xxxxxxx</span></span>
+<span class="line"><span>scope = drive</span></span>
+<span class="line"><span>token = {"access_token":"ya29....","expiry":"2025-01-01T00:00:00Z"}</span></span></code></pre>
+<p>Bạn chỉ cần copy toàn bộ file này lên:</p>
+<ul>
+<li>VPS Linux</li>
+<li>Hosting</li>
+<li>Docker</li>
+<li>Server chạy Python, Node, PHP</li>
+<li>Máy khác</li>
+</ul>
+<p>Chỉ cần copy file <code>rclone.conf</code> và chỉ định đúng đường dẫn, ví dụ trong Linux:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone --config /root/rclone.conf ls gdrive:</span></span></code></pre>
+<p>→ <strong>Không cần OAuth UI nữa!</strong></p>
+<p>Test Trên VPS Sau Khi Copy Config. Ví dụ kiểm tra:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone --config rclone.conf about gdrive:</span></span></code></pre>
+<p>Nếu hiện dung lượng Drive → OK.</p>
+<p>🔹**  Tự tạo Client ID giúp:**</p>
+<ul>
+<li>Tránh giới hạn của client rclone mặc định</li>
+<li>Upload/Download tốc độ cao hơn</li>
+<li>Tránh lỗi <code>Rate Limit Exceeded</code></li>
+<li>Tránh bị block API trong giờ cao điểm</li>
+</ul>
+<p>🔹**  Nên lưu ít nhất 2 bản <code>rclone.conf</code>:**</p>
+<ul>
+<li>1 bản trên PC</li>
+<li>1 bản backup đám mây (zip + password)</li>
+</ul>
+<h3 id="best-practices-bảo-mật-rclone">Best Practices Bảo Mật Rclone</h3>
+<p>🔹** 1. Luôn đặt mật khẩu cho <code>rclone.conf</code>**</p>
+<p>Tránh để API key, token, client secret lộ ra khi VPS bị truy cập trái phép.</p>
+<p>Chạy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config</span></span></code></pre>
+<p>Chọn:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>s) Set configuration password</span></span></code></pre>
+<p>→ Nhập mật khẩu 2 lần.</p>
+<p>Ưu điểm:</p>
+<ul>
+<li>File rclone.conf sẽ được mã hóa bằng AES-256.</li>
+<li>Nếu ai truy cập server, họ vẫn không đọc được token.</li>
+</ul>
+<p>🔹** 2. Phân quyền file <code>rclone.conf</code> trên Linux**</p>
+<p>Chỉ user root hoặc user chạy rclone mới được đọc file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>chmod 600 /root/rclone.conf</span></span></code></pre>
+<p>🔹** 3. Dùng ClientID/Secret riêng (không dùng mặc định)**</p>
+<p>Rclone có client ID công khai → dễ bị rate limit.</p>
+<p>Sử dụng ClientID riêng:</p>
+<ul>
+<li>Bảo mật tốt hơn</li>
+<li>Ít giới hạn API hơn</li>
+<li>Tốc độ ổn định và dài hạn</li>
+</ul>
+<p>🔹** 4. Token refresh tự động — Nhưng phải backup**</p>
+<p>Token được lưu trong rclone.conf dưới dạng JSON:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>token = {"access_token":"xxx","refresh_token":"yyy"}</span></span></code></pre>
+<p>Google có thể reset nếu bạn:</p>
+<ul>
+<li>Đổi mật khẩu</li>
+<li>Đăng xuất toàn bộ phiên</li>
+<li>Bị nghi vấn truy cập bất thường</li>
+</ul>
+<p>→ Luôn backup file <code>rclone.conf</code> (đã mã hóa) ở nơi an toàn.</p>
+<p>🔹** 5. Dùng Service Account (nếu chạy automation cực nặng)**</p>
+<p>SA phù hợp với:</p>
+<ul>
+<li>Upload/download lớn 50–100TB</li>
+<li>Copy dữ liệu tự động 24/7</li>
+</ul>
+<p>Bảo mật SA:</p>
+<ul>
+<li>Không chia sẻ file <code>.json</code> cho bên ngoài</li>
+<li>Chỉ phân quyền Viewer hoặc Editor đúng thư mục cần thiết</li>
+</ul>
+<p>🔹** 6. Hạn chế phạm vi (Scope Minimization)**</p>
+<p>Khi config rclone, thay vì <code>Full access</code>:</p>
+<p>Chọn:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>drive.file</span></span></code></pre>
+<p>→ Chỉ file mà rclone tạo mới được xem/ghi.</p>
+<p><strong>Bảo mật tăng rất mạnh.</strong></p>
+<p>🔹** 7. Tắt debug log để tránh lộ token**</p>
+<p>Không log chi tiết khi không cần:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy ... --log-level INFO</span></span></code></pre>
+<p>Không dùng:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>-vv</span></span></code></pre>
+<p>(vì log quá chi tiết, có thể lộ thông tin nhạy cảm)</p>
+<p>🔹** 8. Không gắn rclone.conf vào public GitHub**</p>
+<p>Nếu bắt buộc đẩy code lên GitHub → dùng <code>.gitignore</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone.conf</span></span>
+<span class="line"><span>*.json</span></span>
+<span class="line"><span>*.token</span></span></code></pre>
+<p>🔹** 9. Sử dụng Encryption Remote (mã hóa dữ liệu)**</p>
+<p>Nếu muốn bảo mật dữ liệu trên cloud:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config</span></span>
+<span class="line"><span>n</span></span>
+<span class="line"><span>type: crypt</span></span></code></pre>
+<p>Bạn có thể:</p>
+<ul>
+<li>Mã hóa tên file</li>
+<li>Mã hóa nội dung file</li>
+<li>Mã hóa cả đường dẫn</li>
+</ul>
+<p>Rclone crypt + Google Drive = mức bảo mật gần tương đương Zero Knowledge.</p>
+<h3 id="chống-rate-limit-google-drive">Chống Rate Limit Google Drive</h3>
+<p><strong>🔹 1. Không chạy quá 750GB upload/ngày/tài khoản</strong></p>
+<p>Giới hạn của Google Drive cá nhân.</p>
+<p><strong>🔹 2. Dùng flag <code>--drive-chunk-size 64M</code></strong></p>
+<p>Tối ưu tốc độ khi upload file lớn:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy file.iso gdrive: --drive-chunk-size 64M</span></span></code></pre>
+<p><strong>🔹 3. Tránh copy 1 lúc quá nhiều file nhỏ</strong></p>
+<p>Google rất ghét thư mục >100.000 file nhỏ.</p>
+<p><strong>🔹 4. Dùng —tps-limit 5 để tránh bị chặn API</strong></p>
+<p>Đặc biệt khi sync nhiều file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--tps-limit 5</span></span></code></pre>
+<p><strong>🔹 5. Delay giữa các API requests</strong></p>
+<p>Giảm stress API:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--transfers 3 --checkers 3</span></span></code></pre>
+<h3 id="rclone-cheat-sheet-full-60-command">Rclone Cheat Sheet (Full 60 Command)</h3>
+<p><strong>🔹</strong> <strong>LỆNH KIỂM TRA</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone version</span></span>
+<span class="line"><span>rclone config file</span></span>
+<span class="line"><span>rclone listremotes</span></span>
+<span class="line"><span>rclone about gdrive:</span></span></code></pre>
+<p><strong>🔹</strong> <strong>UPLOAD</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy localfile gdrive:path</span></span>
+<span class="line"><span>rclone copy folder gdrive:path --progress</span></span>
+<span class="line"><span>rclone move folder gdrive:path</span></span>
+<span class="line"><span>rclone sync folder gdrive:path --delete-after</span></span></code></pre>
+<p><strong>🔹</strong> <strong>DOWNLOAD</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy gdrive:path local</span></span>
+<span class="line"><span>rclone sync gdrive:path local --progress</span></span></code></pre>
+<p><strong>🔹</strong> <strong>LIỆT KÊ FILE</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone ls gdrive:</span></span>
+<span class="line"><span>rclone lsd gdrive:</span></span>
+<span class="line"><span>rclone tree gdrive:</span></span></code></pre>
+<p><strong>🔹</strong> <strong>KIỂM TRA CHI TIẾT</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone size gdrive:</span></span>
+<span class="line"><span>rclone about gdrive:</span></span>
+<span class="line"><span>rclone md5sum gdrive:</span></span></code></pre>
+<p><strong>🔹</strong> <strong>CẤU HÌNH</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config</span></span>
+<span class="line"><span>rclone config show</span></span></code></pre>
+<p><strong>🔹</strong> <strong>CRYPT REMOTE (MÃ HÓA)</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config create secret crypt remote:gdrive:path</span></span></code></pre>
+<p><strong>🔹</strong> <strong>KIỂM TRA TOKEN</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone config show gdrive:</span></span></code></pre>
+<p><strong><code>Lệnh Nâng Cao (Pro Level)</code></strong></p>
+<p><strong>🔹 1. Copy theo nhiều luồng song song</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy src dst --transfers 8 --checkers 16</span></span></code></pre>
+<p><strong>🔹 2. Chỉ copy file mới hơn</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy src dst --update</span></span></code></pre>
+<p><strong>🔹 3. Đồng bộ 2 cloud khác nhau</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy gdrive1: gdrive2:</span></span></code></pre>
+<p><strong>🔹 4. Mount Drive vào Windows</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone mount gdrive: X: --vfs-cache-mode full</span></span></code></pre>
+<p><strong>🔹 5. Tự động retry network error</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--retries 5 --retries-sleep 5s</span></span></code></pre>
+<p><strong>🔹 6. Giới hạn tốc độ</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--bwlimit 5M</span></span></code></pre>
+<p><strong>🔹</strong> <strong>7. Upload file cực lớn 50GB+</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--drive-chunk-size 128M</span></span></code></pre>
+<p><strong>🔹 8. Bật checksum để so sánh chuẩn xác</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--checksum</span></span></code></pre>
+<p><strong>Rclone Quick Reference (Bản Lưu Nhanh)</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Upload:   rclone copy src gdrive:path --progress</span></span>
+<span class="line"><span>Download: rclone copy gdrive:path dst --progress</span></span>
+<span class="line"><span>Sync:     rclone sync src gdrive:path</span></span>
+<span class="line"><span>List:     rclone ls gdrive:</span></span>
+<span class="line"><span>About:    rclone about gdrive:</span></span>
+<span class="line"><span>Mount:    rclone mount gdrive: X: --vfs-cache-mode full</span></span>
+<span class="line"><span>Encrypt:  rclone config create secret crypt remote:gdrive:path</span></span></code></pre>
+<h2 id="phần-2---tích-hợp-rclone-với-windows-explorer-ui-đầy-đủ">Phần 2 - Tích hợp rclone với Windows Explorer (UI đầy đủ)</h2>
+<h3 id="ưu-điểm-khi-dùng-rclone-trên-windows">Ưu điểm khi dùng rclone trên Windows</h3>
+<ul>
+<li>Mount Google Drive / OneDrive / Dropbox thành <strong>ổ đĩa Windows thật (X:, Y:, Z:)</strong></li>
+<li>Copy/sync tốc độ cao hơn app Google Drive chính chủ</li>
+<li>Tránh rate-limit nhờ ClientID riêng</li>
+<li>Dùng file <code>rclone.conf</code> để tái sử dụng ở mọi nơi</li>
+<li>Dùng rclone như <strong>một máy chủ cloud lai</strong> giữa local và online</li>
+<li>Kết hợp với <strong>Explorer UI</strong> như đang thao tác ổ cứng bình thường</li>
+</ul>
+<p><img src="https://tse3.mm.bing.net/th/id/OIP.VJ7TQ5HELflNMYYWIBXrVQHaFM?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://forum.rclone.org/uploads/default/original/2X/2/2787d233a91bc58453f638fc9a9e35dd633ebb5b.png"></p>
+<p><img src="https://tse3.mm.bing.net/th/id/OIP.6JWh4eho5Vmxy_Nlj3jVdQHaEK?w=474&#x26;h=379&#x26;c=7&#x26;p=0" alt="https://i.ytimg.com/vi/v9xBC5GauYI/maxresdefault.jpg"></p>
+<h3 id="mount-cloud-thành-ổ-đĩa-windows">Mount Cloud Thành Ổ Đĩa Windows</h3>
+<p>Giả sử bạn config remote tên <code>gdrive</code>.</p>
+<p>Chạy lệnh:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone mount gdrive: X: --vfs-cache-mode full</span></span></code></pre>
+<p><strong>Sau 1–2 giây</strong>, bạn sẽ thấy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>This PC → Drive X:</span></span></code></pre>
+<p>Và bạn có thể:</p>
+<ul>
+<li>Kéo – thả file trong Windows Explorer</li>
+<li>Copy/paste như USB/HDD</li>
+<li>Xem ảnh/video trực tiếp</li>
+<li>Save file Photoshop, Premiere, CapCut, DaVinci Resolve trực tiếp vào Drive</li>
+<li>Cho phép mọi ứng dụng Windows đọc/ghi như thư mục local</li>
+</ul>
+<p><strong>Các mode VFS quan trọng</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--vfs-cache-mode writes      (khuyên dùng nếu chỉ upload)</span></span>
+<span class="line"><span>--vfs-cache-mode full        (mạnh nhất cho UI Windows)</span></span></code></pre>
+<p><strong>Chế độ full là lý tưởng cho Windows — tránh lỗi “file locked”, “file not found” khi app cần truy cập tạm.</strong></p>
+<h3 id="tích-hợp-với-ổ-d-e-f-hoặc-phân-vùng-bất-kỳ">Tích hợp với ổ D:, E:, F: hoặc phân vùng bất kỳ</h3>
+<p>Bạn có thể:</p>
+<p>🔹 Backup dữ liệu D:, E:, F: lên cloud:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone sync D:\Projects gdrive:backup/projects --progress</span></span></code></pre>
+<p>🔹 Mirror ổ external HDD lên cloud:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone sync E:\ gdrive:hdd_backup</span></span></code></pre>
+<p>🔹 Copy folder quan trọng trước khi format máy:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy C:\Users\YourName\Documents gdrive:DocumentsBackup</span></span></code></pre>
+<p>→ Hiệu quả hơn Windows Copy, không lỗi, không stop giữa chừng.</p>
+<h3 id="dùng-rclone-với-windows-task-scheduler-tự-động-hóa-100">Dùng rclone với Windows Task Scheduler (tự động hóa 100%)</h3>
+<p>Bạn có thể tạo lịch:</p>
+<ul>
+<li>Auto-backup hàng ngày, hàng tuần</li>
+<li>Đồng bộ tài liệu mỗi 1–2 giờ</li>
+<li>Auto-upload thư mục dự án khi thay đổi file</li>
+</ul>
+<p>Ví dụ backup Documents mỗi ngày:</p>
+<p>File <code>.bat</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone sync C:\Users\YourName\Documents gdrive:backup/docs --log-file=C:\backup\log.txt --progress</span></span></code></pre>
+<p>Dùng Task Scheduler → Create Task → Trigger: Daily.</p>
+<p>Máy tính Windows của bạn biến thành <strong>cloud backup server</strong>.</p>
+<p><strong>Dùng rclone trong Windows GUI app như:</strong></p>
+<ul>
+<li>Photoshop</li>
+<li>Lightroom</li>
+<li>Premiere Pro</li>
+<li>Blender</li>
+<li>Unity/Unreal Engine</li>
+<li>VSCode/Editor code</li>
+<li>OBS</li>
+<li>CapCut PC</li>
+<li>DaVinci Resolve</li>
+</ul>
+<p>Ví dụ: <strong>Premiere Pro lưu file vào Drive X:</strong>
+→ Premiere treat như ổ local
+→ Auto save &#x26; auto version chạy mượt</p>
+<p>Liên kết rclone với WinRAR, 7zip, FileZilla</p>
+<p><strong>• WinRAR/7zip</strong></p>
+<p>Bạn có thể <strong>nén file trực tiếp</strong> vào ổ cloud:</p>
+<ul>
+<li>Right-click → Add to archive → select path: <code>X:\Backups\Archive.zip</code></li>
+</ul>
+<p><strong>• FileZilla</strong></p>
+<p>Dùng rclone mount để FileZilla coi cloud như local → upload FTP trực tiếp lên cloud.</p>
+<h3 id="windows-shortcut-auto-mount-khi-mở-máy">Windows shortcut (auto-mount khi mở máy)</h3>
+<p>Tạo file <code>.bat</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>start "" rclone mount gdrive: X: --vfs-cache-mode=full --network-mode</span></span></code></pre>
+<p>Đặt vào:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>shell:startup</span></span></code></pre>
+<p>→ Mỗi lần mở máy, Drive X: tự mount.</p>
+<p><strong>Flag <code>--network-mode</code> sửa lỗi không hiện trong Explorer.</strong></p>
+<h3 id="có-thể-dùng-rclone-để-tạo-ổ-đĩa-ảo-virtual-folder">Có thể dùng rclone để tạo ổ đĩa ảo (Virtual Folder)</h3>
+<p>Ví dụ gộp 3 cloud vào 1 ổ:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone union gdrive: dropbox: onedrive: X: --vfs-cache-mode full</span></span></code></pre>
+<p>→ Một ổ duy nhất nhưng chứa dữ liệu từ nhiều cloud (giống RAID 0/1/5 nhưng trên cloud).</p>
+<h3 id="các-lệnh-windows-hữu-ích-khi-làm-việc-với-rclone">Các lệnh Windows hữu ích khi làm việc với rclone</h3>
+<p>Kiểm tra tốc độ mạng:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>rclone copy test.iso gdrive:test --progress</span></span></code></pre>
+<p>Tạo shortcut chạy rclone mount:</p>
+<ul>
+<li>Nhấp phải Desktop → New Shortcut</li>
+<li>Target:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>C:\path\rclone.exe mount gdrive: X: --vfs-cache-mode full</span></span></code></pre>
+<h3 id="hiện-ổ-rclone-trong-windows-explorer-nếu-bị-ẩn">Hiện ổ rclone trong Windows Explorer nếu bị ẩn</h3>
+<p>Một số bản Windows không show drive mount.
+Dùng flag:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--network-mode</span></span></code></pre>
+<p>Hoặc:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>--volname "Google Drive"</span></span></code></pre>
+<p>Để hiện đúng tên thay vì “X: Local Disk”.</p>
+<h3 id="so-sánh-rclone-mount-vs-google-drive-for-desktop">So sánh rclone mount vs Google Drive for Desktop?</h3>
+<p><strong>Google Drive Desktop</strong></p>
+<ul>
+<li>Chậm</li>
+<li>Dễ treo</li>
+<li>Tự sync → tốn CPU</li>
+<li>Sự cố permission</li>
+</ul>
+<p><strong>rclone</strong></p>
+<ul>
+<li>Nhẹ</li>
+<li>Nhanh hơn</li>
+<li>Không đồng bộ bắt buộc → tránh mất file</li>
+<li>Quản lý nhiều cloud đồng thời</li>
+<li>Có thể mã hóa file (crypt)</li>
+<li>Hỗ trợ script – automation</li>
+</ul>
+<p>→ <strong>Dùng chuyên nghiệp hàng ngày hiệu quả hơn hẳn.</strong></p>
+<h3 id="tương-thích-với-mọi-folder-windows-như-thế-nào">Tương thích với mọi folder Windows như thế nào?</h3>
+<p>Bạn có thể:</p>
+<p>🔹 <strong>Sync thư mục hệ thống:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>C:\Users\YourName\Documents</span></span>
+<span class="line"><span>C:\Users\YourName\Pictures</span></span>
+<span class="line"><span>C:\Users\YourName\Videos</span></span>
+<span class="line"><span>C:\Users\YourName\Desktop</span></span></code></pre>
+<p>🔹 <strong>Sync thư mục game:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>D:\SteamLibrary</span></span></code></pre>
+<p>🔹 <strong>Thư mục dự án:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>D:\Code</span></span>
+<span class="line"><span>D:\Design</span></span>
+<span class="line"><span>E:\Work</span></span></code></pre>
+<p>🔹 <strong>Thư mục lưu trữ NAS ảo:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>\192.168.1.10\Backup</span></span></code></pre>
+<p>Rclone sync mọi thứ — không giới hạn định dạng, không khóa file.</p>
+<p><strong>Khi nào nên dùng “mount”, khi nào nên dùng “copy/sync”?</strong></p>
+<p>🔹 Dùng <strong>mount</strong> khi:</p>
+<ul>
+<li>Edit video đọc file từ cloud</li>
+<li>Photoshop/Lighroom mở file gốc</li>
+<li>Dùng cloud như ổ cứng phụ</li>
+<li>Cần Explorer UI</li>
+</ul>
+<p>🔹 Dùng <strong>sync/copy</strong> khi:</p>
+<ul>
+<li>Backup dữ liệu</li>
+<li>Mirror toàn bộ ổ lớn</li>
+<li>Di chuyển dự án lâu dài</li>
+<li>Clone disk</li>
+</ul>
+<h3 id="nên-mount-ổ-rclone-bằng-winfsp">Nên mount ổ rclone bằng WinFsp</h3>
+<p>Rclone trên Windows yêu cầu WinFsp (file system driver):</p>
+<p>Cài tại: <a href="https://winfsp.dev/">https://winfsp.dev/</a></p>
+<p><strong>→ Mount ổ ổn định, tốc độ cao, ít lỗi.</strong></p>
+<h2 id="kết-luận">KẾT LUẬN</h2>
+<ul>
+<li>Mount Google Drive thành ổ đĩa X:</li>
+<li>Kéo thả file như ổ cứng thật</li>
+<li>Backup tự động với Task Scheduler</li>
+<li>Dùng trong Premiere, Photoshop, Blender</li>
+<li>Sync dữ liệu D:, E:, F: lên cloud</li>
+<li>Tích hợp vào GUI Windows rất mượt</li>
+<li>Dùng như NAS + Cloud Storage lai</li>
+</ul>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #60a5fa;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #4ade80;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #4ade80;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=26-1d2abf3" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #22d3ee;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=26-1d2abf3" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #4ade80;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Rclone Tutorial Install on Windows and Connect.webp?v=26-1d2abf3" alt="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa.</p>  <div class="flex justify-end my-4"> <a href="/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/rclone/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> rclone </span> </a> </li><li> <a class="sanchez" href="/blog/tags/google drive/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> Google Drive </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Plugin tối ưu ảnh tốt nhất cho Wordpress là gì? Optimole vs ShortPixel vs Imagify vs EWWW vs Smush</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Imagify vs WP Smush vs ShortPixel vs Optimole Which Is Best Optimizing Images.webp?v=26-1d2abf3" alt="Plugin tối ưu ảnh tốt nhất cho Wordpress là gì? Optimole vs ShortPixel vs Imagify vs EWWW vs Smush" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đâu là plugin tối ưu ảnh tốt nhất cho Wordpress WooCommerce &amp; blog nhiều ảnh? So sánh thực chiến Optimole, ShortPixel, Imagify, EWWW, Smush - Mình sẽ đi từ phương pháp test → kết quả → phân tích từng plugin → xếp hạng &amp; khuyến nghị theo use case (online store, blog nhiều ảnh).</p>  <div class="flex justify-end my-4"> <a href="/blog/plugin-toi-uu-anh-tot-nhat-cho-wordpress-la-gi-optimole-vs-shortpixel-vs-imagify-vs-ewww-vs-smush/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb7185;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Wordpress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/image optimizer/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> Image Optimizer </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/windows-11-the-operating-system-for-hybrid-work-and-learning.webp?v=26-1d2abf3" alt="Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Chia sẻ kích hoạt Windows 11 bằng key KMS client miễn phí gồm các bước hoàn toàn giống với hướng dẫn cách kích hoạt Windows 10 miễn phí, chỉ khác là lần này mình thực hiện trên Windows 11.</p>  <div class="flex justify-end my-4"> <a href="/blog/nhung-cach-kich-hoat-windows-11-mien-phi-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #facc15;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows 11/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Windows 11 </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f87171;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Git-based vs API-first CMS Exploring the Headless CMS Landscape.webp?v=26-1d2abf3" alt="Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đây là một chủ đề cực kỳ hữu ích cho các dev hiện đại, đặc biệt là những ai đang chuyển từ WordPress sang mô hình headless CMS. Nếu CMS truyền thống là tất cả trong một (cả backend lẫn frontend), thì headless CMS chỉ tập trung vào phần quản lý nội dung (backend), còn phần hiển thị (frontend) sẽ do bạn tự do chọn framework hoặc build theo ý muốn.</p>  <div class="flex justify-end my-4"> <a href="/blog/mien-phi-9-nen-tang-headless-cms-luu-tru-tren-git-cho-cac-blog-website-don-gian/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb923c;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Lập trình </span> </a> </li><li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/git base/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Git base </span> </a> </li><li> <a class="sanchez" href="/blog/tags/headless cms/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Headless CMS </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>
