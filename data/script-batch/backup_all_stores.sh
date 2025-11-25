@@ -16,80 +16,93 @@
 # Đảm bảo PATH có ~/bin (aws, rclone, pigz ...) khi chạy từ cron
 export PATH="$HOME/bin:$PATH"
 
+# Load optional config file (same dir as this script)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="${SCRIPT_DIR}/backup_config.env"
+
+if [ -f "$CONFIG_FILE" ]; then
+  # shellcheck disable=SC1090
+  . "$CONFIG_FILE"
+fi
+
 ### ========== BASIC CONFIG ==========
 
-BASE_DIR="/home/USER"
+: "${BASE_DIR:="$HOME"}"
 
 DOMAINS_BASE="$BASE_DIR/domains"
 BACKUP_BASE="$BASE_DIR/backups"
 LOG_DIR="$BASE_DIR/logs"
 
 # Số ngày giữ backup (local + remote)
-RETENTION_DAYS=7
+: "${RETENTION_DAYS:=7}"
 
 # Số ngày giữ log
-LOG_RETENTION_DAYS=30
+: "${LOG_RETENTION_DAYS:=30}"
 
 # Bật/tắt upload
-ENABLE_S3=true
-ENABLE_GDRIVE=true
+: "${ENABLE_S3:=true}"
+: "${ENABLE_GDRIVE:=true}"
 
 ### ========== S3 CONFIG (AWS CLI) ==========
 
 # Tên bucket S3 (VD: sites-backups)
-AWS_S3_BUCKET="your-s3-bucket-name"
+: "${AWS_S3_BUCKET:="your-s3-bucket-name"}"
 # Prefix/path trong bucket (VD: wp-backups)
-AWS_S3_PREFIX="your-backup-prefix"
+: "${AWS_S3_PREFIX:="your-backup-prefix"}"
 # Storage class (STANDARD, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING,
 # GLACIER_IR, GLACIER, DEEP_ARCHIVE)
 # -> Glacier Deep Archive = DEEP_ARCHIVE (rẻ nhất)
-AWS_S3_STORAGE_CLASS="STANDARD"
+: "${AWS_S3_STORAGE_CLASS:=STANDARD}"
 
 ### ========== RCLONE GOOGLE DRIVE CONFIG ==========
 
 # Tên remote trong rclone (VD: gdrive)
-RCLONE_REMOTE_GDRIVE="gdrive"
+: "${RCLONE_REMOTE_GDRIVE:=gdrive}"
 # Thư mục root gốc trong Google Drive (VD: wp-backups)
-RCLONE_GDRIVE_PATH="your-backup-prefix"
+: "${RCLONE_GDRIVE_PATH:="your-backup-prefix"}"
 
 ### ========== OPTIONAL INCREMENTAL BACKUP (RCLONE SYNC) ==========
 
 # Nếu muốn backup incremental (file-level) toàn bộ DOMAINS_BASE lên 1 remote rclone
 # Ví dụ: INCREMENTAL_REMOTE="s3backup:wp-incremental" hoặc "gdrive:wp-incremental"
-ENABLE_INCREMENTAL=false
-INCREMENTAL_REMOTE=""
-INCREMENTAL_SOURCE="$DOMAINS_BASE"
+: "${ENABLE_INCREMENTAL:=false}"
+: "${INCREMENTAL_REMOTE:=}"
+: "${INCREMENTAL_SOURCE:="$DOMAINS_BASE"}"
 
 ### ========== TELEGRAM NOTIFY CONFIG ==========
 
-ENABLE_TELEGRAM=true
-TELEGRAM_BOT_TOKEN="YOUR-TELEGRAM-BOT-TOKEN"
-TELEGRAM_CHAT_ID="YOUR-GROUP-CHAT-ID"
+: "${ENABLE_TELEGRAM:=true}"
+: "${TELEGRAM_BOT_TOKEN:="YOUR-TELEGRAM-BOT-TOKEN"}"
+: "${TELEGRAM_CHAT_ID:="YOUR-GROUP-CHAT-ID"}"
 
 # Telegram notify mode:
 #   error   – chỉ gửi khi có lỗi (backup/upload/retention/incremental)
 #   full    – luôn gửi summary (kể cả OK)
 #   off     – không gửi notify
-TELEGRAM_MODE="error"
+: "${TELEGRAM_MODE:=error}"
 
 ### ========== STORE CONFIG (DANH SÁCH DOMAIN) ==========
 
 # Mỗi phần tử là 1 domain store (thư mục code nằm trong /domains/<domain>/public_html)
-STORES=(
-  "domain-1.com"
-  # "domain-2.com"
-  # thêm các domain-store khác ở đây...
-)
+if [ ${#STORES[@]} -eq 0 ]; then
+  STORES=(
+    # "domain-1.com"
+    # "domain-2.com"
+    # thêm các domain-store khác ở đây...
+  )
+fi
 
 ### ========== EXCLUDED FOLDERS IN FILE BACKUP ==========
 
 # Tar sẽ exclude mọi path có chứa các chuỗi này (--exclude=*pattern*)
-EXCLUDED_DIR_PATTERNS=(
-  "aiowps_backups"
-  "wp-cloudflare-super-page-cache"
-  "litespeed"
-  # "wp-admin"
-)
+if [ ${#EXCLUDED_DIR_PATTERNS[@]} -eq 0 ]; then
+  EXCLUDED_DIR_PATTERNS=(
+    "aiowps_backups"
+    "wp-cloudflare-super-page-cache"
+    "litespeed"
+    # "wp-admin"
+  )
+fi
 
 ########################################
 # INTERNALS - DO NOT TOUCH IF UNSURE
