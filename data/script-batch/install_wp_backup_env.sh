@@ -16,8 +16,8 @@ BACKUP_DIR="$HOME_DIR/backups"
 # ============================
 # URL TẢI FILE SCRIPT (cập nhật theo repo của bạn)
 # ============================
-URL_BACKUP_SH="https://anhnnp.pages.dev/data/script-batch/backup_all_stores.sh"
-URL_RESTORE_SH="https://anhnnp.pages.dev/data/script-batch/restore_wp_from_backup.sh"
+URL_BACKUP_SH="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh"
+URL_RESTORE_SH="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh"
 URL_COMPOSER_PHAR="https://getcomposer.org/download/latest-stable/composer.phar"
 
 # ============================
