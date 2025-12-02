@@ -1,7 +1,7 @@
-<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_802911442042', sans-serif; } @font-face { font-family: '_font_fallback_802911442042'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_524166566511', sans-serif; } @font-face { font-family: '_font_fallback_524166566511'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_477056142332', sans-serif; } @font-face { font-family: '_font_fallback_477056142332'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_112696714482', serif; } @font-face { font-family: '_font_fallback_112696714482'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_1672243583278', serif; } @font-face { font-family: '_font_fallback_1672243583278'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &#38; Google Drive - Full Guide Từ Hosting Trắng Đến Production"><meta name="description" content="Bộ đôi script Bash và PHP được xây dựng để tự động backup nhiều WordPress store cùng lúc, áp dụng cho VPS lẫn shared hosting. Mục tiêu: an toàn dữ liệu tuyệt đối, giảm tải thủ công, và phù hợp hệ thống nhiều domain chạy chung một hosting/VPS."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/"><meta property="og:title" content="Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &#38; Google Drive - Full Guide Từ Hosting Trắng Đến Production"><meta property="og:description" content="Bộ đôi script Bash và PHP được xây dựng để tự động backup nhiều WordPress store cùng lúc, áp dụng cho VPS lẫn shared hosting. Mục tiêu: an toàn dữ liệu tuyệt đối, giảm tải thủ công, và phù hợp hệ thống nhiều domain chạy chung một hosting/VPS."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/"><meta property="twitter:title" content="Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &#38; Google Drive - Full Guide Từ Hosting Trắng Đến Production"><meta property="twitter:description" content="Bộ đôi script Bash và PHP được xây dựng để tự động backup nhiều WordPress store cùng lúc, áp dụng cho VPS lẫn shared hosting. Mục tiêu: an toàn dữ liệu tuyệt đối, giảm tải thủ công, và phù hợp hệ thống nhiều domain chạy chung một hosting/VPS."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production.png"><link rel="canonical" href="https://anhnnp.github.io/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &amp; Google Drive - Full Guide Từ Hosting Trắng Đến Production</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=28-0f26086"></script><link rel="stylesheet" href="/_astro/_slug_.ByeENLhH.css?v=28-0f26086">
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_494476259319', sans-serif; } @font-face { font-family: '_font_fallback_494476259319'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_1290282508440', sans-serif; } @font-face { font-family: '_font_fallback_1290282508440'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_1262819800541', sans-serif; } @font-face { font-family: '_font_fallback_1262819800541'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_1144930547365', serif; } @font-face { font-family: '_font_fallback_1144930547365'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_1061013555183', serif; } @font-face { font-family: '_font_fallback_1061013555183'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &#38; Google Drive - Full Guide Từ Hosting Trắng Đến Production"><meta name="description" content="Bộ đôi script Bash và PHP được xây dựng để tự động backup nhiều WordPress store cùng lúc, áp dụng cho VPS lẫn shared hosting. Mục tiêu: an toàn dữ liệu tuyệt đối, giảm tải thủ công, và phù hợp hệ thống nhiều domain chạy chung một hosting/VPS."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/"><meta property="og:title" content="Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &#38; Google Drive - Full Guide Từ Hosting Trắng Đến Production"><meta property="og:description" content="Bộ đôi script Bash và PHP được xây dựng để tự động backup nhiều WordPress store cùng lúc, áp dụng cho VPS lẫn shared hosting. Mục tiêu: an toàn dữ liệu tuyệt đối, giảm tải thủ công, và phù hợp hệ thống nhiều domain chạy chung một hosting/VPS."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/"><meta property="twitter:title" content="Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &#38; Google Drive - Full Guide Từ Hosting Trắng Đến Production"><meta property="twitter:description" content="Bộ đôi script Bash và PHP được xây dựng để tự động backup nhiều WordPress store cùng lúc, áp dụng cho VPS lẫn shared hosting. Mục tiêu: an toàn dữ liệu tuyệt đối, giảm tải thủ công, và phù hợp hệ thống nhiều domain chạy chung một hosting/VPS."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production.png"><link rel="canonical" href="https://anhnnp.github.io/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Backup Tự Động Toàn Bộ WordPress Stores Lên S3 &amp; Google Drive - Full Guide Từ Hosting Trắng Đến Production</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=30-6a37291"></script><link rel="stylesheet" href="/_astro/_slug_.Bw8pkbQe.css?v=30-6a37291">
 <style>.astro-code.github-dark code{color:#e1e4e8}
 </style>
-<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=28-0f26086">
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=30-6a37291">
 <style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
 </style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-folder-structure"> 1. Folder structure </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-yêu-cầu-chung"> 2. Yêu cầu chung </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#21-so-sánh-aws-s3-vs-google-drive-lưu-backup"> 2.1. So sánh AWS S3 vs Google Drive lưu backup </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#211-amazon-s3"> 2.1.1. Amazon S3 </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#212-google-drive"> 2.1.2. Google Drive </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#22-run-backup-bash-script-hay-php-script"> 2.2. Run backup Bash script hay PHP script? </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#221-bash-script"> 2.2.1. Bash script </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#222-php-script-chạy-cli"> 2.2.2. PHP script chạy CLI </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-kiểm-tra--chuẩn-bị-môi-trường-php-và-bash"> 3. Kiểm tra &amp; chuẩn bị môi trường (PHP và Bash) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#31-bật-ssh--kiểm-tra-cơ-bản"> 3.1. Bật SSH &amp; kiểm tra cơ bản </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#32-kiểm-tra-php-cli"> 3.2. Kiểm tra PHP CLI </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#33-kiểm-tra-công-cụ-nén-file-tar-gzip-zip"> 3.3. Kiểm tra công cụ nén file (tar, gzip, zip) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#34-kiểm-tra-mysqldump-để-backup-mysql"> 3.4. Kiểm tra mysqldump để backup MySQL </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#35-kiểm-tra-công-cụ-upload-curl--wget"> 3.5. Kiểm tra công cụ upload: curl / wget </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#36-kiểm-tra-chạy-script-php-từ-cli"> 3.6. Kiểm tra chạy script PHP từ CLI </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#37-checklist-nhanh-trước-khi-set-cron-backup"> 3.7. Checklist nhanh trước khi set cron backup </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-script-bash--backup_all_storessh"> 4. Script Bash – backup_all_stores.sh </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#41-cài-aws-cli-local-user-không-cần-root"> 4.1. Cài AWS CLI (local user, không cần root) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#42-cài-rclone-để-upload-google-drive"> 4.2. Cài rclone để upload Google Drive </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#43-chuẩn-bị-script--path-cho-cron"> 4.3. Chuẩn bị script &amp; PATH cho cron </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#44-test-chạy-bash-script"> 4.4. Test chạy Bash script </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#45-thiết-lập-cron-cho-bash-script"> 4.5. Thiết lập cron cho Bash script </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#xác-định-timezone-server"> Xác định timezone server </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#chọn-giờ-backup"> Chọn giờ backup </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#5-script-php--backup_all_storesphp"> 5. Script PHP – backup_all_stores.php </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#51-cài-composer--php-libraries"> 5.1. Cài Composer &amp; PHP libraries </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#52-google-drive-token-lấy-lại-từ-rclone"> 5.2. Google Drive token (lấy lại từ rclone) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#53-chỉnh-config-trong-php-script"> 5.3. Chỉnh config trong PHP script </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#54-cách-hoạt-động-của-script-php"> 5.4. Cách hoạt động của script PHP </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#55-test-script-php"> 5.5. Test script PHP </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#56-cron-cho-php-script"> 5.6. Cron cho PHP script </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#6-restore-từ-backup"> 6. Restore từ backup </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#61-restore-files"> 6.1. Restore files </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#62-restore-database"> 6.2. Restore database </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#63-nếu-backup-nằm-trong-s3-glacier-deep-archive"> 6.3. Nếu backup nằm trong S3 Glacier Deep Archive </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#7-troubleshooting-nhanh"> 7. Troubleshooting nhanh </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
 Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
@@ -9,37 +9,37 @@ Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viế
 <ul>
 <li>Backup <strong>files + MySQL</strong> cho từng store.</li>
 <li>Exclude thư mục cache / backup plugin cho nhẹ.</li>
-<li>Tự động <strong>xóa backup cũ</strong> (local + S3 + GDrive).</li>
-<li><strong>Telegram notify</strong> (full hoặc chỉ khi lỗi).</li>
+<li>Tự động <strong>xóa backup cũ</strong> (local + S3 + GDrive).**
+<strong>- **Telegram notify</strong> (full hoặc chỉ khi lỗi).</li>
 <li>2 phiên bản:</li>
-<li><code>backup_all_stores.sh</code> – dùng cho server cho phép chạy binary (<code>aws</code>, <code>rclone</code>, <code>tar</code>, <code>pigz</code>…).</li>
-<li><code>backup_all_stores.php</code> – dùng cho shared hosting chặn hầu hết lệnh shell.</li>
+<li><code>backup_all_stores.sh</code> – dùng cho server cho phép chạy binary (<code>aws</code>, <code>rclone</code>, <code>tar</code>, <code>pigz</code>…)._`
+<code>_- </code>backup_all_stores.php` – dùng cho shared hosting chặn hầu hết lệnh shell.</li>
 </ul>
 <hr>
 <h2 id="1-folder-structure">1. Folder structure</h2>
 <p>Giả sử user là <code>USER</code>:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>/home/USER/</span></span>
 <span class="line"><span>  ├─ domains/</span></span>
-<span class="line"><span>  │   ├─ domain1.com/public_html</span></span>
-<span class="line"><span>  │   ├─ domain2.com/public_html</span></span>
+<span class="line"><span>  │   ├─ domain1.com/public_html_</span></span>
+<span class="line"><span>_  │   ├─ domain2.com/public_html</span></span>
 <span class="line"><span>  │   └─ ...</span></span>
 <span class="line"><span>  ├─ backups/                  # backup cho Bash script</span></span>
 <span class="line"><span>  │   └─ 2025-11-21/</span></span>
 <span class="line"><span>  │        ├─ store1/</span></span>
-<span class="line"><span>  │        │    ├─ files_store1_2025-11-21.tar.gz</span></span>
-<span class="line"><span>  │        │    └─ db_store1_2025-11-21.sql.gz</span></span>
+<span class="line"><span>  │        │    ├─ files_store1_2025-11-21.tar.gz_</span></span>
+<span class="line"><span>_  │        │    └─ db_store1_2025-11-21.sql.gz</span></span>
 <span class="line"><span>  │        ├─ store2/</span></span>
-<span class="line"><span>  │        │    ├─ files_store2_2025-11-21.tar.gz</span></span>
-<span class="line"><span>  │        │    └─ db_store2_2025-11-21.sql.gz</span></span>
+<span class="line"><span>  │        │    ├─ files_store2_2025-11-21.tar.gz_</span></span>
+<span class="line"><span>_  │        │    └─ db_store2_2025-11-21.sql.gz</span></span>
 <span class="line"><span>  │        └─ ...</span></span>
 <span class="line"><span>  ├─ backups-php/              # backup cho PHP script</span></span>
 <span class="line"><span>  │   └─ 2025-11-21/</span></span>
 <span class="line"><span>  │        ├─ store1/</span></span>
-<span class="line"><span>  │        │    ├─ db_store1_com_2025-11-23.sql.gz</span></span>
-<span class="line"><span>  │        │    └─ files_store1_com_2025-11-23.zip</span></span>
+<span class="line"><span>  │        │    ├─ db_store1_com_2025-11-23.sql.gz_</span></span>
+<span class="line"><span>_  │        │    └─ files_store1_com_2025-11-23.zip</span></span>
 <span class="line"><span>  ├─ logs/</span></span>
-<span class="line"><span>  │   ├─ backup_*.log</span></span>
-<span class="line"><span>  │   └─ backup_php_*.log</span></span>
+<span class="line"><span>  │   ├─ backup_*.log_</span></span>
+<span class="line"><span>_  │   └─ backup_php_*.log</span></span>
 <span class="line"><span>  ├─ scripts/</span></span>
 <span class="line"><span>  │   └─ backup_all_stores.sh</span></span>
 <span class="line"><span>  └─ scripts-php-backup/</span></span>
@@ -49,8 +49,8 @@ Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viế
 <li>Mỗi ngày 1 folder theo <code>YYYY-MM-DD</code>.</li>
 <li>File backup có <strong>tên + ngày</strong>, để sau này upload lên <strong>S3/Drive</strong> cũng có cấu trúc rõ:
 <ul>
-<li><code>s3://sites-backup/wp-backups/2025-11-21/store1/files_store1_2025-11-21.tar.gz</code></li>
-<li><code>gdrive:/wp-backups/2025-11-21/store1/db_store1_2025-11-21.sql.gz</code></li>
+<li><code>s3://sites-backup/wp-backups/2025-11-21/store1/files_store1_2025-11-21.tar.gz</code>_`
+<code>_    - </code>gdrive:/wp-backups/2025-11-21/store1/db_store1_2025-11-21.sql.gz`</li>
 </ul>
 </li>
 </ul>
@@ -100,8 +100,8 @@ Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viế
 </ul>
 <p><strong>Kết luận:</strong></p>
 <ul>
-<li><strong>Primary backup:</strong> S3 (ổn định, lifecycle rõ ràng, restore đúng chuẩn backup).</li>
-<li><strong>Secondary backup:</strong> Google Drive (tùy chọn, thêm 1 lớp an toàn nữa).</li>
+<li><strong>Primary backup:</strong> S3 (ổn định, lifecycle rõ ràng, restore đúng chuẩn backup).**
+<strong>- **Secondary backup:</strong> Google Drive (tùy chọn, thêm 1 lớp an toàn nữa).</li>
 </ul>
 <h3 id="22-run-backup-bash-script-hay-php-script">2.2. Run backup Bash script hay PHP script?</h3>
 <h4 id="221-bash-script">2.2.1. Bash script</h4>
@@ -130,8 +130,8 @@ Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viế
 </ul>
 <p><strong>Gợi ý chọn:</strong></p>
 <ul>
-<li>Nếu server cho phép cài &#x26; chạy <code>aws-cli</code> / <code>rclone</code> → dùng <strong>Bash script</strong>.</li>
-<li>Nếu shared hosting chặn hầu hết lệnh shell → dùng <strong>PHP script</strong>.</li>
+<li>Nếu server cho phép cài &#x26; chạy <code>aws-cli</code> / <code>rclone</code> → dùng <strong>Bash script</strong>.**
+<strong>- Nếu shared hosting chặn hầu hết lệnh shell → dùng **PHP script</strong>.</li>
 </ul>
 <h2 id="3-kiểm-tra--chuẩn-bị-môi-trường-php-và-bash">3. Kiểm tra &#x26; chuẩn bị môi trường (PHP và Bash)</h2>
 <h3 id="31-bật-ssh--kiểm-tra-cơ-bản">3.1. Bật SSH &#x26; kiểm tra cơ bản</h3>
@@ -141,10 +141,10 @@ Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viế
 <span class="line"><span>ls -la</span></span>
 <span class="line"><span>uname -a</span></span></code></pre>
 <ul>
-<li><code>whoami</code>: xem user hiện tại (thường dạng <code>u123456789</code>).</li>
-<li><code>pwd</code>: thư mục đang đứng (thường <code>/home/USER</code>).</li>
-<li><code>ls -la</code>: xem có <code>domains</code>, <code>public_html</code>…</li>
-<li><code>uname -a</code>: xem OS (đa số là Linux).</li>
+<li><code>whoami</code>: xem user hiện tại (thường dạng <code>u123456789</code>).`
+<code>- </code>pwd<code>: thư mục đang đứng (thường </code>/home/USER<code>).</code>
+<code>- </code>ls -la<code>: xem có </code>domains<code>, </code>public_html<code>…</code>
+<code>- </code>uname -a`: xem OS (đa số là Linux).</li>
 </ul>
 <p>Nếu các lệnh này OK → SSH dùng được.</p>
 <h3 id="32-kiểm-tra-php-cli">3.2. Kiểm tra PHP CLI</h3>
@@ -152,8 +152,8 @@ Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viế
 <span class="line"><span>php -v</span></span>
 <span class="line"><span>php -m | head</span></span></code></pre>
 <ul>
-<li>Nếu ra đường dẫn kiểu <code>/usr/bin/php</code> + version → PHP CLI OK.</li>
-<li>Nếu <code>which php</code> trống, thử:which php-cli
+<li>Nếu ra đường dẫn kiểu <code>/usr/bin/php</code> + version → PHP CLI OK.`
+<code>- Nếu </code>which php` trống, thử:which php-cli
 php-cli -v</li>
 </ul>
 <h3 id="33-kiểm-tra-công-cụ-nén-file-tar-gzip-zip">3.3. Kiểm tra công cụ nén file (tar, gzip, zip)</h3>
@@ -162,19 +162,19 @@ php-cli -v</li>
 <span class="line"><span>which zip</span></span>
 <span class="line"><span>which unzip</span></span></code></pre>
 <p>Test nén thử 1 folder nhỏ:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>mkdir -p ~/backup_test</span></span>
-<span class="line"><span>echo "test backup" > ~/backup_test/readme.txt</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>mkdir -p ~/backup_test_</span></span>
+<span class="line"><span>_echo "test backup" > ~/backup_test/readme.txt</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>tar -czf ~/backup_test.tar.gz -C ~/ backup_test</span></span>
-<span class="line"><span>ls -lh ~/backup_test.tar.gz</span></span></code></pre>
+<span class="line"><span>tar -czf ~/backup_test.tar.gz -C ~/ backup_test_</span></span>
+<span class="line"><span>_ls -lh ~/backup_test.tar.gz</span></span></code></pre>
 <p>Nếu tạo được <code>backup_test.tar.gz</code> → sau này có thể nén toàn bộ <code>public_html</code>.</p>
 <h3 id="34-kiểm-tra-mysqldump-để-backup-mysql">3.4. Kiểm tra <code>mysqldump</code> để backup MySQL</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>which mysqldump</span></span>
 <span class="line"><span>mysqldump --version</span></span></code></pre>
 <p>Nếu có, test dump 1 DB nhỏ:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>mysqldump -h localhost -u DB_USERNAME -p DB_NAME > ~/db_test_backup.sql</span></span>
-<span class="line"><span>ls -lh ~/db_test_backup.sql</span></span>
-<span class="line"><span>head -n 20 ~/db_test_backup.sql</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>mysqldump -h localhost -u DB_USERNAME -p DB_NAME > ~/db_test_backup.sql_</span></span>
+<span class="line"><span>_ls -lh ~/db_test_backup.sql_</span></span>
+<span class="line"><span>_head -n 20 ~/db_test_backup.sql</span></span></code></pre>
 <p>Nếu <strong>không có <code>mysqldump</code></strong> hoặc bị chặn, bản PHP sẽ tự dump DB bằng <code>mysqli</code>, không cần binary này.</p>
 <h3 id="35-kiểm-tra-công-cụ-upload-curl--wget">3.5. Kiểm tra công cụ upload: curl / wget</h3>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>which curl</span></span>
@@ -199,18 +199,18 @@ php-cli -v</li>
 <span class="line"><span>echo "Cron test OK at {$date}\n";</span></span>
 <span class="line"><span>EOF</span></span></code></pre>
 <p>Chạy thử:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>php ~/scripts/test_cron.php</span></span>
-<span class="line"><span>ls -lh ~/scripts/cron_log.txt</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>php ~/scripts/test_cron.php_</span></span>
+<span class="line"><span>_ls -lh ~/scripts/cron_log.txt</span></span>
 <span class="line"><span>cat ~/scripts/cron_log.txt</span></span></code></pre>
 <p>Nếu log được tạo → PHP CLI OK, cron sau này chỉ cần gọi lại lệnh này.</p>
 <h3 id="37-checklist-nhanh-trước-khi-set-cron-backup">3.7. Checklist nhanh trước khi set cron backup</h3>
 <ol>
-<li><code>php -v</code> → PHP CLI OK.</li>
-<li><code>tar -czf ...</code> → nén file OK.</li>
-<li><code>mysqldump --version</code> → có (nếu dùng Bash script).</li>
-<li><code>curl --version</code> → có.</li>
-<li>(Nếu dùng rclone/aws-cli) → <code>rclone version</code> / <code>aws --version</code>.</li>
-<li><code>php ~/scripts/test_cron.php</code> → ghi log OK.</li>
+<li><code>php -v</code> → PHP CLI OK.`
+<code>2. </code>tar -czf …<code> → nén file OK.</code>
+<code>3. </code>mysqldump —version<code> → có (nếu dùng Bash script).</code>
+<code>4. </code>curl —version<code> → có.</code>
+<code>5. (Nếu dùng rclone/aws-cli) → </code>rclone version<code>/</code>aws —version<code>.</code>
+<code>6. </code>php ~/scripts/test_cron.php` → ghi log OK.</li>
 </ol>
 <p>Nếu tất cả ổn → sẵn sàng triển khai script backup.</p>
 <p>Để tiện dùng binary <code>aws</code>, <code>rclone</code> trong home, thêm vào <code>~/.bashrc</code>:</p>
@@ -230,10 +230,10 @@ php-cli -v</li>
 <li>Chuẩn bị PATH</li>
 <li>Cài Composer (nếu chưa có)</li>
 <li>Cài thư viện PHP (SDK AWS, Google Drive)</li>
-<li>Tải script backup_all_stores.sh</li>
-<li>Tải script backup_all_stores.php</li>
-<li>Tải script restore_wp_from_backup.sh</li>
-<li>Tải script restore_wp_from_backup.php</li>
+<li>Tải script backup_all_stores.sh_
+<em>- Tải script backup_all_stores.php</em>
+<em>- Tải script restore_wp_from_backup.sh</em>
+_- Tải script restore_wp_from_backup.php</li>
 <li>Tạo khung config trống để bạn điền vào sau</li>
 <li>Không phá cấu trúc hosting (an toàn – không dùng apt/yum)</li>
 </ul>
@@ -242,9 +242,9 @@ php-cli -v</li>
 </blockquote>
 <p>⚠️ <strong>Lưu ý:</strong></p>
 <ul>
-<li>Shared hosting thường <strong>không cho apt/yum</strong>, nhưng thường <strong>cho phép chạy binary nằm trong thư mục home</strong>.</li>
-<li>Nghĩa là bạn hoàn toàn có thể cài <strong>AWS CLI</strong> + <strong>rclone</strong> trong <code>~/bin</code> và gọi bình thường.</li>
-<li>Chạy file script <code>install_wp_backup_env.sh</code> thì bỏ qua tất cả các bước còn  lại ở dưới từ <code>4.1.</code> đến <code>5.6.</code></li>
+<li>Shared hosting thường <strong>không cho apt/yum</strong>, nhưng thường <strong>cho phép chạy binary nằm trong thư mục home</strong>.**
+<strong>- Nghĩa là bạn hoàn toàn có thể cài **AWS CLI</strong> + <strong>rclone</strong> trong <code>~/bin</code> và gọi bình thường.`
+<code>- Chạy file script </code>install_wp_backup_env.sh<code>thì bỏ qua tất cả các bước còn  lại ở dưới từ</code>4.1.<code>đến</code>5.6.`</li>
 </ul>
 <h3 id="41-cài-aws-cli-local-user-không-cần-root">4.1. Cài AWS CLI (local user, không cần root)</h3>
 <p><strong>Bước 1 – Tạo thư mục chứa installer</strong></p>
@@ -269,8 +269,8 @@ php-cli -v</li>
 <ul>
 <li>AWS Access Key ID</li>
 <li>AWS Secret Access Key</li>
-<li>Default region (ví dụ <code>ap-southeast-1</code>)</li>
-<li>Default output: <code>json</code></li>
+<li>Default region (ví dụ <code>ap-southeast-1</code>)`
+<code>- Default output: </code>json`</li>
 </ul>
 <p>Test:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>aws s3 ls</span></span></code></pre>
@@ -279,8 +279,8 @@ php-cli -v</li>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>AWS_S3_STORAGE_CLASS="DEEP_ARCHIVE"</span></span></code></pre>
 <p>Một số storage class hay dùng:</p>
 <ul>
-<li><code>STANDARD</code>, <code>STANDARD_IA</code>, <code>ONEZONE_IA</code></li>
-<li><code>INTELLIGENT_TIERING</code></li>
+<li><code>STANDARD</code>, <code>STANDARD_IA</code>, <code>ONEZONE_IA</code>_`
+<code>_- </code>INTELLIGENT_TIERING`</li>
 <li><code>GLACIER_IR</code>, <code>GLACIER</code>, <code>DEEP_ARCHIVE</code></li>
 </ul>
 <h3 id="42-cài-rclone-để-upload-google-drive">4.2. Cài rclone để upload Google Drive</h3>
@@ -338,8 +338,8 @@ php-cli -v</li>
 <span class="line"><span>mkdir -p backups</span></span>
 <span class="line"><span>mkdir -p logs</span></span></code></pre>
 <p>Copy file <code>backup_all_stores.sh</code> vào:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>/home/USER/scripts/backup_all_stores.sh</span></span>
-<span class="line"><span>chmod +x /home/USER/scripts/backup_all_stores.sh</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>/home/USER/scripts/backup_all_stores.sh_</span></span>
+<span class="line"><span>_chmod +x /home/USER/scripts/backup_all_stores.sh</span></span></code></pre>
 <p>Mở file và chỉnh:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>BASE_DIR="/home/USER"</span></span>
 <span class="line"><span></span></span>
@@ -348,31 +348,31 @@ php-cli -v</li>
 <span class="line"><span>  "domain2.com"</span></span>
 <span class="line"><span>)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>AWS_S3_BUCKET="sites-backup"</span></span>
-<span class="line"><span>AWS_S3_PREFIX="wp-backups"</span></span>
-<span class="line"><span>AWS_S3_STORAGE_CLASS="DEEP_ARCHIVE"</span></span>
+<span class="line"><span>AWS_S3_BUCKET="sites-backup"_</span></span>
+<span class="line"><span>_AWS_S3_PREFIX="wp-backups"_</span></span>
+<span class="line"><span>_AWS_S3_STORAGE_CLASS="DEEP_ARCHIVE"</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>RCLONE_REMOTE_GDRIVE="gdrive"</span></span>
-<span class="line"><span>RCLONE_GDRIVE_PATH="wp-backups"</span></span>
+<span class="line"><span>RCLONE_REMOTE_GDRIVE="gdrive"_</span></span>
+<span class="line"><span>_RCLONE_GDRIVE_PATH="wp-backups"</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>RETENTION_DAYS=7</span></span>
-<span class="line"><span>LOG_RETENTION_DAYS=30</span></span>
+<span class="line"><span>RETENTION_DAYS=7_</span></span>
+<span class="line"><span>_LOG_RETENTION_DAYS=30</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>EXCLUDED_DIR_PATTERNS=(</span></span>
-<span class="line"><span>  "aiowps_backups"</span></span>
+<span class="line"><span>EXCLUDED_DIR_PATTERNS=(_</span></span>
+<span class="line"><span>_  "aiowps_backups"</span></span>
 <span class="line"><span>  "wp-cloudflare-super-page-cache"</span></span>
 <span class="line"><span>  "litespeed"</span></span>
 <span class="line"><span>)</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>ENABLE_TELEGRAM=true</span></span>
-<span class="line"><span>TELEGRAM_BOT_TOKEN="YOUR_BOT_TOKEN"</span></span>
-<span class="line"><span>TELEGRAM_CHAT_ID="YOUR_CHAT_ID"</span></span>
-<span class="line"><span>TELEGRAM_MODE="full"   # hoặc "error" / "off"</span></span></code></pre>
+<span class="line"><span>ENABLE_TELEGRAM=true_</span></span>
+<span class="line"><span>_TELEGRAM_BOT_TOKEN="YOUR_BOT_TOKEN"_</span></span>
+<span class="line"><span>_TELEGRAM_CHAT_ID="YOUR_CHAT_ID"_</span></span>
+<span class="line"><span>_TELEGRAM_MODE="full"   # hoặc "error" / "off"</span></span></code></pre>
 <p>Script sẽ tự:</p>
 <ul>
-<li>Đọc DB config từ <code>wp-config.php</code>.</li>
-<li>Dump DB → <code>.sql.gz</code>.</li>
-<li>Nén files → <code>.tar.gz</code>.</li>
+<li>Đọc DB config từ <code>wp-config.php</code>.`
+<code>- Dump DB → </code>.sql.gz<code>.</code>
+<code>- Nén files → </code>.tar.gz`.</li>
 <li>Upload lên S3 + GDrive.</li>
 <li>Dọn backup cũ (local + remote).</li>
 <li>Gửi báo cáo Telegram.</li>
@@ -392,8 +392,8 @@ php-cli -v</li>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>date</span></span>
 <span class="line"><span>php -r 'echo "PHP time: ", date("c"), "\n";'</span></span>
 <span class="line"><span>timedatectl 2>/dev/null</span></span></code></pre>
-<p>Nếu <code>date</code> ≈ UTC → server chạy UTC.
-Nếu <code>date</code> giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi Minh.</p>
+<p>Nếu <code>date</code> ≈ UTC → server chạy UTC.`
+<code>Nếu </code>date` giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi Minh.</p>
 <h4 id="chọn-giờ-backup">Chọn giờ backup</h4>
 <p>Gợi ý <strong>08:00 UTC</strong> (≈ 15:00 VN):</p>
 <ul>
@@ -426,20 +426,20 @@ Nếu <code>date</code> giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi 
 <p>Từ <code>~/.config/rclone/rclone.conf</code> (Linux) hoặc <code>C:\Users\&#x3C;you>\AppData\Roaming\rclone\rclone.conf</code> (Windows), tìm section:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>[gdrive]</span></span>
 <span class="line"><span>type = drive</span></span>
-<span class="line"><span>client_id = YOUR_CLIENT_ID</span></span>
-<span class="line"><span>client_secret = YOUR_CLIENT_SECRET</span></span>
+<span class="line"><span>client_id = YOUR_CLIENT_ID_</span></span>
+<span class="line"><span>_client_secret = YOUR_CLIENT_SECRET</span></span>
 <span class="line"><span>scope = drive</span></span>
 <span class="line"><span>token = {"access_token":"...","refresh_token":"...","expiry":"..."}</span></span></code></pre>
 <p>Tạo file <code>/home/USER/scripts-php-backup/gdrive_token.json</code>:</p>
 <pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>{</span></span>
-<span class="line"><span>  "access_token": "....",</span></span>
-<span class="line"><span>  "refresh_token": "....",</span></span>
+<span class="line"><span>  "access_token": "....",_</span></span>
+<span class="line"><span>_  "refresh_token": "....",</span></span>
 <span class="line"><span>  "expiry": "2025-11-21T23:18:48.4449677+07:00"</span></span>
 <span class="line"><span>}</span></span></code></pre>
 <p>Script PHP sẽ:</p>
 <ul>
-<li>Convert <code>expiry</code> thành <code>created + expires_in</code> theo format Google PHP Client.</li>
-<li>Tự refresh access token khi hết hạn và ghi đè lại file <code>gdrive_token.json</code>.</li>
+<li>Convert <code>expiry</code> thành <code>created + expires_in</code> theo format Google PHP Client._`
+<code>_- Tự refresh access token khi hết hạn và ghi đè lại file </code>gdrive_token.json`.</li>
 </ul>
 <p>Trên Google Drive, tạo folder <code>backup</code> (hoặc <code>wp-backups</code>) và lấy <strong>folder ID</strong>:</p>
 <ul>
@@ -449,38 +449,38 @@ Nếu <code>date</code> giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi 
 </ul>
 <h3 id="53-chỉnh-config-trong-php-script">5.3. Chỉnh config trong PHP script</h3>
 <p>Trong <code>backup_all_stores.php</code>, chỉnh các biến:</p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>$BASE_DIR     = '/home/USER';</span></span>
-<span class="line"><span>$DOMAINS_BASE = $BASE_DIR . '/domains';</span></span>
-<span class="line"><span>$BACKUP_BASE  = $BASE_DIR . '/backups-php';</span></span>
-<span class="line"><span>$LOG_DIR      = $BASE_DIR . '/logs';</span></span>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>$BASE_DIR     = '/home/USER';_</span></span>
+<span class="line"><span>_$DOMAINS_BASE = $BASE_DIR . '/domains';_</span></span>
+<span class="line"><span>_$BACKUP_BASE  = $BASE_DIR . '/backups-php';_</span></span>
+<span class="line"><span>_$LOG_DIR      = $BASE_DIR . '/logs';</span></span>
 <span class="line"><span></span></span>
 <span class="line"><span>$STORES = [</span></span>
 <span class="line"><span>    'domain1.com',</span></span>
 <span class="line"><span>    'domain2.com',</span></span>
 <span class="line"><span>];</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>$EXCLUDED_DIR_PATTERNS = [</span></span>
-<span class="line"><span>    'aiowps_backups',</span></span>
+<span class="line"><span>$EXCLUDED_DIR_PATTERNS = [_</span></span>
+<span class="line"><span>_    'aiowps_backups',</span></span>
 <span class="line"><span>    'wp-cloudflare-super-page-cache',</span></span>
 <span class="line"><span>    'litespeed',</span></span>
 <span class="line"><span>];</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>$AWS_S3_BUCKET        = 'sites-backup';</span></span>
-<span class="line"><span>$AWS_S3_PREFIX        = 'wp-backups';</span></span>
-<span class="line"><span>$AWS_S3_REGION        = 'ap-southeast-1';</span></span>
-<span class="line"><span>$AWS_S3_KEY           = 'YOUR_AWS_KEY';</span></span>
-<span class="line"><span>$AWS_S3_SECRET        = 'YOUR_AWS_SECRET';</span></span>
-<span class="line"><span>$AWS_S3_STORAGE_CLASS = 'DEEP_ARCHIVE';</span></span>
+<span class="line"><span>$AWS_S3_BUCKET        = 'sites-backup';_</span></span>
+<span class="line"><span>_$AWS_S3_PREFIX        = 'wp-backups';_</span></span>
+<span class="line"><span>_$AWS_S3_REGION        = 'ap-southeast-1';_</span></span>
+<span class="line"><span>_$AWS_S3_KEY           = 'YOUR_AWS_KEY';_</span></span>
+<span class="line"><span>_$AWS_S3_SECRET        = 'YOUR_AWS_SECRET';_</span></span>
+<span class="line"><span>_$AWS_S3_STORAGE_CLASS = 'DEEP_ARCHIVE';</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>$GDRIVE_CLIENT_ID      = 'YOUR_GOOGLE_CLIENT_ID';</span></span>
-<span class="line"><span>$GDRIVE_CLIENT_SECRET  = 'YOUR_GOOGLE_CLIENT_SECRET';</span></span>
-<span class="line"><span>$GDRIVE_TOKEN_FILE     = __DIR__ . '/gdrive_token.json';</span></span>
-<span class="line"><span>$GDRIVE_ROOT_FOLDER_ID = '11HZ0giOqEw6wyy2ylI3GcBmSm5ZQ1YZU'; // ví dụ</span></span>
+<span class="line"><span>$GDRIVE_CLIENT_ID      = 'YOUR_GOOGLE_CLIENT_ID';_</span></span>
+<span class="line"><span>_$GDRIVE_CLIENT_SECRET  = 'YOUR_GOOGLE_CLIENT_SECRET';_</span></span>
+<span class="line"><span>_$GDRIVE_TOKEN_FILE     = __DIR__ . '/gdrive_token.json';_</span></span>
+<span class="line"><span>_$GDRIVE_ROOT_FOLDER_ID = '11HZ0giOqEw6wyy2ylI3GcBmSm5ZQ1YZU'; // ví dụ</span></span>
 <span class="line"><span></span></span>
-<span class="line"><span>$ENABLE_TELEGRAM    = true;</span></span>
-<span class="line"><span>$TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';</span></span>
-<span class="line"><span>$TELEGRAM_CHAT_ID   = 'YOUR_CHAT_ID';</span></span>
-<span class="line"><span>$TELEGRAM_MODE      = 'full';   // 'error' hoặc 'off'</span></span></code></pre>
+<span class="line"><span>$ENABLE_TELEGRAM    = true;_</span></span>
+<span class="line"><span>_$TELEGRAM_BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';_</span></span>
+<span class="line"><span>_$TELEGRAM_CHAT_ID   = 'YOUR_CHAT_ID';_</span></span>
+<span class="line"><span>_$TELEGRAM_MODE      = 'full';   // 'error' hoặc 'off'</span></span></code></pre>
 <h3 id="54-cách-hoạt-động-của-script-php">5.4. Cách hoạt động của script PHP</h3>
 <p>Script thực hiện:</p>
 <ol>
@@ -490,25 +490,22 @@ Nếu <code>date</code> giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi 
 <li>
 <p>Với mỗi store:</p>
 <ul>
-<li>Đọc <code>wp-config.php</code> trong <code>domains/&#x3C;domain>/public_html</code>.</li>
-<li>Parse <code>DB_NAME</code>, <code>DB_USER</code>, <code>DB_PASSWORD</code>, <code>DB_HOST</code>.</li>
+<li>Đọc <code>wp-config.php</code> trong <code>domains/&#x3C;domain>/public_html</code>._`
+<code>_    - Parse </code>DB_NAME<code>, </code>DB_USER<code>, </code>DB_PASSWORD<code>, </code>DB_HOST`.</li>
 </ul>
 </li>
 <li>
 <p><strong>Dump database</strong>:</p>
 <ul>
-<li>Kết nối <code>mysqli</code>.</li>
-<li>Ghi header: <code>SET NAMES</code>, <code>foreign_key_checks</code>, <code>sql_mode</code>…</li>
-<li><code>SHOW TABLES</code> → lấy list bảng.</li>
+<li>Kết nối <code>mysqli</code>.`
+<code>   - Ghi header:</code>SET NAMES<code>, </code>foreign_key_checks<code>, </code>sql_mode<code>…</code>
+<code>   -</code>SHOW TABLES` → lấy list bảng.</li>
 <li>Với mỗi bảng:
 <ul>
-<li><code>SHOW CREATE TABLE</code> → ghi cấu trúc.</li>
-<li><code>SELECT COUNT(*)</code> → tổng số row.</li>
-<li>For loop theo chunk <code>LIMIT offset, chunkSize</code> (ví dụ 500):
-<ul>
-<li>Ghi INSERT multi-row → <code>(…), (…), …</code> vào file <code>.sql.gz</code>.</li>
-</ul>
-</li>
+<li><code>SHOW CREATE TABLE</code> → ghi cấu trúc.`
+<code>       -</code>SELECT COUNT(*)<code> → tổng số row.</code>
+<code>       - For loop theo chunk</code>LIMIT offset, chunkSize<code> (ví dụ 500):</code>
+<code>           - Ghi INSERT multi-row →</code>(…), (…), …<code>vào file</code>.sql.gz`.</li>
 </ul>
 </li>
 </ul>
@@ -516,17 +513,17 @@ Nếu <code>date</code> giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi 
 <li>
 <p><strong>Zip files</strong>:</p>
 <ul>
-<li>Dùng <code>ZipArchive</code>.</li>
-<li>Duyệt đệ quy <code>public_html</code>.</li>
-<li>Bỏ qua path chứa chuỗi trong <code>$EXCLUDED_DIR_PATTERNS</code>.</li>
-<li>Ghi file <code>.zip</code> mỗi store.</li>
+<li>Dùng <code>ZipArchive</code>.`
+<code>   - Duyệt đệ quy</code>public_html<code>._</code>
+<code>_    - Bỏ qua path chứa chuỗi trong </code>$EXCLUDED_DIR_PATTERNS<code>.</code>
+<code>   - Ghi file</code>.zip` mỗi store.</li>
 </ul>
 </li>
 <li>
 <p><strong>Upload S3</strong>:</p>
 <ul>
-<li>AWS SDK for PHP, <code>putObject</code> từng file trong <code>backups-php/YYYY-MM-DD</code>.</li>
-<li>Storage class <code>DEEP_ARCHIVE</code> (rất rẻ).</li>
+<li>AWS SDK for PHP, <code>putObject</code> từng file trong <code>backups-php/YYYY-MM-DD</code>.`
+<code>   - Storage class</code>DEEP_ARCHIVE` (rất rẻ).</li>
 </ul>
 </li>
 <li>
@@ -540,15 +537,15 @@ Nếu <code>date</code> giống giờ VN (UTC+7) → server Asia/Bangkok/Ho Chi 
 <li>
 <p><strong>Retention</strong>:</p>
 <ul>
-<li>Xóa folder backup local cũ hơn <code>RETENTION_DAYS</code>.</li>
-<li>Xóa folder ngày cũ trên S3 và Google Drive (đặt tên dạng <code>YYYY-MM-DD</code>).</li>
+<li>Xóa folder backup local cũ hơn <code>RETENTION_DAYS</code>.`
+<code>   - Xóa folder ngày cũ trên S3 và Google Drive (đặt tên dạng</code>YYYY-MM-DD`).</li>
 </ul>
 </li>
 <li>
 <p><strong>Tính tổng size</strong>:</p>
 <ul>
-<li>S3: <code>listObjectsV2</code>, cộng <code>Size</code>.</li>
-<li>GDrive: duyệt folder con, cộng <code>size</code> các file.</li>
+<li>S3: <code>listObjectsV2</code>, cộng <code>Size</code>.`
+<code>   - GDrive: duyệt folder con, cộng</code>size` các file.</li>
 </ul>
 </li>
 <li>
@@ -586,12 +583,12 @@ GDrive retention: …</p>
 <h2 id="6-restore-từ-backup">6. Restore từ backup</h2>
 <h3 id="61-restore-files">6.1. Restore files</h3>
 <p><strong>Bash script (tar.gz)</strong></p>
-<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>cd /home/USER/domains/domain1.com/public_html</span></span>
-<span class="line"><span>tar -xzf /path/to/files_store1_2025-11-21.tar.gz</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>cd /home/USER/domains/domain1.com/public_html_</span></span>
+<span class="line"><span>_tar -xzf /path/to/files_store1_2025-11-21.tar.gz</span></span></code></pre>
 <p><strong>PHP script (.zip)</strong></p>
 <ul>
-<li>Dùng <code>unzip</code> trong SSH:cd /home/USER/domains/domain1.com/public_html
-unzip /path/to/files_store1_2025-11-21.zip</li>
+<li>Dùng <code>unzip</code> trong SSH:cd /home/USER/domains/domain1.com/public_html_
+_unzip /path/to/files_store1_2025-11-21.zip</li>
 <li>Hoặc upload <code>.zip</code> lên hosting → dùng File Manager → Extract.</li>
 </ul>
 <h3 id="62-restore-database">6.2. Restore database</h3>
@@ -611,29 +608,29 @@ unzip /path/to/files_store1_2025-11-21.zip</li>
 <ul>
 <li><strong>Không thấy file trên S3</strong>
 <ul>
-<li>Kiểm tra <code>aws configure</code>: access key, secret, region.</li>
-<li>Xem lại <code>AWS_S3_BUCKET</code>, <code>AWS_S3_PREFIX</code> trong script.</li>
+<li>Kiểm tra <code>aws configure</code>: access key, secret, region.`
+<code>   - Xem lại</code>AWS_S3_BUCKET<code>, </code>AWS_S3_PREFIX` trong script.</li>
 <li>Xem log: có lỗi permission (AccessDenied) hay DNS/bucket name sai không.</li>
 </ul>
 </li>
 <li><strong>Google Drive báo quota / token lỗi</strong>
 <ul>
-<li>Kiểm tra <code>gdrive_token.json</code>: token còn valid không.</li>
-<li>Kiểm tra <code>client_id</code>, <code>client_secret</code>.</li>
-<li>Đảm bảo script dùng đúng <code>GDRIVE_ROOT_FOLDER_ID</code> (ID thật của folder).</li>
+<li>Kiểm tra <code>gdrive_token.json</code>: token còn valid không._`
+<code>_    - Kiểm tra </code>client_id<code>, </code>client_secret<code>._</code>
+<code>_    - Đảm bảo script dùng đúng </code>GDRIVE_ROOT_FOLDER_ID` (ID thật của folder).</li>
 </ul>
 </li>
 <li><strong>Script không chạy từ cron</strong>
 <ul>
-<li>Cron phải dùng <strong>đường dẫn tuyệt đối</strong> tới <code>bash</code> hoặc <code>php</code>:/bin/bash /home/USER/scripts/backup_all_stores.sh
-/usr/bin/php /home/USER/scripts-php-backup/backup_all_stores.php</li>
+<li>Cron phải dùng <strong>đường dẫn tuyệt đối</strong> tới <code>bash</code> hoặc <code>php</code>:/bin/bash /home/USER/scripts/backup_all_stores.sh_
+_/usr/bin/php /home/USER/scripts-php-backup/backup_all_stores.php</li>
 <li>Đảm bảo <code>PATH</code> trong script có <code>"$HOME/bin"</code> để gọi được <code>aws</code>, <code>rclone</code>.</li>
 </ul>
 </li>
 <li><strong>Telegram không báo</strong>
 <ul>
-<li>Test thủ công:curl -s “<a href="https://api.telegram.org/botBOT_TOKEN/sendMessage">https://api.telegram.org/botBOT_TOKEN/sendMessage</a>” <br>
--d chat_id=“CHAT_ID” <br>
+<li>Test thủ công:curl -s “<a href="https://api.telegram.org/botBOT_TOKEN/sendMessage">https://api.telegram.org/botBOT_TOKEN/sendMessage</a>” _
+_  -d chat_id=“CHAT_ID” <br>
 -d text=“Test from server”</li>
 <li>Nếu nhóm là supergroup, chat_id dạng <code>-100xxxxxxxxxx</code>, không phải <code>@username</code>.</li>
 </ul>
@@ -642,8 +639,8 @@ unzip /path/to/files_store1_2025-11-21.zip</li>
 <p><strong>Kết luận:</strong>
 Sau khi bạn thiết lập xong 2 script <code>backup_all_stores.sh</code> (cho VPS/hosting mạnh) và <code>backup_all_stores.php</code> (cho shared hosting khó chịu), mỗi lần mua hosting/VPS mới bạn chỉ cần:</p>
 <ol>
-<li>Tạo cấu trúc folder chuẩn <code>/home/USER/domains</code>, <code>backups</code>, <code>backups-php</code>, <code>logs</code>, <code>scripts</code>, <code>scripts-php-backup</code>.</li>
-<li>Cài <code>aws-cli</code> + <code>rclone</code> (nếu dùng Bash) hoặc Composer + PHP SDK (nếu dùng PHP).</li>
+<li>Tạo cấu trúc folder chuẩn <code>/home/USER/domains</code>, <code>backups</code>, <code>backups-php</code>, <code>logs</code>, <code>scripts</code>, <code>scripts-php-backup</code>.`
+<code>2. Cài </code>aws-cli<code>+</code>rclone` (nếu dùng Bash) hoặc Composer + PHP SDK (nếu dùng PHP).</li>
 <li>Copy 2 file script + chỉnh vài biến config (USER, domain, bucket, Drive ID, Telegram).</li>
 <li>Thêm cron chạy hàng ngày.</li>
 </ol>
@@ -651,14 +648,30 @@ Sau khi bạn thiết lập xong 2 script <code>backup_all_stores.sh</code> (cho
 Bạn chỉ cần lo bán hàng, còn dữ liệu để hệ thống tự giữ giúp.</p>
 <p><strong>Nguồn tài nguyên:</strong></p>
 <ul>
-<li><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/install_wp_backup_env.sh">https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/install_wp_backup_env.sh</a></li>
-<li><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh">https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh">/</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh" title="backup_all_stores.sh">backup_all_stores.sh</a></li>
-<li><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh">https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh">/</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh" title="restore_wp_from_backup.sh">restore_wp_from_backup.sh</a></li>
-<li><a href="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip">https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip</a></li>
+<li><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/install_wp_backup_env.sh">https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/install_wp_backup_env.sh</a>_
+<em>- <a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh">https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh">/</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/backup_all_stores.sh" title="backup_all_stores.sh">backup_all_stores.sh</a></em>
+<em>- <a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh">https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh">/</a><a href="https://raw.githubusercontent.com/anhnnp/anhnnp.github.io/main/data/script-batch/restore_wp_from_backup.sh" title="restore_wp_from_backup.sh">restore_wp_from_backup.sh</a></em>
+_- <a href="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip">https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip</a></li>
 <li><a href="https://downloads.rclone.org/rclone-current-linux-amd64.zip">https://downloads.rclone.org/rclone-current-linux-amd64.zip</a></li>
 <li><a href="https://getcomposer.org/download/latest-stable/composer.phar">https://getcomposer.org/download/latest-stable/composer.phar</a></li>
-</ul>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #fb7185;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+</ul>
+<p><strong>Tham khảo thêm:</strong></p>
+<ul>
+<li><a href="https://cirriustech.co.uk/blog/how-to-auto-tidy-files-in-google-drive/">How To : Automatically delete old files in Google Drive</a></li>
+<li><a href="https://snapshooter.com/learn/backup-file-to-google-drive">How to Backup File to Google Drive with Bash</a></li>
+<li><a href="https://mkyong.com/mysql/mysql-backup-and-restore-a-database-or-table/">How to backup and restore (import and export) MySQL database or table</a></li>
+<li><a href="https://snapshooter.com/learn/linux/install-and-use-rclone">How to Install and Use Rclone on Ubuntu 20.04</a></li>
+<li><a href="https://rclone.org/s3/#configuration">Rclone: Amazon S3 Storage Providers</a></li>
+<li><a href="https://tecadmin.net/backup-website-to-amazon-s3-using-shell-script/">Shell Script to Backup Website to Amazon S3</a></li>
+<li><a href="https://mkyong.com/linux/linux-script-to-backup-mysql-to-amazon-s3/">How to backup MySQL / MariaDB database to Amazon S3, shell script example</a></li>
+<li><a href="https://mkyong.com/linux/how-to-backup-a-website-to-amazon-s3-using-shell-script/">How to backup entire website to Amazon S3 using shell script</a></li>
+<li><a href="https://docs.aws.amazon.com/hands-on/latest/backup-to-s3-cli/backup-to-s3-cli.html">Batch Upload Files to Amazon S3 Using the AWS CLI</a></li>
+<li><a href="https://spinupwp.com/backup-wordpress-amazon-glacier/">Automated Backups Wordpress to Amazon S3</a></li>
+<li><a href="https://snapshooter.com/learn/backup-laravel-aws-s3-bash">How to Backup Laravel to AWS S3 with Bash</a></li>
+<li><a href="https://zolahost.com/automated-website-backup-in-aapanel/">Automated Website Backup in aaPanel</a></li>
+<li><a href="https://azdigi.com/blog/en/webserver-panel-en/aapanel-en/how-to-backup-website-data-using-aapanel-to-google-drive/">How to backup website data using aaPanel to Google Drive</a></li>
+</ul>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <div class="px-10 py-6"> <div id="disqus_thread"></div> <script type="module">(function(){var t=document,e=t.createElement("script");e.src="https://anmitom.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)})();</script> <noscript>Enable JavaScript to view comments powered by Disqus.</noscript> </div> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #60a5fa;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
 Có gì mới?
-</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #facc15;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f472b6;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=28-0f26086" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #2dd4bf;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=28-0f26086" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f472b6;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #60a5fa;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Rclone Tutorial Install on Windows and Connect.webp?v=28-0f26086" alt="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa.</p>  <div class="flex justify-end my-4"> <a href="/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #4ade80;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/rclone/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> rclone </span> </a> </li><li> <a class="sanchez" href="/blog/tags/google drive/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Google Drive </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Plugin tối ưu ảnh tốt nhất cho Wordpress là gì? Optimole vs ShortPixel vs Imagify vs EWWW vs Smush</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Imagify vs WP Smush vs ShortPixel vs Optimole Which Is Best Optimizing Images.webp?v=28-0f26086" alt="Plugin tối ưu ảnh tốt nhất cho Wordpress là gì? Optimole vs ShortPixel vs Imagify vs EWWW vs Smush" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đâu là plugin tối ưu ảnh tốt nhất cho Wordpress WooCommerce &amp; blog nhiều ảnh? So sánh thực chiến Optimole, ShortPixel, Imagify, EWWW, Smush - Mình sẽ đi từ phương pháp test → kết quả → phân tích từng plugin → xếp hạng &amp; khuyến nghị theo use case (online store, blog nhiều ảnh).</p>  <div class="flex justify-end my-4"> <a href="/blog/plugin-toi-uu-anh-tot-nhat-cho-wordpress-la-gi-optimole-vs-shortpixel-vs-imagify-vs-ewww-vs-smush/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb7185;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Wordpress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/image optimizer/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> Image Optimizer </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/windows-11-the-operating-system-for-hybrid-work-and-learning.webp?v=28-0f26086" alt="Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Chia sẻ kích hoạt Windows 11 bằng key KMS client miễn phí gồm các bước hoàn toàn giống với hướng dẫn cách kích hoạt Windows 10 miễn phí, chỉ khác là lần này mình thực hiện trên Windows 11.</p>  <div class="flex justify-end my-4"> <a href="/blog/nhung-cach-kich-hoat-windows-11-mien-phi-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #4ade80;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows 11/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> Windows 11 </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Git-based vs API-first CMS Exploring the Headless CMS Landscape.webp?v=28-0f26086" alt="Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đây là một chủ đề cực kỳ hữu ích cho các dev hiện đại, đặc biệt là những ai đang chuyển từ WordPress sang mô hình headless CMS. Nếu CMS truyền thống là tất cả trong một (cả backend lẫn frontend), thì headless CMS chỉ tập trung vào phần quản lý nội dung (backend), còn phần hiển thị (frontend) sẽ do bạn tự do chọn framework hoặc build theo ý muốn.</p>  <div class="flex justify-end my-4"> <a href="/blog/mien-phi-9-nen-tang-headless-cms-luu-tru-tren-git-cho-cac-blog-website-don-gian/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #e879f9;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Lập trình </span> </a> </li><li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/git base/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Git base </span> </a> </li><li> <a class="sanchez" href="/blog/tags/headless cms/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Headless CMS </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=30-6a37291" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb923c;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=30-6a37291" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a3e635;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Rclone Tutorial Install on Windows and Connect.webp?v=30-6a37291" alt="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa.</p>  <div class="flex justify-end my-4"> <a href="/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #60a5fa;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/rclone/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> rclone </span> </a> </li><li> <a class="sanchez" href="/blog/tags/google drive/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Google Drive </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Plugin tối ưu ảnh tốt nhất cho Wordpress là gì? Optimole vs ShortPixel vs Imagify vs EWWW vs Smush</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Imagify vs WP Smush vs ShortPixel vs Optimole Which Is Best Optimizing Images.webp?v=30-6a37291" alt="Plugin tối ưu ảnh tốt nhất cho Wordpress là gì? Optimole vs ShortPixel vs Imagify vs EWWW vs Smush" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đâu là plugin tối ưu ảnh tốt nhất cho Wordpress WooCommerce &amp; blog nhiều ảnh? So sánh thực chiến Optimole, ShortPixel, Imagify, EWWW, Smush - Mình sẽ đi từ phương pháp test → kết quả → phân tích từng plugin → xếp hạng &amp; khuyến nghị theo use case (online store, blog nhiều ảnh).</p>  <div class="flex justify-end my-4"> <a href="/blog/plugin-toi-uu-anh-tot-nhat-cho-wordpress-la-gi-optimole-vs-shortpixel-vs-imagify-vs-ewww-vs-smush/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f472b6;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Wordpress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/image optimizer/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Image Optimizer </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/windows-11-the-operating-system-for-hybrid-work-and-learning.webp?v=30-6a37291" alt="Những cách đơn giản để kích hoạt Windows 11 miễn phí mà không cần product key" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Chia sẻ kích hoạt Windows 11 bằng key KMS client miễn phí gồm các bước hoàn toàn giống với hướng dẫn cách kích hoạt Windows 10 miễn phí, chỉ khác là lần này mình thực hiện trên Windows 11.</p>  <div class="flex justify-end my-4"> <a href="/blog/nhung-cach-kich-hoat-windows-11-mien-phi-khong-can-product-key/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb7185;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/windows os/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> Windows OS </span> </a> </li><li> <a class="sanchez" href="/blog/tags/windows 11/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> Windows 11 </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Git-based vs API-first CMS Exploring the Headless CMS Landscape.webp?v=30-6a37291" alt="Miễn phí 9 nền tảng headless CMS lưu trữ  trên Git cho các Blog website đơn giản" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Đây là một chủ đề cực kỳ hữu ích cho các dev hiện đại, đặc biệt là những ai đang chuyển từ WordPress sang mô hình headless CMS. Nếu CMS truyền thống là tất cả trong một (cả backend lẫn frontend), thì headless CMS chỉ tập trung vào phần quản lý nội dung (backend), còn phần hiển thị (frontend) sẽ do bạn tự do chọn framework hoặc build theo ý muốn.</p>  <div class="flex justify-end my-4"> <a href="/blog/mien-phi-9-nen-tang-headless-cms-luu-tru-tren-git-cho-cac-blog-website-don-gian/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #2dd4bf;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> Lập trình </span> </a> </li><li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/git base/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> Git base </span> </a> </li><li> <a class="sanchez" href="/blog/tags/headless cms/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Headless CMS </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
 Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
 </p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>
