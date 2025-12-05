@@ -1,0 +1,391 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_1384286954690', sans-serif; } @font-face { font-family: '_font_fallback_1384286954690'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_1074236038281', sans-serif; } @font-face { font-family: '_font_fallback_1074236038281'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_1071166691412', sans-serif; } @font-face { font-family: '_font_fallback_1071166691412'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_1077290091173', serif; } @font-face { font-family: '_font_fallback_1077290091173'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_416081851267', serif; } @font-face { font-family: '_font_fallback_416081851267'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files"><meta name="description" content="Nếu ổ cứng HDD/SSD của bạn đã lâu ngày và có dấu hiệu chậm, bad sector, hoặc lỗi ghi, việc làm sạch hoàn toàn (low level format hoặc hard reset) là bước chuẩn nhất trước khi chia lại phân vùng cho mục đích cứu hộ. Dưới đây là hướng dẫn chi tiết và cách làm an toàn để tái sinh ổ HDD/SSD cũ tạo bootable mục đích cứu hộ với Ventoy Tool."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files/"><meta property="og:title" content="Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files"><meta property="og:description" content="Nếu ổ cứng HDD/SSD của bạn đã lâu ngày và có dấu hiệu chậm, bad sector, hoặc lỗi ghi, việc làm sạch hoàn toàn (low level format hoặc hard reset) là bước chuẩn nhất trước khi chia lại phân vùng cho mục đích cứu hộ. Dưới đây là hướng dẫn chi tiết và cách làm an toàn để tái sinh ổ HDD/SSD cũ tạo bootable mục đích cứu hộ với Ventoy Tool."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files/"><meta property="twitter:title" content="Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files"><meta property="twitter:description" content="Nếu ổ cứng HDD/SSD của bạn đã lâu ngày và có dấu hiệu chậm, bad sector, hoặc lỗi ghi, việc làm sạch hoàn toàn (low level format hoặc hard reset) là bước chuẩn nhất trước khi chia lại phân vùng cho mục đích cứu hộ. Dưới đây là hướng dẫn chi tiết và cách làm an toàn để tái sinh ổ HDD/SSD cũ tạo bootable mục đích cứu hộ với Ventoy Tool."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files.png"><link rel="canonical" href="https://anhnnp.github.io/blog/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=33-a7ecadd"></script><link rel="stylesheet" href="/_astro/_slug_.Bw8pkbQe.css?v=33-a7ecadd">
+<style>.astro-code.github-dark code{color:#e1e4e8}.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)):before,.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)):after{display:none}.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)){border-radius:4px;background-color:#dadae1!important;vertical-align:-.05em;padding:3px 5px;font-size:.78em!important;margin:auto 3px;box-shadow:-2px -2px 1px #607d8b}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=33-a7ecadd">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#1-xác-định-tình-trạng-ổ-cứng"> 1. Xác định tình trạng ổ cứng </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#2-dọn-sạch-và-loại-bỏ-vùng-hỏng"> 2. Dọn sạch và loại bỏ vùng hỏng </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#3-tạo-bootable-với-ventoy"> 3. Tạo bootable với Ventoy </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-1--chuẩn-bị"> BƯỚC 1 – Chuẩn bị </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-2--cài-ventoy-vào-hdd-box"> BƯỚC 2 – Cài Ventoy vào HDD Box </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-3--tạo-phân-vùng-riêng-cho-iso"> BƯỚC 3 – Tạo phân vùng riêng cho ISO </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-4--copy-4-file-iso-vào-phân-vùng-iso"> BƯỚC 4 – Copy 4 file ISO vào phân vùng ISO </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-5--tạo-menu-đẹp-đặt-tên-rõ-ràng-ventoyjson"> BƯỚC 5 – Tạo menu đẹp, đặt tên rõ ràng (ventoy.json) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-6--ẩn-các-phân-vùng-cứu-hộ-để-tránh-virus--người-khác-nghịch"> BƯỚC 6 – Ẩn các phân vùng cứu hộ (để tránh virus &amp; người khác nghịch) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-7--test-boot-thực-tế-uefi--legacy"> BƯỚC 7 – Test boot thực tế (UEFI &amp; Legacy) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bước-8--sau-này-muốn-cập-nhật-iso-thì-làm-sao"> BƯỚC 8 – Sau này muốn cập nhật ISO thì làm sao? </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <h2 id="1-xác-định-tình-trạng-ổ-cứng">1. Xác định tình trạng ổ cứng</h2>
+<p>Kiểm tra nhanh bằng phần mềm:</p>
+<ul>
+<li>**CrystalDiskInfo **– xem tình trạng SMART (Good / Caution / Bad).
+<a href="https://crystalmark.info/en/software/crystaldiskinfo/"><code>https://crystalmark.info/en/software/crystaldiskinfo/</code></a>`
+<code>Nếu báo </code>Caution<code>hoặc</code>Bad`, có nghĩa là ổ đã có sector lỗi hoặc lỗi đọc ghi.</li>
+<li><strong>HDDScan / HD Tune</strong> – để kiểm tra tốc độ đọc, nhiệt độ, và vùng bad sector.**
+<strong>- **Victoria HDD</strong> – phần mềm chuyên nghiệp, có thể quét và <code>remap</code> bad sector <em>(di chuyển dữ liệu sang vùng tốt)</em>.</li>
+</ul>
+<h2 id="2-dọn-sạch-và-loại-bỏ-vùng-hỏng">2. Dọn sạch và loại bỏ vùng hỏng</h2>
+<p><strong>2. 1. Cách đơn giản – <code>Full Format</code> bằng Windows hoặc Diskpart</strong></p>
+<p>Nếu ổ chỉ chậm nhẹ, không có nhiều lỗi:</p>
+<ol>
+<li>Cắm HDD box vào máy.</li>
+<li>Mở <code>CMD (Run as Administrator)</code> → gõ:diskpart
+list disk
+select disk X   (X là số ổ HDD box)
+clean all
+exit⚠️ Lệnh <code>clean all</code> sẽ xóa toàn bộ dữ liệu và ghi 0 lên mọi sector → tương đương low-level format nhẹ.</li>
+<li>Sau đó dùng Disk Management hoặc AOMEI Partition Assistant để tạo lại phân vùng mới.</li>
+</ol>
+<p><strong>2.2. Cách mạnh hơn – Zero Fill hoặc Low Level Format thật sự</strong></p>
+<p>Dùng các công cụ chuyên dụng ghi dữ liệu “0” lên toàn bộ ổ, giúp:</p>
+<ul>
+<li>Loại bỏ hoàn toàn virus, MBR ẩn, dữ liệu lỗi.</li>
+<li>Ghi lại bảng sector mới → có thể “đánh dấu bad sector”.</li>
+</ul>
+<p><strong>Công cụ khuyên dùng:</strong></p>
+<ul>
+<li>
+<p><strong>HDD Low Level Format Tool</strong>
+<a href="https://hddguru.com/software/HDD-LLF-Low-Level-Format-Tool/"><code>https://hddguru.com/software/HDD-LLF-Low-Level-Format-Tool/</code></a></p>
+<ol>
+<li>Chạy tool → chọn ổ HDD box → chọn “Low-Level Format”.</li>
+<li>Quá trình có thể mất vài giờ (vì ghi 0 lên từng sector).</li>
+<li>Sau khi xong, dùng “Disk Management” để tạo phân vùng lại từ đầu.</li>
+</ol>
+</li>
+<li>
+<p><strong>Victoria HDD</strong> (bản Windows hoặc DOS):</p>
+<ul>
+<li>Tab Tests → Remap + Erase + Verify, chọn “Erase with Zero”.</li>
+<li>Nó sẽ quét từng sector, tự động bỏ qua vùng lỗi và đánh dấu không sử dụng nữa.</li>
+</ul>
+</li>
+</ul>
+<p>Sau khi làm sạch hoàn toàn, chia lại phân vùng cho mục đích cứu hộ <strong>(bỏ qua bước này nếu dùng Ventoy ở phần 3.)</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Phân vùng</th><th>Dung lượng gợi ý</th><th>File System</th><th>Mô tả</th></tr></thead><tbody><tr><td>P1 – Hiren’s Boot</td><td>5–8 GB</td><td>FAT32</td><td>Boot cứu hộ Windows</td></tr><tr><td>P2 – WinPE</td><td>8–10 GB</td><td>FAT32</td><td>WinPE độc lập</td></tr><tr><td>P3 – Windows 11 Install</td><td>10–12 GB</td><td>FAT32</td><td>Bộ cài Win11 (EFI cần FAT32)</td></tr><tr><td>P4 – Ubuntu</td><td>8–12 GB</td><td>FAT32 hoặc EXT4</td><td>Hệ cứu hộ Linux</td></tr><tr><td>(P5 – Data optional)</td><td>Còn lại</td><td>NTFS</td><td>Lưu ISO, Ghost, Drivers, Tools</td></tr></tbody></table>
+<p>Gợi ý tool để chia lại:</p>
+<ul>
+<li>**AOMEI Partition Assistant **hoặc **
+<strong>- **MiniTool Partition Wizard</strong> – chia phân vùng, set active, ẩn/hiện partition.**
+<strong>- **Bootice</strong> – quản lý MBR/UEFI boot, gán partition ẩn/hiện.**
+<strong>- **Ventoy</strong> (tùy chọn) – nếu bạn muốn dùng menu chọn boot linh hoạt.</li>
+</ul>
+<p><strong>Mẹo:</strong> FAT32 giúp tương thích cả UEFI và Legacy. Nếu file ISO >4GB (như Win11), có thể tách file install.wim bằng tool như Rufus hoặc dùng Ventoy.</p>
+<h2 id="3-tạo-bootable-với-ventoy">3. Tạo bootable với Ventoy</h2>
+<p>Với Ventoy, bạn KHÔNG cần 4 phân vùng riêng biệt cho từng hệ điều hành. Ventoy chỉ cần:</p>
+<ul>
+<li>1 phân vùng boot (Ventoy tạo)</li>
+<li>1 phân vùng để chứa các file ISO (có thể là chính phân vùng Ventoy, hoặc phân vùng thứ 2)</li>
+</ul>
+<p>Nhưng vì bạn muốn an toàn và ẩn, ta chơi như sau:</p>
+<ul>
+<li><strong>P1 – Ventoy Boot (ẩn)</strong> → Ventoy tự tạo, dùng để boot.**
+<strong>- **P2 – ISO Data (ẩn)</strong> → bạn tạo thêm, lưu 4 file ISO.</li>
+<li>(Nếu bạn <em>rất muốn</em> đúng nghĩa “4 slot”, ta chỉ cần trong P2 tạo 4 folder: <code>Win11</code>, <code>Ubuntu</code>, <code>WinPE</code>, <code>Hirens</code>).</li>
+</ul>
+<p><strong>Điểm quan trọng:</strong></p>
+<blockquote>
+<p>4 hệ thống cứu hộ = 4 file ISO
+➜ Không còn phải bung ISO ra 4 phân vùng như kiểu truyền thống nữa.
+➜ Cập nhật chỉ là <em>xóa ISO cũ, chép ISO mới</em>.</p>
+</blockquote>
+<h3 id="bước-1--chuẩn-bị">BƯỚC 1 – Chuẩn bị</h3>
+<ol>
+<li>
+<p><strong>Sao lưu sạch dữ liệu</strong> trong HDD box (vì Ventoy cài vào sẽ xóa).</p>
+</li>
+<li>
+<p>Tải:</p>
+<ul>
+<li>Ventoy: <a href="https://www.ventoy.net">https://www.ventoy.net</a></li>
+<li>ISO:
+<ul>
+<li><code>Win11.iso</code></li>
+<li><code>Ubuntu.iso</code> (hoặc Ubuntu Rescue)`
+<code>       -</code>WinPE.iso<code> (Gandalf, Sergei Strelec, tự build…)</code>
+<code>       -</code>Hirens.BootCD.PE.iso`</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Cắm HDD box vào, nhớ xác định đúng disk (kẻo format nhầm SSD đang chạy Windows 😅).</p>
+</li>
+</ol>
+<h3 id="bước-2--cài-ventoy-vào-hdd-box">BƯỚC 2 – Cài Ventoy vào HDD Box</h3>
+<ol>
+<li>
+<p>Mở Ventoy2Disk.exe (Run as Administrator).</p>
+</li>
+<li>
+<p>Ở mục Device, chọn đúng HDD Box (ví dụ: <code>Disk 2 – 500GB</code>).</p>
+</li>
+<li>
+<p>Tùy chọn:</p>
+<ul>
+<li>Partition style: nên chọn GPT (hỗ trợ UEFI tốt).</li>
+</ul>
+</li>
+<li>
+<p>Nhấn Install → Đồng ý (Ventoy sẽ xóa sạch ổ và tạo phân vùng riêng).</p>
+</li>
+<li>
+<p>Xong bước này:</p>
+<ul>
+<li>Ổ sẽ có 1 phân vùng Ventoy (thường là exFAT/NTFS, có nhãn <code>Ventoy</code>).</li>
+<li>Phân vùng này có thể dùng luôn để chứa ISO (nếu bạn không muốn chia thêm).</li>
+</ul>
+</li>
+</ol>
+<h3 id="bước-3--tạo-phân-vùng-riêng-cho-iso">BƯỚC 3 – Tạo phân vùng riêng cho ISO</h3>
+<p>Nếu bạn ok để Ventoy partition chứa luôn ISO → có thể bỏ qua bước này.
+Còn nếu bạn muốn P1 = Ventoy, P2 = Data ISO:</p>
+<ol>
+<li>
+<p>Mở Disk Management hoặc AOMEI Partition Assistant.</p>
+</li>
+<li>
+<p>Bạn sẽ thấy Disk của HDD Box kiểu:</p>
+<ul>
+<li>Một phân vùng Ventoy (ví dụ: 32MB EFI + còn lại Ventoy exFAT/NTFS).</li>
+</ul>
+</li>
+<li>
+<p>Thu nhỏ (shrink) phân vùng Ventoy lớn đó, chừa ra:</p>
+<ul>
+<li>Ví dụ: tạo thêm 100–200GB phân vùng mới để chứa ISO.</li>
+</ul>
+</li>
+<li>
+<p>Tạo phân vùng mới:</p>
+<ul>
+<li>Format: NTFS hoặc exFAT</li>
+<li>Gán nhãn: <code>VENTOY_ISO</code> hoặc tên tùy ý.</li>
+</ul>
+</li>
+</ol>
+<p>Sau bước này bạn có:</p>
+<ul>
+<li>P1 – Ventoy Boot (có thể ẩn sau)</li>
+<li>P2 – ISO Data (chứa 4 file ISO)</li>
+</ul>
+<h3 id="bước-4--copy-4-file-iso-vào-phân-vùng-iso">BƯỚC 4 – Copy 4 file ISO vào phân vùng ISO</h3>
+<p>Giả sử phân vùng chứa ISO là <code>E:</code>:</p>
+<ol>
+<li>Tạo thư mục:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>E:\ISO\</span></span>
+<span class="line"><span>    ├── Win11\</span></span>
+<span class="line"><span>    ├── Ubuntu\</span></span>
+<span class="line"><span>    ├── WinPE\</span></span>
+<span class="line"><span>    └── Hirens\</span></span></code></pre>
+<ol start="2">
+<li>
+<p>Copy file:</p>
+<ul>
+<li><code>Win11.iso</code> → <code>E:\ISO\Win11\Win11.iso</code></li>
+<li><code>Ubuntu.iso</code> → <code>E:\ISO\Ubuntu\Ubuntu.iso</code></li>
+<li><code>WinPE.iso</code> → <code>E:\ISO\WinPE\WinPE.iso</code></li>
+<li><code>Hirens.BootCD.PE.iso</code> → <code>E:\ISO\Hirens\Hirens.iso</code></li>
+</ul>
+</li>
+</ol>
+<p>Ventoy sẽ tự scan toàn bộ file <code>.iso</code> trong ổ và hiện trên menu.
+Bước này là nền tảng để <strong>sau này bạn chỉ cần thay file ISO</strong>.</p>
+<h3 id="bước-5--tạo-menu-đẹp-đặt-tên-rõ-ràng-ventoyjson">BƯỚC 5 – Tạo menu đẹp, đặt tên rõ ràng (ventoy.json)</h3>
+<p>Để menu Ventoy hiển thị tên dễ hiểu, ta dùng file <code>ventoy.json</code>.</p>
+<ol>
+<li>Trong phân vùng Ventoy (ví dụ <code>V:</code> nếu đang hiện), tạo thư mục:V:\ventoy`
+<code>2. Tạo file </code>ventoy.json` trong thư mục đó với nội dung ví dụ:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  "control_legacy": [ "WRITEPROTECT" ],_</span></span>
+<span class="line"><span>_  "menu_class": "theme_white",</span></span>
+<span class="line"><span>  "theme": {</span></span>
+<span class="line"><span>    "gfxmode": "1920x1080",</span></span>
+<span class="line"><span>    "display_mode": "List"</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  "image_list": [</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "image": "/ISO/Windows/Win11/Win11.iso",</span></span>
+<span class="line"><span>      "label": "⚙️ Cài đặt Windows 11"</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "image": "/ISO/Ubuntu/ubuntu-24.04.3-desktop-amd64.iso",</span></span>
+<span class="line"><span>      "label": "🐧 Ubuntu Rescue"</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "image": "/ISO/WinPE/WinPE.iso",</span></span>
+<span class="line"><span>      "label": "🛟 Windows PE Cứu hộ"</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "image": "/ISO/Hirens/HBCD_PE_x64.iso",</span></span>
+<span class="line"><span>      "label": "🧰 Hiren's BootCD PE x64 (v1.0.8)"</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  ],</span></span>
+<span class="line"><span>  "submenu": [</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "title": "🧰 Other Tools",</span></span>
+<span class="line"><span>      "items": [</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>          "title": "🔧 Help Tools",</span></span>
+<span class="line"><span>          "items": [</span></span>
+<span class="line"><span>            { "image": "/ISO/Tools/pcunlocker.iso", "label": "PCUnlocker - Reset Windows Password" },</span></span>
+<span class="line"><span>            { "image": "/ISO/Tools/SeaToolsDOS223ALL.iso", "label": "SeaTools for DOS" },</span></span>
+<span class="line"><span>            { "image": "/ISO/Tools/DiskGenius.iso", "label": "DiskGenius" }</span></span>
+<span class="line"><span>          ]</span></span>
+<span class="line"><span>        },</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>          "title": "🛡 Antivirus Tools",</span></span>
+<span class="line"><span>          "items": [</span></span>
+<span class="line"><span>            { "image": "/ISO/Tools/Kaspersky.iso", "label": "Kaspersky Rescue" },</span></span>
+<span class="line"><span>            { "image": "/ISO/Tools/Malware.iso", "label": "Malwarebytes Boot" }</span></span>
+<span class="line"><span>          ]</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "title": "🪟 Windows Setup",</span></span>
+<span class="line"><span>      "items": [</span></span>
+<span class="line"><span>        { "image": "/ISO/Windows/Win7/Win7.iso", "label": "Cài đặt Windows 7" },</span></span>
+<span class="line"><span>        { "image": "/ISO/Windows/Win10/Win10.iso", "label": "Cài đặt Windows 10" },</span></span>
+<span class="line"><span>        { "image": "/ISO/Windows/Win7/Win11.iso", "label": "Cài đặt Windows 11" }</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "title": "🐧 Linux Rescue",</span></span>
+<span class="line"><span>      "items": [</span></span>
+<span class="line"><span>        { "image": "/ISO/Ubuntu/ubuntu-24.04.3-desktop-amd64.iso", "label": "Ubuntu 24.04 LST" }</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    },</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "title": "🛟 WinPE",</span></span>
+<span class="line"><span>      "items": [</span></span>
+<span class="line"><span>        { "image": "/ISO/WinPE/WinPE.iso", "label": "Windows PE Cứu hộ" },</span></span>
+<span class="line"><span>        { "image": "/ISO/Hirens/HBCD_PE_x64.iso", "label": "Hiren's Boot PE" }</span></span>
+<span class="line"><span>      ]</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<blockquote>
+<p>Lưu ý:Đường dẫn <code>/ISO/...</code> là tính từ <strong>root của phân vùng chứa ISO</strong>.Nếu ISO nằm trên phân vùng khác, Ventoy vẫn thấy, miễn còn trên cùng 1 disk.</p>
+</blockquote>
+<h3 id="bước-6--ẩn-các-phân-vùng-cứu-hộ-để-tránh-virus--người-khác-nghịch">BƯỚC 6 – Ẩn các phân vùng cứu hộ (để tránh virus &#x26; người khác nghịch)</h3>
+<p>Bây giờ 2 phân vùng của bạn đang hiển thị trong Windows.
+Ta sẽ ẩn đi sau khi đã test ổn, dùng Bootice để ẩn phân vùng như sau:</p>
+<ol>
+<li>Mở Bootice → tab Physical Disk → chọn HDD Box → Parts Manage.</li>
+<li>Chọn phân vùng Ventoy → nhấn Set Accessible → None.</li>
+<li>Chọn phân vùng ISO Data → cũng Set Accessible → None.</li>
+<li>Apply.</li>
+</ol>
+<p><strong>Kết quả:</strong></p>
+<ul>
+<li>Khi cắm HDD box vào Windows bình thường:
+<ul>
+<li>Không thấy ổ nào (hoặc chỉ thấy nếu bạn để thêm phân vùng Data khác).</li>
+</ul>
+</li>
+<li>Khi boot từ HDD box:
+<ul>
+<li>Ventoy vẫn hoạt động bình thường, vì ẩn/hiện chỉ ảnh hưởng Windows, không ảnh hưởng firmware/UEFI.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Khi cần chỉnh sửa / cập nhật iso:
+➜ Mở Bootice → Parts Manage → Set Accessible → Assign letter (ví dụ E:, F:) → thao tác xong lại ẩn lại.</p>
+</blockquote>
+<h3 id="bước-7--test-boot-thực-tế-uefi--legacy">BƯỚC 7 – Test boot thực tế (UEFI &#x26; Legacy)</h3>
+<ol>
+<li>
+<p>Cắm HDD box vào <strong>máy A</strong>.</p>
+</li>
+<li>
+<p>Restart → vào BIOS Boot Menu (F12, F8, ESC tùy main).</p>
+</li>
+<li>
+<p>Chọn boot từ:</p>
+<ul>
+<li><code>UEFI: Tên HDD Box</code></li>
+<li>Hoặc <code>USB HDD: Tên HDD Box</code></li>
+</ul>
+</li>
+<li>
+<p>Bạn sẽ thấy menu Ventoy hiển thị:⚙️ Cài đặt Windows 11
+🐧 Ubuntu Rescue
+🛟 Windows PE Cứu hộ
+🧰 Hiren’s Boot PE</p>
+</li>
+<li>
+<p>Lần lượt test:</p>
+<ul>
+<li>Chọn <strong>Win11</strong> → vào trình cài Windows.**
+**    - Chọn **Ubuntu** → vào Live Ubuntu / Rescue.**
+**    - Chọn **WinPE** → vào WinPE, thử mở diskpart, explorer.**
+**    - Chọn **Hiren’s Boot** → vào mini Windows 10.</li>
+</ul>
+</li>
+</ol>
+<p>Nếu 4 cái đều vào ngon lành → ổ cứu hộ Ventoy của bạn đã chuẩn kỹ thuật viên</p>
+<h3 id="bước-8--sau-này-muốn-cập-nhật-iso-thì-làm-sao">BƯỚC 8 – Sau này muốn cập nhật ISO thì làm sao?</h3>
+<p>Đây là phần hay nhất đúng yêu cầu của bạn:</p>
+<ul>
+<li>
+<p>Muốn cập nhật Windows 11 mới:</p>
+<ol>
+<li>Dùng Bootice cho hiện phân vùng ISO (gán lại ký tự ổ).</li>
+<li>Xóa <code>Win11.iso</code> cũ.`
+<code>   3. Copy</code>Win11_new.iso<code>mới vào đúng thư mục</code>E:\ISO\Win11`.`
+<code>   4. Nếu file tên khác, sửa chút trong</code>ventoy.json<code>(phần</code>”image”: “/ISO/Win11/…iso”`).</li>
+<li>Ẩn lại phân vùng nếu muốn.</li>
+</ol>
+</li>
+<li>
+<p>Muốn đổi bản Ubuntu, Hiren’s, WinPE cũng y như vậy:</p>
+<ul>
+<li>Chỉ cần thay file ISO ➜ Không đụng Bootice BCD, không cài đặt lại Ventoy, không giải nén file.</li>
+</ul>
+</li>
+</ul>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <div class="px-10 py-6"> <div id="disqus_thread"></div> <script type="module">(function(){var t=document,e=t.createElement("script");e.src="https://anmitom.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)})();</script> <noscript>Enable JavaScript to view comments powered by Disqus.</noscript> </div> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #facc15;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb7185;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #e879f9;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=33-a7ecadd" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Tối ưu &amp; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &amp; AWS S3 + CloudFront</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Set Up a WordPress Website with SSL Using Amazon S3 Cloudflare.webp?v=33-a7ecadd" alt="Tối ưu &#38; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &#38; AWS S3 + CloudFront" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS. Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế: Cloudflare Free, VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2, WordPress + WooCommerce, AWS S3 + CloudFront làm CDN ảnh.</p>  <div class="flex justify-end my-4"> <a href="/blog/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/aws services/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> AWS Services </span> </a> </li><li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Wordpress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/cloudflare/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Cloudflare </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Set HDD SSD as Boot Drive in Windows Ubuntu.webp?v=33-a7ecadd" alt="Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Nếu ổ cứng HDD/SSD của bạn đã lâu ngày và có dấu hiệu chậm, bad sector, hoặc lỗi ghi, việc làm sạch hoàn toàn (low level format hoặc hard reset) là bước chuẩn nhất trước khi chia lại phân vùng cho mục đích cứu hộ. Dưới đây là hướng dẫn chi tiết và cách làm an toàn để tái sinh ổ HDD/SSD cũ tạo bootable mục đích cứu hộ với Ventoy Tool.</p>  <div class="flex justify-end my-4"> <a href="/blog/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Hệ Thống </span> </a> </li><li> <a class="sanchez" href="/blog/tags/usb bootable/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> USB Bootable </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=33-a7ecadd" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/send 2gb file in telegram.webp?v=33-a7ecadd" alt="Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Có thể dùng Telegram làm backup tạm thời hoặc phụ trợ, nhưng không nên xem nó như một giải pháp backup chính hay lâu dài. Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn &lt;2GB hoặc &lt;4GB nếu có Premium). Nhưng Telegram có thể thay đổi chính sách bất kỳ lúc nào.</p>  <div class="flex justify-end my-4"> <a href="/blog/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #fb7185;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> Hệ Thống </span> </a> </li><li> <a class="sanchez" href="/blog/tags/backup sites/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> Backup Sites </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Rclone Tutorial Install on Windows and Connect.webp?v=33-a7ecadd" alt="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa.</p>  <div class="flex justify-end my-4"> <a href="/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f87171;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/rclone/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> rclone </span> </a> </li><li> <a class="sanchez" href="/blog/tags/google drive/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Google Drive </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #818cf8;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>

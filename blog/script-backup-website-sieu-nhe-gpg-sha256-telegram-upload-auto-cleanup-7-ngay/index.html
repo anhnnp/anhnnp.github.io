@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_334613784222', sans-serif; } @font-face { font-family: '_font_fallback_334613784222'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_93790536743', sans-serif; } @font-face { font-family: '_font_fallback_93790536743'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_527572647485', sans-serif; } @font-face { font-family: '_font_fallback_527572647485'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_1018026161771', serif; } @font-face { font-family: '_font_fallback_1018026161771'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_342914687234', serif; } @font-face { font-family: '_font_fallback_342914687234'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày"><meta name="description" content="Có thể dùng Telegram làm backup tạm thời hoặc phụ trợ, nhưng không nên xem nó như một giải pháp backup chính hay lâu dài. Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn <2GB hoặc <4GB nếu có Premium). Nhưng Telegram có thể thay đổi chính sách bất kỳ lúc nào."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay/"><meta property="og:title" content="Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày"><meta property="og:description" content="Có thể dùng Telegram làm backup tạm thời hoặc phụ trợ, nhưng không nên xem nó như một giải pháp backup chính hay lâu dài. Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn <2GB hoặc <4GB nếu có Premium). Nhưng Telegram có thể thay đổi chính sách bất kỳ lúc nào."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay/"><meta property="twitter:title" content="Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày"><meta property="twitter:description" content="Có thể dùng Telegram làm backup tạm thời hoặc phụ trợ, nhưng không nên xem nó như một giải pháp backup chính hay lâu dài. Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn <2GB hoặc <4GB nếu có Premium). Nhưng Telegram có thể thay đổi chính sách bất kỳ lúc nào."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay.png"><link rel="canonical" href="https://anhnnp.github.io/blog/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=33-a7ecadd"></script><link rel="stylesheet" href="/_astro/_slug_.Bw8pkbQe.css?v=33-a7ecadd">
+<style>.astro-code.github-dark code{color:#e1e4e8}.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)):before,.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)):after{display:none}.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)){border-radius:4px;background-color:#dadae1!important;vertical-align:-.05em;padding:3px 5px;font-size:.78em!important;margin:auto 3px;box-shadow:-2px -2px 1px #607d8b}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=33-a7ecadd">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#cài-đặt-và-cấu-hình-công-cụ-telegram-upload-az"> Cài đặt và cấu hình công cụ telegram-upload (A–Z) </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#bash-script-backup-lên-telegram"> Bash script backup lên Telegram </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#file-backup_to_telegramsh"> File: backup_to_telegram.sh </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#script-tự-xóa-backup-telegram-cũ-hơn-7-ngày"> Script tự xóa backup Telegram cũ hơn 7 ngày </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#file-cleanup_telegram_backupspy"> File: cleanup_telegram_backups.py </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#cron-gợi-ý"> Cron gợi ý </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#tóm-lại"> Tóm lại </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <p><strong>Telegram dùng để backup cá nhân: Được, nếu bạn chấp nhận rủi ro sau</strong></p>
+<p><strong>Ưu điểm</strong></p>
+<ul>
+<li>Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn <code>&#x3C;2GB</code> hoặc <code>&#x3C;4GB</code> nếu có Premium).</li>
+<li>Upload nhanh &#x26; ổn định, ít bị chặn.</li>
+<li>Tiện dụng, không cần cấu hình server.</li>
+<li>Hỗ trợ API + tool <a href="https://pypi.org/project/telegram-upload/">telegram-upload </a>→ tự động hóa backup khá đơn giản.</li>
+<li>File gửi vào Saved Messages hoặc nhóm private là private.</li>
+</ul>
+<p>Nếu bạn chỉ cần:</p>
+<ul>
+<li>Lưu snapshot nhỏ (ảnh, config, file mã hóa…),</li>
+<li>Backup phụ trợ ngoài các nền tảng chính → thì Telegram hoàn toàn dùng được.</li>
+</ul>
+<p>❌ Nhưng không nên dùng Telegram như cloud backup chính cho dữ liệu quan trọng</p>
+<p><strong>Lý do:</strong></p>
+<p><strong>1. Telegram không thiết kế như một dịch vụ lưu trữ lâu dài</strong></p>
+<p>Telegram có thể:</p>
+<ul>
+<li>Thay đổi chính sách bất kỳ lúc nào.</li>
+<li>Hạn chế dung lượng trong tương lai (vì không phải dịch vụ lưu trữ).</li>
+<li>Xóa file cũ theo cơ chế tối ưu hệ thống (không công bố).</li>
+</ul>
+<p><strong>2. Không có cam kết dữ liệu</strong></p>
+<p>Không có các yếu tố quan trọng của backup chuyên nghiệp:</p>
+<ul>
+<li>Không SLA</li>
+<li>Không versioning</li>
+<li>Không cơ chế chống mất dữ liệu</li>
+<li>Không xác minh file integrity</li>
+</ul>
+<p><strong>3. Quyền riêng tư phụ thuộc vào Telegram</strong></p>
+<p>Dù nhóm private, mọi thứ phụ thuộc vào:</p>
+<ul>
+<li>Tài khoản Telegram của bạn</li>
+<li>Bảo mật thiết bị</li>
+<li>Chính sách Telegram</li>
+</ul>
+<p>Nếu tài khoản bị hack — toàn bộ backup cũng mất.</p>
+<p><strong>4. Giới hạn dung lượng file</strong></p>
+<ul>
+<li>Free: <strong>2GB mỗi file</strong></li>
+<li>Premium: <strong>4GB mỗi file</strong>
+→ Khá hạn chế với các bản backup lớn (database, VM, image…).</li>
+</ul>
+<p><img src="/uploads/save%20message%20in%20telegram.webp?v=33-a7ecadd" alt=""></p>
+<h2 id="cài-đặt-và-cấu-hình-công-cụ-telegram-upload-az"><strong>Cài đặt và cấu hình công cụ <code>telegram-upload</code> (A–Z)</strong></h2>
+<p><code>telegram-upload</code> là một công cụ dòng lệnh (CLI) cho phép bạn tải file trực tiếp lên Telegram bằng chính tài khoản cá nhân của mình. Đây là công cụ cực nhẹ, rất phù hợp để tự động hóa quá trình sao lưu (backup) website WordPress lên Telegram.</p>
+<p>Dưới đây là hướng dẫn chi tiết từng bước để cài và cấu hình <code>telegram-upload</code> trên Linux server (Ubuntu/Debian), áp dụng tương tự cho các hệ thống Linux khác hoặc WSL.</p>
+<p><strong>1. Cài đặt Python &#x26; pip</strong></p>
+<p><code>telegram-upload</code> chạy trên Python 3, vì vậy bạn cần đảm bảo server có đủ Python và pip:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>sudo apt update</span></span>
+<span class="line"><span>sudo apt install -y python3 python3-pip</span></span></code></pre>
+<p>Kiểm tra phiên bản:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>python3 --version</span></span>
+<span class="line"><span>pip3 --version</span></span></code></pre>
+<p><strong>2. Cài đặt <code>telegram-upload</code></strong></p>
+<p>Bạn có thể cài theo hai cách, nhưng cách an toàn và phổ biến nhất là cài cho user hiện tại, tránh dùng <code>sudo</code>:</p>
+<p><strong>Cài đặt cho user (recommended)</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>pip3 install --user -U telegram-upload</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Thêm <code>~/.local/bin</code> vào PATH nếu chưa có:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc</span></span>
+<span class="line"><span>source ~/.bashrc</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Kiểm tra công cụ</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>telegram-upload --help</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Nếu hiện ra danh sách lệnh là bạn đã cài thành công.</p>
+<p><strong>Lấy <code>api_id</code> và <code>api_hash</code> từ Telegram</strong></p>
+<p><code>telegram-upload</code> yêu cầu bạn dùng chính tài khoản Telegram, không dùng bot.
+Bạn cần tạo App API trên Telegram theo hướng dẫn:</p>
+<ol>
+<li>Truy cập: <a href="https://my.telegram.org"><strong>https://my.telegram.org</strong></a></li>
+<li>Đăng nhập bằng số điện thoại Telegram</li>
+<li>Chọn <strong>API Development Tools</strong></li>
+<li>Nhập tên ứng dụng tùy thích (ví dụ: <em>BackupWP</em>)</li>
+<li>Sau khi tạo, bạn sẽ nhận được:
+<ul>
+<li><strong>App api_id</strong></li>
+<li><strong>App api_hash</strong></li>
+</ul>
+</li>
+</ol>
+<p>Hãy lưu lại hai thông tin này vì bạn sẽ nhập vào lần cấu hình đầu tiên.</p>
+<p><strong>Thiết lập session lần đầu</strong></p>
+<p>Đây là bước để Telegram cho phép server của bạn sử dụng API upload file.</p>
+<p>Chạy lệnh:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>telegram-upload --interactive</span></span></code></pre>
+<p>Công cụ sẽ yêu cầu:</p>
+<ol>
+<li>Nhập <strong>số điện thoại</strong> (định dạng quốc tế, ví dụ <code>+84901234567</code>)</li>
+<li>Nhập <strong>mã xác thực</strong> được gửi vào Telegram app</li>
+<li>Nhập <strong>mật khẩu 2FA</strong> (nếu tài khoản bạn dùng 2-step verification)</li>
+<li>Nhập <strong>api_id</strong> và <strong>api_hash</strong> đã lấy ở bước trước</li>
+</ol>
+<p>Sau khi hoàn tất, <code>telegram-upload</code> sẽ tạo file cấu hình tại:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>~/.config/telegram-upload.json  </span></span>
+<span class="line"><span>~/.config/telegram-upload.session</span></span></code></pre>
+<p><strong>Lưu ý bảo mật:</strong>
+Hai file này cho phép server của bạn đăng nhập Telegram.
+Hãy giới hạn quyền truy cập:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>chmod 600 ~/.config/telegram-upload.*</span></span></code></pre>
+<p><strong>Kiểm tra upload thử nghiệm</strong></p>
+<p>Tạo một file test:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>echo "hello telegram" > /tmp/test.txt</span></span></code></pre>
+<p>Upload vào Saved Messages:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>telegram-upload /tmp/test.txt</span></span></code></pre>
+<p>Upload vào nhóm riêng (nếu bạn có private group để chứa backup):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>telegram-upload --to "https://t.me/YOUR_PRIVATE_LINK" /tmp/test.txt</span></span></code></pre>
+<p>Upload và ghi lại file_id (dùng cho backup script):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>telegram-upload --to "https://t.me/YOUR_PRIVATE_LINK" \</span></span>
+<span class="line"><span>                --print-file-id \</span></span>
+<span class="line"><span>                /tmp/test.txt</span></span></code></pre>
+<p>Nếu file xuất hiện trong Telegram → cài đặt thành công.</p>
+<h2 id="bash-script-backup-lên-telegram">Bash script backup lên Telegram</h2>
+<p>Giả sử mọi file backup đã <strong>nén + mã hóa GPG</strong> nằm trong thư mục:
+<code>/path/to/backup-local</code> với pattern kiểu:</p>
+<ul>
+<li><code>wp-2025-12-03-files.tar.gz.gpg</code></li>
+<li><code>wp-2025-12-03-db.sql.tar.gz.gpg</code></li>
+</ul>
+<h3 id="file-backup_to_telegramsh">File: <code>backup_to_telegram.sh</code></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>#!/usr/bin/env bash</span></span>
+<span class="line"><span>set -euo pipefail</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#######################</span></span>
+<span class="line"><span># CONFIG</span></span>
+<span class="line"><span>#######################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Thư mục chứa file backup .gpg</span></span>
+<span class="line"><span>BACKUP_DIR="/path/to/backup-local"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Log những file đã gửi lên Telegram:</span></span>
+<span class="line"><span># format: filename&#x3C;TAB>sha256&#x3C;TAB>file_id&#x3C;TAB>uploaded_at</span></span>
+<span class="line"><span>SENT_LOG="$BACKUP_DIR/sent_log.tsv"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Log hoạt động script</span></span>
+<span class="line"><span>LOG_FILE="$BACKUP_DIR/telegram_backup.log"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Chat/group backup trên Telegram</span></span>
+<span class="line"><span># Có thể dùng private link, username, hoặc "me"</span></span>
+<span class="line"><span>TELEGRAM_TO="https://t.me/YOUR_PRIMARY_LINK"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Đường dẫn binary telegram-upload</span></span>
+<span class="line"><span>TELEGRAM_BIN="$HOME/.local/bin/telegram-upload"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Giữ backup local tối đa bao nhiêu ngày</span></span>
+<span class="line"><span>KEEP_DAYS=7</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#######################</span></span>
+<span class="line"><span># FUNCTIONS</span></span>
+<span class="line"><span>#######################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>log() {</span></span>
+<span class="line"><span>  # log ra stderr + file log</span></span>
+<span class="line"><span>  local msg="$*"</span></span>
+<span class="line"><span>  echo "$(date '+%Y-%m-%d %H:%M:%S') [telegram-backup] $msg" | tee -a "$LOG_FILE" >&#x26;2</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ensure_tools() {</span></span>
+<span class="line"><span>  if ! command -v sha256sum >/dev/null 2>&#x26;1; then</span></span>
+<span class="line"><span>    echo "Missing sha256sum. Install coreutils (Linux) trước." >&#x26;2</span></span>
+<span class="line"><span>    exit 1</span></span>
+<span class="line"><span>  fi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  if ! [ -x "$TELEGRAM_BIN" ]; then</span></span>
+<span class="line"><span>    echo "telegram-upload not found at $TELEGRAM_BIN" >&#x26;2</span></span>
+<span class="line"><span>    echo "Install: sudo pip3 install -U telegram-upload" >&#x26;2</span></span>
+<span class="line"><span>    exit 1</span></span>
+<span class="line"><span>  fi</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>init_files() {</span></span>
+<span class="line"><span>  mkdir -p "$BACKUP_DIR"</span></span>
+<span class="line"><span>  touch "$SENT_LOG" "$LOG_FILE"</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>rotate_local_backups() {</span></span>
+<span class="line"><span>  # Xóa file .gpg local quá KEEP_DAYS ngày</span></span>
+<span class="line"><span>  # chỉ xóa file, không đụng sent_log / log</span></span>
+<span class="line"><span>  find "$BACKUP_DIR" -maxdepth 1 -type f -name '*.gpg' -mtime +"$KEEP_DAYS" -print -delete \</span></span>
+<span class="line"><span>    | sed 's/^/Deleting old local backup: /' \</span></span>
+<span class="line"><span>    | tee -a "$LOG_FILE" >&#x26;2 || true</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>already_sent() {</span></span>
+<span class="line"><span>  local file_name="$1"</span></span>
+<span class="line"><span>  local sha256="$2"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # Kiểm tra xem đã có dòng filename + sha256 trong log chưa</span></span>
+<span class="line"><span>  grep -Fq "$file_name"$'\t'"$sha256" "$SENT_LOG"</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>upload_file_to_telegram() {</span></span>
+<span class="line"><span>  local file="$1"</span></span>
+<span class="line"><span>  local file_name</span></span>
+<span class="line"><span>  file_name="$(basename "$file")"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # 1. Hash SHA256 để đảm bảo file đọc được và log lại</span></span>
+<span class="line"><span>  log "Calculating sha256 for $file_name ..."</span></span>
+<span class="line"><span>  local sha256</span></span>
+<span class="line"><span>  sha256="$(sha256sum "$file" | awk '{print $1}')"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  if already_sent "$file_name" "$sha256"; then</span></span>
+<span class="line"><span>    log "Skip (already uploaded with same hash): $file_name"</span></span>
+<span class="line"><span>    return 0</span></span>
+<span class="line"><span>  fi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # Caption có tag [WP-BACKUP] + filename + hash để sau này restore dễ</span></span>
+<span class="line"><span>  # Dùng $'' để cho phép xuống dòng \n trong Bash</span></span>
+<span class="line"><span>  local caption</span></span>
+<span class="line"><span>  caption=$'[WP-BACKUP] '"$file_name"$'\nsha256: '"$sha256"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  log "Uploading $file_name to Telegram chat: $TELEGRAM_TO"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # 2. Upload + lấy file_id (dòng cuối cùng từ stdout)</span></span>
+<span class="line"><span>  local output</span></span>
+<span class="line"><span>  if ! output="$("$TELEGRAM_BIN" \</span></span>
+<span class="line"><span>        --to "$TELEGRAM_TO" \</span></span>
+<span class="line"><span>        --print-file-id \</span></span>
+<span class="line"><span>        --caption "$caption" \</span></span>
+<span class="line"><span>        "$file" 2>&#x26;1)"; then</span></span>
+<span class="line"><span>    log "ERROR while uploading $file_name"</span></span>
+<span class="line"><span>    log "telegram-upload output:"</span></span>
+<span class="line"><span>    log "$output"</span></span>
+<span class="line"><span>    return 1</span></span>
+<span class="line"><span>  fi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # Thường output chỉ là file_id, nhưng để chắc ăn ta lấy dòng cuối cùng</span></span>
+<span class="line"><span>  local file_id</span></span>
+<span class="line"><span>  file_id="$(printf '%s\n' "$output" | tail -n1 | tr -d '\r')"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  log "Upload OK: $file_name (file_id: $file_id)"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  # 3. Ghi log đã gửi thành công (coi như “verified” ở mức transport)</span></span>
+<span class="line"><span>  printf '%s\t%s\t%s\t%s\n' \</span></span>
+<span class="line"><span>    "$file_name" \</span></span>
+<span class="line"><span>    "$sha256" \</span></span>
+<span class="line"><span>    "$file_id" \</span></span>
+<span class="line"><span>    "$(date --iso-8601=seconds)" >>"$SENT_LOG"</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#######################</span></span>
+<span class="line"><span># MAIN</span></span>
+<span class="line"><span>#######################</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>ensure_tools</span></span>
+<span class="line"><span>init_files</span></span>
+<span class="line"><span>rotate_local_backups</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>shopt -s nullglob</span></span>
+<span class="line"><span>backup_files=("$BACKUP_DIR"/*.gpg)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if (( ${#backup_files[@]} == 0 )); then</span></span>
+<span class="line"><span>  log "No .gpg backup files found in $BACKUP_DIR. Nothing to upload."</span></span>
+<span class="line"><span>  exit 0</span></span>
+<span class="line"><span>fi</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>for file in "${backup_files[@]}"; do</span></span>
+<span class="line"><span>  upload_file_to_telegram "$file"</span></span>
+<span class="line"><span>done</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>log "Done sending backups to Telegram."</span></span></code></pre>
+<p><strong>Script này làm được gì?</strong></p>
+<ul>
+<li>✅ Hash check SHA256 trước khi gửi (<code>sha256sum</code>)</li>
+<li>✅ Tránh upload trùng: chỉ upload nếu <code>(filename, sha256)</code> chưa có trong <code>sent_log.tsv</code></li>
+<li>✅ Xác nhận upload thành công:
+<ul>
+<li>nếu <code>telegram-upload</code> lỗi → script log lỗi &#x26; exit code ≠ 0</li>
+<li>nếu ok → log <code>file_id</code> Telegram + timestamp</li>
+</ul>
+</li>
+<li>✅ Xoá backup local quá 7 ngày (có thể tắt nếu bạn không muốn)</li>
+</ul>
+<p><strong>Verify ở mức sâu hơn thì làm sao?</strong></p>
+<p><code>telegram-upload</code> không có <code>--verify</code>, nên không có cơ chế built in tải xuống lại để so sánh hash.
+Cách “best practice” mình gợi ý:</p>
+<ul>
+<li>Caption đã ghi sẵn <code>sha256:&#x3C;hash></code></li>
+<li>Khi bạn cần test restore định kỳ (ví dụ 1 tuần 1 lần):
+<ol>
+<li>Download 1 file backup từ Telegram về</li>
+<li>Chạy <code>sha256sum</code> file đã tải</li>
+<li>So sánh với hash trong caption</li>
+</ol>
+</li>
+</ul>
+<p>Đó là cách kiểm chứng end to end (Telegram thật sự giữ đúng bits).</p>
+<p>Nếu bạn muốn auto verify (tải xuống lại ngay sau upload để so sánh hash) thì cũng làm được nhưng rất tốn băng thông, mình không khuyến khích cho use case backup phụ.</p>
+<h2 id="script-tự-xóa-backup-telegram-cũ-hơn-7-ngày">Script tự xóa backup Telegram cũ hơn 7 ngày</h2>
+<p>Phần này <code>telegram-upload</code> CLI không hỗ trợ, nên phải dùng <a href="https://pypi.org/project/Telethon/">Telethon</a> (Python) để gọi thẳng Telegram API.</p>
+<p><strong>Ý tưởng:</strong></p>
+<ul>
+<li>Tạo 1 private group (ví dụ: <code>WP Backup</code>)</li>
+<li>Tất cả backup gửi vào group này với caption prefix: <code>[WP-BACKUP]</code></li>
+<li>Python script:
+<ul>
+<li>duyệt tin nhắn trong group</li>
+<li>nếu tin do chính bạn gửi (<code>msg.out == True</code>)</li>
+<li>và caption bắt đầu bằng <code>[WP-BACKUP]</code></li>
+<li>và <code>msg.date</code> &#x3C; now - 7 days → delete</li>
+</ul>
+</li>
+</ul>
+<p><strong>Cài đặt Telethon</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>pip install telethon</span></span></code></pre>
+<h3 id="file-cleanup_telegram_backupspy">File: <code>cleanup_telegram_backups.py</code></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>#!/usr/bin/env python3</span></span>
+<span class="line"><span>import os</span></span>
+<span class="line"><span>from datetime import datetime, timedelta, timezone</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>from telethon import TelegramClient</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># --- CONFIG từ biến môi trường ---</span></span>
+<span class="line"><span>API_ID = int(os.environ["TG_API_ID"])          # my.telegram.org</span></span>
+<span class="line"><span>API_HASH = os.environ["TG_API_HASH"]           # my.telegram.org</span></span>
+<span class="line"><span>SESSION = os.environ.get("TG_SESSION", "telegram-upload")</span></span>
+<span class="line"><span>TARGET_CHAT = os.environ["TG_BACKUP_CHAT"]     # vd: "https://t.me/your_private_link" hoặc "@yourgroup"</span></span>
+<span class="line"><span>MAX_AGE_DAYS = int(os.environ.get("TG_MAX_AGE_DAYS", "7"))</span></span>
+<span class="line"><span>TAG_PREFIX = os.environ.get("TG_BACKUP_TAG", "[WP-BACKUP]")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>async def main():</span></span>
+<span class="line"><span>    cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)</span></span>
+<span class="line"><span>    deleted = 0</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    async with TelegramClient(SESSION, API_ID, API_HASH) as client:</span></span>
+<span class="line"><span>        async for msg in client.iter_messages(TARGET_CHAT):</span></span>
+<span class="line"><span>            # Bỏ qua message không có date hoặc text</span></span>
+<span class="line"><span>            if not msg or not msg.date or not msg.message:</span></span>
+<span class="line"><span>                continue</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            # Chỉ động vào message do chính tài khoản mình gửi + có tag backup</span></span>
+<span class="line"><span>            if not msg.out:</span></span>
+<span class="line"><span>                continue</span></span>
+<span class="line"><span>            if not msg.message.startswith(TAG_PREFIX):</span></span>
+<span class="line"><span>                continue</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>            if msg.date &#x3C; cutoff:</span></span>
+<span class="line"><span>                await msg.delete()</span></span>
+<span class="line"><span>                deleted += 1</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    print(f"Deleted {deleted} old backup messages (>{MAX_AGE_DAYS} days).")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>if __name__ == "__main__":</span></span>
+<span class="line"><span>    import asyncio</span></span>
+<span class="line"><span>    asyncio.run(main())</span></span>
+<span class="line"><span></span></span></code></pre>
+<p><strong>Chạy thử</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>export TG_API_ID=123456</span></span>
+<span class="line"><span>export TG_API_HASH="your_api_hash_here"</span></span>
+<span class="line"><span>export TG_BACKUP_CHAT="https://t.me/YOUR_PRIMARY_LINK"</span></span>
+<span class="line"><span>export TG_MAX_AGE_DAYS=7</span></span>
+<span class="line"><span>export TG_BACKUP_TAG="[WP-BACKUP]"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>python3 cleanup_telegram_backups.py</span></span>
+<span class="line"><span></span></span></code></pre>
+<p>Lần chạy đầu Telethon sẽ hỏi số điện thoại + code giống như khi setup <code>telegram-upload</code>.</p>
+<h2 id="cron-gợi-ý">Cron gợi ý</h2>
+<ul>
+<li>Gửi backup lên Telegram mỗi ngày 1 lần (ví dụ 02:10 sáng):</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>10 2 * * * /path/to/backup_to_telegram.sh >/dev/null 2>&#x26;1</span></span></code></pre>
+<ul>
+<li>Xóa backup Telegram quá 7 ngày mỗi ngày 1 lần (ví dụ 03:00 sáng):</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>0 3 * * * cd /path/to/script &#x26;&#x26; \</span></span>
+<span class="line"><span>  TG_API_ID=123456 TG_API_HASH="your_api_hash" \</span></span>
+<span class="line"><span>  TG_BACKUP_CHAT="https://t.me/YOUR_PRIMARY_LINK" \</span></span>
+<span class="line"><span>  TG_MAX_AGE_DAYS=7 TG_BACKUP_TAG="[WP-BACKUP]" \</span></span>
+<span class="line"><span>  /usr/bin/python3 cleanup_telegram_backups.py >>cleanup_tg.log 2>&#x26;1</span></span></code></pre>
+<ul>
+<li>Dùng 1 cron job, chạy backup xong là dọn luôn:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># Mỗi ngày 2:10 sáng:</span></span>
+<span class="line"><span>10 2 * * * /path/to/backup_to_telegram.sh &#x26;&#x26; \</span></span>
+<span class="line"><span>           TG_API_ID=123456 TG_API_HASH="your_api_hash" \</span></span>
+<span class="line"><span>           TG_BACKUP_CHAT="https://t.me/YOUR_PRIMARY_LINK" \</span></span>
+<span class="line"><span>           TG_MAX_AGE_DAYS=7 TG_BACKUP_TAG="[WP-BACKUP]" \</span></span>
+<span class="line"><span>           /usr/bin/python3 /path/to/cleanup_telegram_backups.py \</span></span>
+<span class="line"><span>           >>/path/to/cleanup_tg.log 2>&#x26;1</span></span></code></pre>
+<h2 id="tóm-lại">Tóm lại</h2>
+<p>Với combo:</p>
+<ul>
+<li><code>backup_to_telegram.sh</code></li>
+<li><code>cleanup_telegram_backups.py</code></li>
+</ul>
+<p>bạn đang có:</p>
+<ul>
+<li>File backup đã mã hóa + sha256 log riêng</li>
+<li>Caption trên Telegram có tag + hash → dễ kiểm tra / restore</li>
+<li>Ghi log <code>file_id</code> để truy dấu</li>
+<li>Dọn Telegram chat, luôn chỉ giữ 7 ngày backup gần nhất</li>
+<li>Có thể cắm thêm <code>rclone</code> để sync Google Drive trong cùng workflow.</li>
+</ul>
+<p>**Tham khảo thêm bài viết: **<a href="https://cybrkyd.com/post/backup-files-to-telegram/">https://cybrkyd.com/post/backup-files-to-telegram/</a></p>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <div class="px-10 py-6"> <div id="disqus_thread"></div> <script type="module">(function(){var t=document,e=t.createElement("script");e.src="https://anmitom.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)})();</script> <noscript>Enable JavaScript to view comments powered by Disqus.</noscript> </div> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #f472b6;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #818cf8;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=33-a7ecadd" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Tối ưu &amp; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &amp; AWS S3 + CloudFront</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Set Up a WordPress Website with SSL Using Amazon S3 Cloudflare.webp?v=33-a7ecadd" alt="Tối ưu &#38; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &#38; AWS S3 + CloudFront" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS. Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế: Cloudflare Free, VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2, WordPress + WooCommerce, AWS S3 + CloudFront làm CDN ảnh.</p>  <div class="flex justify-end my-4"> <a href="/blog/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #f472b6;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/aws services/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #60a5fa;"> AWS Services </span> </a> </li><li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Wordpress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/cloudflare/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #facc15;"> Cloudflare </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Set HDD SSD as Boot Drive in Windows Ubuntu.webp?v=33-a7ecadd" alt="Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Nếu ổ cứng HDD/SSD của bạn đã lâu ngày và có dấu hiệu chậm, bad sector, hoặc lỗi ghi, việc làm sạch hoàn toàn (low level format hoặc hard reset) là bước chuẩn nhất trước khi chia lại phân vùng cho mục đích cứu hộ. Dưới đây là hướng dẫn chi tiết và cách làm an toàn để tái sinh ổ HDD/SSD cũ tạo bootable mục đích cứu hộ với Ventoy Tool.</p>  <div class="flex justify-end my-4"> <a href="/blog/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a3e635;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Hệ Thống </span> </a> </li><li> <a class="sanchez" href="/blog/tags/usb bootable/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> USB Bootable </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=33-a7ecadd" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #e879f9;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/send 2gb file in telegram.webp?v=33-a7ecadd" alt="Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Có thể dùng Telegram làm backup tạm thời hoặc phụ trợ, nhưng không nên xem nó như một giải pháp backup chính hay lâu dài. Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn &lt;2GB hoặc &lt;4GB nếu có Premium). Nhưng Telegram có thể thay đổi chính sách bất kỳ lúc nào.</p>  <div class="flex justify-end my-4"> <a href="/blog/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Hệ Thống </span> </a> </li><li> <a class="sanchez" href="/blog/tags/backup sites/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #22d3ee;"> Backup Sites </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Rclone Tutorial Install on Windows and Connect.webp?v=33-a7ecadd" alt="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa.</p>  <div class="flex justify-end my-4"> <a href="/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/rclone/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #34d399;"> rclone </span> </a> </li><li> <a class="sanchez" href="/blog/tags/google drive/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #38bdf8;"> Google Drive </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>

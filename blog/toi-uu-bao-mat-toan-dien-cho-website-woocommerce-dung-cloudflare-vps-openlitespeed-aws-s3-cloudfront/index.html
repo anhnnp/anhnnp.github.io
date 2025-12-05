@@ -1,0 +1,1369 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><link as="font" crossorigin rel="preload" href="/fonts/outfit.ttf" type="font/ttf"><style>@font-face {font-style: normal;font-family: Outfit;font-display: swap;src: url(/fonts/outfit.ttf)}</style><style>@font-face {font-style: normal;font-family: Poppins;font-display: swap;src: url(/fonts/poppins.ttf)}</style><style>@font-face {font-style: normal;font-family: Righteous;font-display: swap;src: url(/fonts/righteous.ttf)}</style><style>@font-face {font-style: normal;font-family: Sanchez;font-display: swap;src: url(/fonts/sanchez.ttf)}</style><style>@font-face {font-style: normal;font-family: DM Serif Text;font-display: swap;src: url(/fonts/dm-serif.ttf)}</style><style>.outfit { font-family: Outfit, '_font_fallback_1175483161857', sans-serif; } @font-face { font-family: '_font_fallback_1175483161857'; size-adjust: 100.06%; src: local('Arial'); ascent-override: 99.94%; descent-override: 25.98%; line-gap-override: 0.00%; }</style><style>.poppins { font-family: Poppins, '_font_fallback_267554880830', sans-serif; } @font-face { font-family: '_font_fallback_267554880830'; size-adjust: 113.11%; src: local('Arial'); ascent-override: 92.83%; descent-override: 30.94%; line-gap-override: 8.84%; }</style><style>.righteous { font-family: Righteous, '_font_fallback_1710921297547', sans-serif; } @font-face { font-family: '_font_fallback_1710921297547'; size-adjust: 106.09%; src: local('Arial'); ascent-override: 92.83%; descent-override: 24.21%; line-gap-override: 0.00%; }</style><style>.sanchez { font-family: Sanchez, '_font_fallback_640018411127', serif; } @font-face { font-family: '_font_fallback_640018411127'; size-adjust: 121.58%; src: local('Times New Roman'); ascent-override: 82.58%; descent-override: 22.54%; line-gap-override: 0.00%; }</style><style>.dm-serif { font-family: DM Serif Text, '_font_fallback_249424692292', serif; } @font-face { font-family: '_font_fallback_249424692292'; size-adjust: 110.07%; src: local('Times New Roman'); ascent-override: 94.12%; descent-override: 30.44%; line-gap-override: 0.00%; }</style><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="Astro v5.15.2"><link rel="alternate" href="https://anhnnp.github.io/blog.xml" type="application/rss+xml"><meta name="title" content="MITOM Blog | Tối ưu &#38; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &#38; AWS S3 + CloudFront"><meta name="description" content="Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS. Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế: Cloudflare Free, VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2, WordPress + WooCommerce, AWS S3 + CloudFront làm CDN ảnh."><meta property="og:type" content="website"><meta property="og:url" content="https://anhnnp.github.io/blog/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront/"><meta property="og:title" content="Tối ưu &#38; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &#38; AWS S3 + CloudFront"><meta property="og:description" content="Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS. Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế: Cloudflare Free, VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2, WordPress + WooCommerce, AWS S3 + CloudFront làm CDN ảnh."><meta property="og:image" content="https://anhnnp.github.io/v1/generate/og/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://anhnnp.github.io/blog/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront/"><meta property="twitter:title" content="Tối ưu &#38; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &#38; AWS S3 + CloudFront"><meta property="twitter:description" content="Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS. Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế: Cloudflare Free, VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2, WordPress + WooCommerce, AWS S3 + CloudFront làm CDN ảnh."><meta property="twitter:image" content="https://anhnnp.github.io/v1/generate/og/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront.png"><link rel="canonical" href="https://anhnnp.github.io/blog/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront/"><link rel="icon" type="image/svg" href="/favicon.svg"><title>Ký sự MITOM | Tối ưu &amp; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &amp; AWS S3 + CloudFront</title><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.elfUsALL.js?v=33-a7ecadd"></script><link rel="stylesheet" href="/_astro/_slug_.Bw8pkbQe.css?v=33-a7ecadd">
+<style>.astro-code.github-dark code{color:#e1e4e8}.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)):before,.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)):after{display:none}.md\:prose :where(:not(pre)>code):not(:where(.not-prose,.not-prose *)){border-radius:4px;background-color:#dadae1!important;vertical-align:-.05em;padding:3px 5px;font-size:.78em!important;margin:auto 3px;box-shadow:-2px -2px 1px #607d8b}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.DvHFXNgD.css?v=33-a7ecadd">
+<style>a[data-astro-cid-p7xutspj].brutal-btn{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:#fff;display:inline-block;padding:.5rem 1rem;border:2px solid black;transition:all;transition-duration:.5s;animation:ease-in-out;font-family:Sanchez,serif}a[data-astro-cid-p7xutspj].brutal-btn:hover{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));background-color:var(--color)}div[data-astro-cid-hnv2b5w7].brutal-card{background-color:var(--color);border-radius:.5rem;border:3px solid black;filter:drop-shadow(7px 7px 0 rgb(0 0 0 / 1));transition:all;padding:1rem;transition-duration:.5s;animation:ease-in-out}div[data-astro-cid-hnv2b5w7].brutal-card:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1))}span[data-astro-cid-4z4ikc6r].brutal-pill{filter:drop-shadow(3px 3px 0 rgb(0 0 0 / 1));user-select:none;background-color:#fff;border-radius:9999px;border:2px solid black;padding:.25rem .75rem;transition:all;transition-duration:.5s;animation:ease-in-out;font-size:small}span[data-astro-cid-4z4ikc6r].brutal-pill:hover{filter:drop-shadow(5px 5px 0 rgb(0 0 0 / 1));background-color:var(--color)}
+</style></head><body> <header class="border-b-4 border-black flex justify-between p-6 items-center">  <a href="/" title="Quay về trang chủ"> <p class="righteous md:text-5xl">MITOM</p> </a> <nav class="hidden md:inline-block"> <h2 class="hidden">Navigation</h2> <ul class="flex gap-8 poppins"> <li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/" title="Go to Trang chủ"> Trang chủ </a> </li><li> <a class="text-lg font-medium hover:text-green hover:underline transition-all duration-150 ease-in-out" href="/blog/" title="Go to Bài viết"> Bài viết </a> </li> <li> <a href="https://github.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on GitHub"> <div class="i-uil-github w-6 h-6"></div> </a> </li><li> <a href="https://www.twitter.com/anhnnp" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on Twitter"> <div class="i-uil-twitter w-6 h-6"></div> </a> </li><li> <a href="/feed.xml" class="hover:text-green hover:underline transition-all duration-150 ease-in-out" target="_blank" title="'See @ElianCodes on RSS"> <div class="i-uil-rss w-6 h-6"></div> </a> </li> </ul> </nav> <nav class="md:hidden flex"> <h2 class="hidden">Mobile Navigation</h2> <ul> <li><a href="/blog/">Blog</a></li> </ul> </nav> </header>  <main class="p-6 lg:grid lg:grid-cols-3 flex justify-center"> <aside> <nav class="hidden lg:block sticky top-6"> <ul> <li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phần-1--cấu-hình-cloudflare-bảo-mật--tối-ưu"> 🟦 PHẦN 1 – Cấu hình Cloudflare (bảo mật + tối ưu) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#11-bật-các-tính-năng-tốc-độ"> 1.1. Bật các tính năng tốc độ </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#12-waf-firewall-rules--block-bot-crawl-ddos"> 1.2. WAF Firewall Rules – block bot, crawl, DDoS </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-rule-1--challenge-toàn-bộ-châu-á--phi"> 🔹 Rule 1 – Challenge toàn bộ châu Á – Phi </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-rule-2--block-user-agent-bot--datacenter-bot"> 🔹 Rule 2 – Block User-Agent bot &amp; Datacenter Bot </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-rule-3--block-xmlrpc-hoặc-các-path-url-khác"> 🔹 Rule 3 – Block XMLRPC hoặc các path url khác </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-rule-4--rate-limit-brute-force-login"> 🔹 Rule 4 – Rate limit brute force login </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#13-cache-rules-cloudflare--tối-ưu-tốc-độ"> 1.3. Cache Rules Cloudflare – tối ưu tốc độ </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#caching-configuration-tab"> Caching configuration tab </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-rule-1--cache-fonts-1-year"> 🔹 Rule 1 – Cache Fonts 1 Year </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-rule-2--cache-wp-content-1-month"> 🔹 Rule 2 – Cache wp-content 1 Month </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phần-2--tối-ưu-vps--openlitespeed--wordpress"> 🟦 PHẦN 2 – Tối ưu VPS / OpenLiteSpeed / Wordpress </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#21-hardening-wordpress-cấp-ứng-dụng"> 2.1. Hardening WordPress (cấp ứng dụng) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-1---tắt-file-editing-trong-wp-admin"> 🔹 STEP 1 - Tắt file editing trong wp-admin </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-2---chặn-xml-rpc-từ-wordpress"> 🔹 STEP 2 - Chặn XML-RPC từ WordPress </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-3---chặn-thực-thi-php-trong-wp-contentuploads"> 🔹 STEP 3 - Chặn thực thi PHP trong wp-content/uploads </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-4---ẩn-version-wordpress--header-nhạy-cảm"> 🔹 STEP 4 - Ẩn version WordPress + header nhạy cảm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-5---plugin-security-nhẹ--không-nặng-server"> 🔹 STEP 5 - Plugin security nhẹ – không nặng server </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-6---tối-ưu-litespeed-cache-lscwp"> 🔹 STEP 6 - Tối ưu LiteSpeed Cache (LSCWP) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#22-hardening-vps--hosting"> 2.2. Hardening VPS / Hosting </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-1--ssh-security-nếu-bạn-có-quyền-root"> 🔹 STEP 1 – SSH Security (nếu bạn có quyền root) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-2--wordpress-htaccess-security"> 🔹 STEP 2 – WordPress .htaccess security </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-3--quyền-file--folder"> 🔹 STEP 3 – Quyền file &amp; folder </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-4--tối-ưu-php-fpm--opcache"> 🔹 STEP 4 – Tối ưu PHP-FPM &amp; OPcache </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-4--tối-ưu-mariadb-cho-woocommerce"> 🔹 STEP 4 – Tối ưu MariaDB cho WooCommerce </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-5--object-cache-redis-cho-woocommerce"> 🔹 STEP 5 – Object Cache (Redis) cho WooCommerce </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-7--bảo-vệ-woocommerce--tối-ưu-thêm"> 🔹 STEP 7 – Bảo vệ WooCommerce &amp; tối ưu thêm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-8--backup--monitoring"> 🔹 STEP 8 – Backup &amp; Monitoring </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#checklist-hoàn-hảo-cho-phần-này"> Checklist hoàn hảo cho phần này </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-phần-3--aws-s3--cloudfront-cdn-ảnh"> 🟦 PHẦN 3 – AWS S3 + CloudFront (CDN ảnh) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#31-cloudfront--cấu-hình-viewer--cache-cho-ảnh"> 3.1. CloudFront – Cấu hình viewer &amp; cache cho ảnh </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#32-s3-bucket---khóa-chặt-bucket--giảm-rủi-ro"> 3.2. S3 Bucket - Khóa chặt bucket &amp; giảm rủi ro </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#33-hotlink-protection-optional"> 3.3. Hotlink protection (optional) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-1--tạo-cloudfront-function-mới"> 🔹 STEP 1 – Tạo CloudFront Function mới </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-2--dán-code-safe-mode-vào-function"> 🔹 STEP 2 – Dán code Safe Mode vào function </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-3--publish-function"> 🔹 STEP 3 – Publish function </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-4--gắn-function-vào-behavior"> 🔹 STEP 4 – Gắn function vào Behavior </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#-step-5--kiểm-tra-nhanh"> 🔹 STEP 5 – Kiểm tra nhanh </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#4-lifecycle-s3-nếu-muốn-tiết-kiệm-storage"> 4. Lifecycle S3 (nếu muốn tiết kiệm storage) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#41-hiểu-đúng-bài-toán-tiền-bạc-một-chút"> 4.1. Hiểu đúng bài toán tiền bạc một chút </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#42-lifecycle-có-lợi-nhất-khi-nào"> 4.2. Lifecycle có lợi nhất khi nào? </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#43-triển-khai-mục-tiêu-cách-làm"> 4.3. Triển khai mục tiêu cách làm </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#standard-ia"> Standard-IA </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#glacier-instant-retrieval"> Glacier Instant Retrieval </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#tránh-nhầm-với-glacier-không-instant-flexible--deep-archive"> Tránh nhầm với Glacier không Instant (Flexible / Deep Archive) </a> </li><li class="py-1"> <span class="inline-block w-4"></span><span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#44-hướng-dẫn-chi-tiết-tạo-lifecycle-rule"> 4.4. Hướng dẫn chi tiết tạo Lifecycle Rule </a> </li><li class="py-1"> <span class="inline-block w-4"></span> <a class="hover:text-stone transition-all duration-150 ease-in-out text-dark poppins" href="#kết-luận"> KẾT LUẬN </a> </li> </ul> </nav> </aside> <article class="prose-slate w-sm md:w-prose md:prose poppins"> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> <p class="text-slate text-sm md:text-base" data-date="{pubDate}">
+Nội dung được biên soạn lại từ Anh Nguyen - kèm nguồn bài viết (nếu có)
+</p>   <p>Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS.</p>
+<p><img src="/uploads/How%20to%20Offload%20WordPress%20Media%20Files%20to%20Amazon%20S3.webp?v=33-a7ecadd" alt=""></p>
+<p>Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế:</p>
+<ul>
+<li>Cloudflare Free</li>
+<li>VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2</li>
+<li>WordPress + WooCommerce + Theme Flatsome</li>
+<li>AWS S3 + CloudFront làm CDN ảnh</li>
+</ul>
+<p>Đây là chuẩn SOP giúp bạn đạt tốc độ tối đa cho khách US/UK/CA/AUS/DE và giảm 70–90% bot traffic gây tốn tài nguyên.</p>
+<h2 id="-phần-1--cấu-hình-cloudflare-bảo-mật--tối-ưu">🟦 <strong>PHẦN 1 – Cấu hình Cloudflare (bảo mật + tối ưu)</strong></h2>
+<h3 id="11-bật-các-tính-năng-tốc-độ">1.1. <strong>Bật các tính năng tốc độ</strong></h3>
+<p>Chọn <strong>Domain</strong> > Vào mục <strong>Speed</strong> > <strong>Settings</strong></p>
+<ul>
+<li><strong>Early Hints</strong> → ON</li>
+<li><strong>HTTP/2</strong> → ON</li>
+<li><strong>HTTP/3</strong> → ON</li>
+<li><strong>HTTP/2 to Origin</strong> → ON</li>
+<li><strong>Always use HTTPS</strong> → ON</li>
+<li><strong>Crawler Hints</strong> → ON</li>
+</ul>
+<p><img src="/uploads/20251205-114125.png?v=33-a7ecadd" alt=""></p>
+<p><strong>1. HTTP/2</strong></p>
+<p>HTTP/2 là phiên bản mới của giao thức HTTP, giúp trình duyệt và Cloudflare truyền dữ liệu hiệu quả hơn so với HTTP/1.1.</p>
+<p><strong>Tác dụng chính:</strong></p>
+<ul>
+<li><strong>Tải nhanh hơn</strong>:
+<ul>
+<li>Hỗ trợ <em>multiplexing</em>: nhiều file (CSS, JS, ảnh…) được gửi cùng lúc trên một kết nối, không phải “xếp hàng” từng file.</li>
+<li>Giảm số lượng kết nối TCP phải mở.</li>
+</ul>
+</li>
+<li><strong>Giảm độ trễ (latency)</strong>: tối ưu cho mạng xa như user ở US, EU truy cập server Việt Nam hoặc ngược lại.</li>
+<li><strong>Không phải chỉnh code</strong>: chỉ cần bật trong Cloudflare, site tự hưởng lợi.</li>
+</ul>
+<p><strong>Ảnh hưởng SEO &#x26; UX:</strong></p>
+<ul>
+<li>Page load nhanh hơn → Core Web Vitals tốt hơn → hỗ trợ SEO.</li>
+<li>Trải nghiệm người dùng mượt hơn, nhất là trên mobile và 3G/4G.</li>
+</ul>
+<p><strong>2. HTTP/3</strong></p>
+<p>HTTP/3 là thế hệ tiếp theo, chạy trên giao thức QUIC (dựa trên UDP) thay vì TCP. Nó được thiết kế để xử lý tốt hơn các kết nối không ổn định (wifi, mobile).</p>
+<p><strong>Tác dụng chính:</strong></p>
+<ul>
+<li><strong>Nhanh hơn trên mạng chập chờn</strong>: khi người dùng di chuyển, mất gói (packet loss), HTTP/3 giữ kết nối tốt hơn, giảm “đơ”.</li>
+<li><strong>Giảm thời gian bắt tay kết nối (handshake)</strong>: kết nối bảo mật được thiết lập nhanh hơn.</li>
+<li><strong>Tối ưu cho mobile-first</strong>: rất phù hợp với user ở các nước mạng không ổn định.</li>
+</ul>
+<p><strong>Ảnh hưởng SEO &#x26; UX:</strong></p>
+<ul>
+<li>Giúp <em>First Byte</em> và <em>Largest Contentful Paint (LCP)</em> nhanh hơn trong thực tế.</li>
+<li>Google Chrome, Edge, Firefox đều support nên bật là “free performance”.</li>
+</ul>
+<p><strong>3. HTTP/2 to Origin</strong></p>
+<p>Phần HTTP/2 ở trên là giữa trình duyệt ↔ Cloudflare.
+Còn HTTP/2 to Origin là giữa Cloudflare ↔ server gốc của bạn (origin server).</p>
+<p><strong>Tác dụng chính:</strong></p>
+<ul>
+<li>Tăng tốc đường nội bộ: khi Cloudflare phải request nội dung từ server (cache miss), nó dùng HTTP/2 để lấy data nhanh hơn.</li>
+<li>Giảm tải server: ít kết nối TCP hơn, server đỡ “ngộp” khi nhiều request.</li>
+<li>Tối ưu cho site nhiều file nhỏ (store, blog, nhiều ảnh, JS, CSS).</li>
+</ul>
+<p><strong>Lưu ý kỹ thuật:</strong></p>
+<ul>
+<li>Origin server cần support HTTP/2 (đa số hosting mới đều có).</li>
+<li>Nếu origin không hỗ trợ, Cloudflare sẽ fallback lại HTTP/1.1 – không lỗi, chỉ không tối ưu.</li>
+</ul>
+<p><strong>4. Always use HTTPS</strong></p>
+<p>Tự động redirect tất cả HTTP → HTTPS. Nếu người dùng hoặc bot truy cập <code>http://example.com</code>, Cloudflare sẽ chuyển sang <code>https://example.com</code>.</p>
+<p><strong>Tác dụng chính:</strong></p>
+<ul>
+<li>Đảm bảo toàn bộ traffic được mã hóa: chống nghe lén, chỉnh sửa nội dung giữa đường.</li>
+<li>Tránh content bị trộn HTTP/HTTPS: giảm lỗi “Not secure” trong trình duyệt.</li>
+<li>Chuẩn hoá URL: luôn một phiên bản HTTPS, tốt cho SEO &#x26; tránh duplicate.</li>
+</ul>
+<p><strong>Best practice:</strong></p>
+<ul>
+<li>Kết hợp với “Automatic HTTPS Rewrites” (nếu cần) để chuyển link nội bộ từ http → https.</li>
+<li>Ở server (ngang Nginx/Apache) vẫn nên cấu hình redirect HTTP→HTTPS, nhưng Cloudflare đã xử lý phần lớn.</li>
+</ul>
+<p><strong>5. TLS 1.3</strong></p>
+<p>TLS là giao thức bảo mật dùng cho HTTPS. TLS 1.3 là phiên bản mới nhất, nhanh hơn và an toàn hơn TLS 1.0/1.1/1.2.</p>
+<p><strong>Tác dụng chính:</strong></p>
+<ul>
+<li>Handshake nhanh hơn: giảm số round-trip khi trình duyệt thiết lập kết nối bảo mật → response nhanh hơn.</li>
+<li>Bảo mật cao hơn: bỏ nhiều thuật toán cũ yếu, chỉ dùng cipher mạnh.</li>
+<li>Future-proof: các trình duyệt mới ưu tiên TLS 1.3.</li>
+</ul>
+<p><strong>Ảnh hưởng thực tế:</strong></p>
+<ul>
+<li>Site vẫn hoạt động với client cũ (ví dụ chỉ hỗ trợ TLS 1.2), Cloudflare sẽ tự downgrade → không phải lo mất user.</li>
+<li>Đặc biệt hữu ích khi có nhiều request nhỏ (AJAX, API, font…).</li>
+</ul>
+<p><strong>6. Early Hints</strong></p>
+<p>Early Hints (HTTP status 103) cho phép Cloudflare gửi gợi ý sớm cho trình duyệt trước khi response chính từ server gốc sẵn sàng.</p>
+<p>Ví dụ:
+Server gốc mất ~500ms để generate HTML. Trong lúc chờ, Cloudflare gửi Early Hints nói:</p>
+<blockquote>
+<p>“Trình duyệt ơi, lát nữa tao sẽ cần file CSS/JS/Font này, mày cứ load trước đi.”</p>
+</blockquote>
+<p><strong>Tác dụng chính:</strong></p>
+<ul>
+<li>Giảm thời gian tải tài nguyên quan trọng (CSS, JS, fonts, critical images).</li>
+<li>Cải thiện Largest Contentful Paint (LCP) vì browser bắt đầu tải asset sớm hơn.</li>
+<li>Rất tốt cho site động (WordPress, Shopify app nặng, trang có nhiều logic).</li>
+</ul>
+<p><strong>Lưu ý:</strong></p>
+<ul>
+<li>Không cần sửa code, chỉ cần Cloudflare biết được các <code>link rel="preload"</code>, <code>rel="preconnect"</code>, v.v… trong HTML là nó có thể gửi Early Hints.</li>
+<li>Không gây lỗi nếu trình duyệt không hỗ trợ; browser cũ sẽ đơn giản bỏ qua.</li>
+</ul>
+<p><strong>Tóm tắt ngắn cho các phần đó như sau:</strong></p>
+<ul>
+<li><strong>HTTP/2</strong>: Nhiều file đi chung một đường → tải trang nhanh hơn.</li>
+<li><strong>HTTP/3</strong>: Tối ưu mạng chập chờn, mobile, wifi → giảm lag.</li>
+<li><strong>HTTP/2 to Origin</strong>: Tăng tốc đoạn Cloudflare ↔ server gốc → giảm tải server.</li>
+<li><strong>Always use HTTPS</strong>: Bắt buộc toàn site chạy HTTPS → an toàn &#x26; chuẩn SEO.</li>
+<li><strong>TLS 1.3</strong>: Phiên bản bảo mật HTTPS mới nhất → nhanh hơn, an toàn hơn.</li>
+<li><strong>Early Hints</strong>: Gửi “hint” tải CSS/JS/Font sớm → cải thiện LCP, site “feel” nhanh hơn.</li>
+</ul>
+<h3 id="12-waf-firewall-rules--block-bot-crawl-ddos">1.2. <strong>WAF Firewall Rules – block bot, crawl, DDoS</strong></h3>
+<p>Trước hết, Bật <strong>Bot Fight Mode</strong></p>
+<p><img src="/uploads/20251205-153224.png?v=33-a7ecadd" alt=""></p>
+<h4 id="-rule-1--challenge-toàn-bộ-châu-á--phi">🔹 Rule 1 – Challenge toàn bộ châu Á – Phi</h4>
+<p><strong>Rule Name:</strong> Challenge non America Europe traffic</p>
+<p>Vì site hướng US/UK/CA/AUS/DE nên ngoại trừ các khu vực này sẽ bị xác thực tránh bot scan.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>not (ip.geoip.continent in {"NA" "SA" "EU" "OC"})</span></span></code></pre>
+<p>→ <strong>Action:</strong> Managed Challenge</p>
+<p><img src="/uploads/20251205-153350.png?v=33-a7ecadd" alt=""></p>
+<h4 id="-rule-2--block-user-agent-bot--datacenter-bot">🔹 Rule 2 – Block User-Agent bot &#x26; Datacenter Bot</h4>
+<p><strong>Rule Name:</strong> Block Cloud &#x26; Scraper Bots (Combo)</p>
+<p>Request từ AWS, Azure, Alibaba, Tencent, Hetzner, OVH, DO, Vultr đều bị block.</p>
+<p>→ <strong>Action</strong>: Block</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>(not cf.client.bot)</span></span>
+<span class="line"><span>and</span></span>
+<span class="line"><span>(</span></span>
+<span class="line"><span>  ip.geoip.asnum in {16509 14618 45102 37963 132203 45090}</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "headlesschrome"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "puppeteer"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "selenium"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "phantomjs"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "playwright"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "python-requests"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "aiohttp"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "httpx"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "curl"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "wget"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "scrapy"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "java"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "go-http-client"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "okhttp"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "axios"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "node-fetch"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "httpclient"</span></span>
+<span class="line"><span>  or lower(http.request.headers["user-agent"][0]) contains "libwww"</span></span>
+<span class="line"><span>)</span></span></code></pre>
+<p><img src="/uploads/20251205-153518.png?v=33-a7ecadd" alt=""></p>
+<h4 id="-rule-3--block-xmlrpc-hoặc-các-path-url-khác">🔹 Rule 3 – Block XMLRPC hoặc các path url khác</h4>
+<p>(dù đã tắt từ WP và Server)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>http.request.uri.path eq "/xmlrpc.php"</span></span></code></pre>
+<p>→ <strong>Action</strong>: Block</p>
+<h4 id="-rule-4--rate-limit-brute-force-login">🔹 Rule 4 – Rate limit brute force login</h4>
+<p><strong>Rule Name:</strong> Rate Limiting prevent brute force URL login</p>
+<p>Phiên bản Cloudflare Free chỉ được 1 rule duy nhất, vậy hãy tổng hợp và tạo 1 rule này thôi.</p>
+<p><strong>Expression:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>(</span></span>
+<span class="line"><span>  http.request.uri.path eq "/wp-login.php"</span></span>
+<span class="line"><span>  or http.request.uri.path eq "/url-limit-request"</span></span>
+<span class="line"><span>)</span></span></code></pre>
+<p><strong>Rate limit:</strong></p>
+<ul>
+<li>5 request / 10s / IP</li>
+<li>Action: Managed Challenge</li>
+</ul>
+<p>✔ <strong>Không sử dụng rate limit cho /product /collection /uploads</strong> → Nếu tương lai bị scan và crawls nhiều hơn ta có thể tạo Rate Limiting như sau:</p>
+<ul>
+<li>1 rule cho toàn site (60 req/10s/IP → challenge)</li>
+<li>1 rule cho <code>/product/</code> + <code>/shop/</code> (20 req/10s/IP)</li>
+<li>1 rule cho <code>/wp-content/uploads/</code> (30 req/10s/IP)</li>
+</ul>
+<h3 id="13-cache-rules-cloudflare--tối-ưu-tốc-độ">1.3. <strong>Cache Rules Cloudflare – tối ưu tốc độ</strong></h3>
+<h4 id="caching-configuration-tab"><strong>Caching configuration tab</strong></h4>
+<ul>
+<li>Caching Level: <strong>Standard</strong> → Best practice</li>
+<li>Browser Cache TTL: <strong>4 hours</strong> → hợp lý (Google đánh giá tốt)</li>
+<li>Crawler Hints: <strong>ON</strong> → rất tốt</li>
+<li>Always Online: <strong>ON</strong> → an toàn</li>
+<li>Development mode: <strong>OFF</strong> → đúng</li>
+<li>CSAM OFF/ON không ảnh hưởng để nguyên</li>
+</ul>
+<p><img src="/uploads/20251205-155131.png?v=33-a7ecadd" alt=""></p>
+<h4 id="-rule-1--cache-fonts-1-year">🔹 Rule 1 – Cache Fonts 1 Year</h4>
+<p>Bạn đang match theo:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>http.request.uri.path contains "/wp-content/fonts/"</span></span>
+<span class="line"><span>or</span></span>
+<span class="line"><span>http.request.uri.path contains "/wp-content/themes/flatsome/assets/css/icons/"</span></span>
+<span class="line"><span>Edge TTL: 1 year</span></span>
+<span class="line"><span>Browser TTL: 1 year</span></span></code></pre>
+<p>→ Đây là path hẹp và chỉ dành cho font.</p>
+<h4 id="-rule-2--cache-wp-content-1-month">🔹 Rule 2 – Cache wp-content 1 Month</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>http.request.full_uri wildcard "*wp-content/*"</span></span>
+<span class="line"><span>Edge TTL: 1 month</span></span>
+<span class="line"><span>Browser TTL: 1 month</span></span></code></pre>
+<p>Vì rule Fonts nằm trước, font match rule 1 → không bao giờ bị rule 2 đè.</p>
+<p><img src="/uploads/20251205-223717.png?v=33-a7ecadd" alt=""></p>
+<p>Đây chính là Best Practice Cloudflare chuẩn dành cho:</p>
+<ul>
+<li>WooCommerce</li>
+<li>WordPress</li>
+<li>Các theme như Flatsome / Astra / GeneratePress</li>
+<li>Site phục vụ USA UK CA AUS</li>
+</ul>
+<p>Font (woff2 / woff / ttf / icon font) là resource:</p>
+<ul>
+<li>Gần như không thay đổi</li>
+<li>Cần cache cực lâu để tăng Core Web Vitals (FCP)</li>
+<li>Tải siêu nhẹ → cache lâu giúp tăng tốc rất nhiều</li>
+</ul>
+<p>Trong khi các file bên <code>/wp-content/</code> khác như:</p>
+<ul>
+<li>Ảnh sản phẩm</li>
+<li>Ảnh upload</li>
+<li>File CSS/JS của cache plugin</li>
+<li>Thumbnail WooCommerce</li>
+<li>File builder (UX Builder của Flatsome)</li>
+</ul>
+<p>→ Những thứ thay đổi thường xuyên → Cache 30 ngày là hợp lý.</p>
+<p>Nếu bạn muốn cấu hình cache theo độ ưu tiên thông minh hơn thì đây là chuẩn PRO:</p>
+<ul>
+<li><strong>Rule 1</strong> → Cache Fonts (365 days)</li>
+<li><strong>Rule 2</strong> → Cache wp-content theme assets (60–90 days)</li>
+<li><strong>Rule 3</strong> → Cache wp-content uploads (30 days)</li>
+<li><strong>Rule 4</strong> → Global caching (5 min – default)</li>
+</ul>
+<p>Nhưng với Cloudflare Free, bạn chỉ có 10 Cache Rules, và hiện tại setup của bạn là RẤT TỐT rồi.</p>
+<p><strong>Checklist lại tổng kết toàn bộ cloudflare bên trên như sau:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Hạng mục</th><th>Trạng thái của bạn</th><th>Đánh giá</th></tr></thead><tbody><tr><td>Block bad UA</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Geo Challenge ngoài NA/EU/OC</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Block Cloud ASN bots</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Challenge wp-login / xmlrpc</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Rate Limit brute force</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Cache Rule /fonts/</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Cache Rule /wp-content/</td><td>✔ OK</td><td>Perfect</td></tr><tr><td>Caching Level Standard</td><td>✔ OK</td><td>Best</td></tr><tr><td>Crawler Hints</td><td>✔ ON</td><td>Good</td></tr><tr><td>Always Online</td><td>✔ ON</td><td>Good</td></tr><tr><td>Brotli</td><td>⚠ Chưa thêm</td><td>Should Enable</td></tr><tr><td>Early Hints</td><td>⚠ Chưa thêm</td><td>Should Enable</td></tr><tr><td>Edge Cache TTL</td><td>⚠ Chưa thêm</td><td>Should Enable</td></tr></tbody></table>
+<h2 id="-phần-2--tối-ưu-vps--openlitespeed--wordpress">🟦 <strong>PHẦN 2 – Tối ưu VPS / OpenLiteSpeed / Wordpress</strong></h2>
+<h3 id="21-hardening-wordpress-cấp-ứng-dụng">2.1. Hardening WordPress (cấp ứng dụng)</h3>
+<p>Cơ bản ta sẽ thay đổi các cài đặt như dưới đây:</p>
+<ul>
+<li>DISALLOW_FILE_EDIT = true</li>
+<li>Disable XML-RPC</li>
+<li>Giới hạn Login (LSCache / Cloudflare / AIOWPS)</li>
+<li>Ẩn version WordPress</li>
+<li>Chặn User Enumeration</li>
+<li>Kiểm tra plugin/theme kém chất lượng</li>
+</ul>
+<h4 id="-step-1---tắt-file-editing-trong-wp-admin">🔹 STEP 1 - Tắt file editing trong wp-admin</h4>
+<p>Ngăn hacker sửa theme/plugin trong admin nếu bị vào được.</p>
+<p>Thêm vào cuối file <code>wp-config.php</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>define( 'DISALLOW_FILE_EDIT', true );</span></span>
+<span class="line"><span>define( 'DISALLOW_FILE_MODS', false ); // vẫn cho phép update plugin/core</span></span></code></pre>
+<h4 id="-step-2---chặn-xml-rpc-từ-wordpress">🔹 STEP 2 - Chặn XML-RPC từ WordPress</h4>
+<p>Bạn đã chặn bằng Cloudflare, nhưng tắt luôn từ server là tốt nhất.</p>
+<p><strong>Nếu dùng .htaccess (Apache/LiteSpeed):</strong></p>
+<p>Trong root WordPress (nơi có wp-config.php), thêm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>&#x3C;Files "xmlrpc.php"></span></span>
+<span class="line"><span>    Order Allow,Deny</span></span>
+<span class="line"><span>    Deny from all</span></span>
+<span class="line"><span>&#x3C;/Files></span></span></code></pre>
+<h4 id="-step-3---chặn-thực-thi-php-trong-wp-contentuploads">🔹 STEP 3 - Chặn thực thi PHP trong <code>wp-content/uploads</code></h4>
+<p>Đây là điểm rất thường bị hack (upload shell).</p>
+<p><strong>Apache/.htaccess (tạo file .htaccess trong thư mục <code>/wp-content/uploads/</code>):</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># Block PHP execution in uploads</span></span>
+<span class="line"><span>&#x3C;FilesMatch "\.php$"></span></span>
+<span class="line"><span>    &#x3C;IfModule mod_authz_core.c></span></span>
+<span class="line"><span>        Require all denied</span></span>
+<span class="line"><span>    &#x3C;/IfModule></span></span>
+<span class="line"><span>    &#x3C;IfModule !mod_authz_core.c></span></span>
+<span class="line"><span>        Order deny,allow</span></span>
+<span class="line"><span>        Deny from all</span></span>
+<span class="line"><span>    &#x3C;/IfModule></span></span>
+<span class="line"><span>&#x3C;/FilesMatch></span></span></code></pre>
+<h4 id="-step-4---ẩn-version-wordpress--header-nhạy-cảm">🔹 STEP 4 - Ẩn version WordPress + header nhạy cảm</h4>
+<p>Trong <code>functions.php</code> của child theme hoặc plugin riêng:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>remove_action('wp_head', 'wp_generator');</span></span></code></pre>
+<p>Nếu hosting hỗ trợ, bật các security header (bạn đã bật từ Cloudflare một phần rồi, nên ở đây chỉ cần tối thiểu).</p>
+<h4 id="-step-5---plugin-security-nhẹ--không-nặng-server">🔹 STEP 5 - Plugin security nhẹ – không nặng server</h4>
+<p>Nếu chưa có:</p>
+<ul>
+<li>Cài <strong>Wordfence Free</strong> hoặc <strong>All In One WP Security &#x26; Firewall</strong></li>
+<li>Bật:
+<ul>
+<li>Limit login attempts</li>
+<li>Rename login URL (bạn đã đổi rồi, nhưng plugin giúp quản lý dễ hơn)</li>
+<li>Spam comment protection nếu bạn bật comment</li>
+</ul>
+</li>
+</ul>
+<p>Lưu ý: hạn chế dùng quá nhiều plugin security nặng (ít thôi).</p>
+<p><strong>Cài plugin để dọn DB, dùng 1 trong 2:</strong></p>
+<ul>
+<li>WP-Optimize</li>
+<li>Advanced Database Cleaner</li>
+</ul>
+<p>Để làm các nhiệm vụ:</p>
+<ul>
+<li>Xóa revision post cũ</li>
+<li>Xóa auto-draft</li>
+<li>Xóa trash</li>
+<li>Xóa transients hết hạn</li>
+<li>Dọn bảng <code>wp_woocommerce_sessions</code> nếu phình to</li>
+</ul>
+<p>Chạy thủ công, đừng auto cron quá dày (1 lần/tuần là được).</p>
+<h4 id="-step-6---tối-ưu-litespeed-cache-lscwp">🔹 STEP 6 - Tối ưu LiteSpeed Cache (LSCWP)</h4>
+<p>Bạn đang dùng OpenLiteSpeed nên plugin LiteSpeed Cache (LSCWP) LÀ TỐT NHẤT (KHÔNG nên dùng WP Super Cache / Autoptimize / WP Rocket).</p>
+<p><strong>Cache Settings</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># General</span></span>
+<span class="line"><span>Enable Cache: ON</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Cache</span></span>
+<span class="line"><span>Cache Logged-in Users: OFF</span></span>
+<span class="line"><span>Cache Commenters: OFF</span></span>
+<span class="line"><span>Cache REST API: ON</span></span>
+<span class="line"><span>Cache Login page: OFF</span></span>
+<span class="line"><span>Cache Mobile: ON</span></span>
+<span class="line"><span>Cache WooCommerce: ON</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># TTL</span></span>
+<span class="line"><span>Default Public TTL: 604800 (7 days)</span></span>
+<span class="line"><span>Default Front Page TTL: 86400 (24 hours)</span></span>
+<span class="line"><span>WooCommerce Product TTL: 604800 (7 days)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Purge - Rất tốt khi server bận, user vẫn tải cache cũ.</span></span>
+<span class="line"><span>Purge all on upgrade: ON</span></span>
+<span class="line"><span>Serve Stale: ON</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># ESI (Edge Side Includes)</span></span>
+<span class="line"><span>Enable ESI: ON</span></span>
+<span class="line"><span>ESI Admin bar: ON</span></span>
+<span class="line"><span>ESI Cart: ON</span></span></code></pre>
+<p>ESI là thứ khiến WooCommerce chạy nhanh gấp 2–3 lần, vì giỏ hàng, wishlist được xử lý riêng.</p>
+<p><strong>Optimize (CSS/JS/HTML UGLIFY)</strong></p>
+<p>LSCWP → Page Optimization:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># CSS</span></span>
+<span class="line"><span>CSS Minify: ON</span></span>
+<span class="line"><span>CSS Combine: OFF (Flatsome siêu linh hoạt → không combine)</span></span>
+<span class="line"><span>CSS HTTP/2 Push: OFF (HTTP/3 không cần)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#JS</span></span>
+<span class="line"><span>JS Minify: ON</span></span>
+<span class="line"><span>JS Combine: OFF</span></span>
+<span class="line"><span>JS Defer: ON</span></span>
+<span class="line"><span>JS Deferred Excludes:</span></span>
+<span class="line"><span>	jquery.js</span></span>
+<span class="line"><span>	jquery.min.js</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># HTML</span></span>
+<span class="line"><span>Minify HTML: ON</span></span>
+<span class="line"><span>DNS Prefetch: your CDN AWS CloudFront domain (nếu dùng)</span></span>
+<span class="line"><span>Remove Comments: ON</span></span>
+<span class="line"><span>Remove Query Strings: ON</span></span></code></pre>
+<p><strong>Image Optimization</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Image Optimization → Optimize Automatically: ON</span></span>
+<span class="line"><span>WebP: ON</span></span>
+<span class="line"><span>WebP Replacement: ON</span></span>
+<span class="line"><span>Lazy Load Images: ON</span></span></code></pre>
+<p><strong>Excludes</strong> (để tránh lazy load logo, icon)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>logo.png</span></span>
+<span class="line"><span>.svg</span></span>
+<span class="line"><span>.webp</span></span></code></pre>
+<p><strong>Object Cache (Redis)</strong></p>
+<p>Trong LSCWP → Object Cache → bật:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Object Cache: Enable</span></span>
+<span class="line"><span>Method: Redis</span></span>
+<span class="line"><span>Host: 127.0.0.1</span></span>
+<span class="line"><span>Persistent Connection: ON</span></span>
+<span class="line"><span>Cache TTL: 3600</span></span></code></pre>
+<p>→ Redis giúp giảm truy vấn DB của WooCommerce 50–70%.</p>
+<p><strong>Khi dùng plugin LiteSpeed Cache (best, không cần plugin khác):</strong></p>
+<ul>
+<li>Tắt chức năng “HTML minify / CSS minify” nếu bạn đã để Cloudflare làm (để tránh xung đột).</li>
+<li>Đảm bảo DON’T bật “Full page cache for logged-in users” (WooCommerce cần phân trang cho giỏ hàng).</li>
+</ul>
+<h3 id="22-hardening-vps--hosting">2.2. Hardening VPS / Hosting</h3>
+<h4 id="-step-1--ssh-security-nếu-bạn-có-quyền-root">🔹 STEP 1 – SSH Security (nếu bạn có quyền root)</h4>
+<ul>
+<li>Đổi port SSH (ví dụ 22 → 2222)</li>
+<li>Tắt login bằng password, chỉ dùng SSH key</li>
+<li>Cài <strong>fail2ban</strong> để chặn brute-force SSH &#x26; HTTP (optional nhưng tốt)</li>
+</ul>
+<p>Nếu bạn SSH vào VPS:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>apt install fail2ban -y</span></span></code></pre>
+<p>Tạo file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>/etc/fail2ban/jail.local</span></span></code></pre>
+<p>Thêm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>[sshd]</span></span>
+<span class="line"><span>enabled = true</span></span>
+<span class="line"><span>maxretry = 5</span></span>
+<span class="line"><span>findtime = 10m</span></span>
+<span class="line"><span>bantime = 24h</span></span></code></pre>
+<p>→ Chặn IP brute-force SSH.</p>
+<h4 id="-step-2--wordpress-htaccess-security">🔹 STEP 2 – <strong>WordPress .htaccess security</strong></h4>
+<p><strong>Chặn PHP trong uploads</strong></p>
+<p>Tạo file:
+<code>/wp-content/uploads/.htaccess</code></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>&#x3C;FilesMatch "\.php$"></span></span>
+<span class="line"><span>  Require all denied</span></span>
+<span class="line"><span>&#x3C;/FilesMatch></span></span></code></pre>
+<p><strong>Tắt directory listing</strong></p>
+<p>Trong <code>.htaccess</code> gốc thêm:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Options -Indexes</span></span></code></pre>
+<h4 id="-step-3--quyền-file--folder">🔹 STEP 3 – Quyền file &#x26; folder</h4>
+<p>SSH vào root WP:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>find . -type d -exec chmod 755 {} \;</span></span>
+<span class="line"><span>find . -type f -exec chmod 644 {} \;</span></span>
+<span class="line"><span>chmod 600 wp-config.php</span></span></code></pre>
+<p>Giúp giảm nguy cơ bị đọc file config / chèn mã.</p>
+<h4 id="-step-4--tối-ưu-php-fpm--opcache">🔹 STEP 4 – Tối ưu PHP-FPM &#x26; OPcache</h4>
+<p><strong>OLS Panel → Server → Security</strong></p>
+<ul>
+<li>Enable Brute Force Protection: ON</li>
+<li>Dynamic Response: 404</li>
+<li>Soft Limit: 5</li>
+<li>Hard Limit: 10</li>
+</ul>
+<p><strong>Bật QUIC + HTTP/3 (nếu chưa bật)</strong></p>
+<p>Vào OpenLiteSpeed Panel → Listener → SSL → Protocols</p>
+<ul>
+<li>HTTP/2</li>
+<li>HTTP/3</li>
+<li>QUIC</li>
+</ul>
+<p>→ Đây là điểm boost tốc độ cực lớn cho user USA/UK/AUS.</p>
+<p><strong>Bật OPcache</strong></p>
+<p>Trong <code>php.ini</code> (hoặc <code>conf.d/opcache.ini</code>) đường dẫn như dưới:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>/usr/local/lsws/lsphp82/etc/php/8.2/litespeed/php.ini</span></span>
+<span class="line"><span>hoặc</span></span>
+<span class="line"><span>/etc/php/8.2/litespeed/php.ini</span></span></code></pre>
+<p>Thêm hoặc sửa:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>opcache.enable=1</span></span>
+<span class="line"><span>opcache.enable_cli=1</span></span>
+<span class="line"><span>opcache.memory_consumption=256</span></span>
+<span class="line"><span>opcache.interned_strings_buffer=32</span></span>
+<span class="line"><span>opcache.max_accelerated_files=20000</span></span>
+<span class="line"><span>opcache.revalidate_freq=60</span></span></code></pre>
+<ul>
+<li>Với WooCommerce, <code>opcache.memory_consumption=256</code> là tối ưu (2GB VPS + 8GB RAM).</li>
+<li>Flatsome + WooCommerce load nhiều file PHP.</li>
+</ul>
+<p><strong>PHP-FPM (lsphp) tuning</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>/usr/local/lsws/conf/httpd_config.conf</span></span></code></pre>
+<p><code>phpIniOverride</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>max_execution_time=300</span></span>
+<span class="line"><span>memory_limit=1024M</span></span>
+<span class="line"><span>post_max_size=64M</span></span>
+<span class="line"><span>upload_max_filesize=64M</span></span>
+<span class="line"><span>max_input_vars=5000</span></span></code></pre>
+<p>→ WooCommerce + Flatsome cần memory_limit lớn (>=512MB).
+→ VPS của bạn RAM 8GB, nên 1024M là hợp lý.</p>
+<p>Giả sử bạn dùng PHP-FPM pool <code>www.conf</code>:</p>
+<p>VPS: 2 CPU – 8GB RAM:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>pm = dynamic</span></span>
+<span class="line"><span>pm.max_children = 20       # thay 15 VPS 2GB RAM</span></span>
+<span class="line"><span>pm.start_servers = 4</span></span>
+<span class="line"><span>pm.min_spare_servers = 4</span></span>
+<span class="line"><span>pm.max_spare_servers = 10  # thay 8 VPS 2GB RAM</span></span>
+<span class="line"><span>pm.max_requests = 500      # thay 15 VPS 2GB RAM</span></span></code></pre>
+<p>VPS 4GB RAM có thể tăng <code>pm.max_children</code> lên 25–30.</p>
+<p>Mục tiêu: không để server swap, nhưng vẫn đủ worker xử lý traffic đỉnh.</p>
+<h4 id="-step-4--tối-ưu-mariadb-cho-woocommerce">🔹 STEP 4 – <strong>Tối ưu MariaDB cho WooCommerce</strong></h4>
+<p>Trong file <code>my.cnf</code> (hoặc <code>mysqld.cnf</code> hoặc  <code>/etc/mysql/mariadb.conf.d/50-server.cnf</code>):</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>innodb_buffer_pool_size=2G       # VPS 2GB → 512M, VPS 4GB → 1G</span></span>
+<span class="line"><span>innodb_log_file_size=256M</span></span>
+<span class="line"><span>innodb_log_buffer_size=64M</span></span>
+<span class="line"><span>innodb_flush_log_at_trx_commit=2</span></span>
+<span class="line"><span>innodb_flush_method=O_DIRECT</span></span>
+<span class="line"><span>max_connections=100              # VPS 2Gb  → 80</span></span>
+<span class="line"><span>tmp_table_size=128M              # VPS 2Gb  → 64M</span></span>
+<span class="line"><span>max_heap_table_size=128M         # VPS 2Gb  → 64M</span></span>
+<span class="line"><span>query_cache_type = 0</span></span>
+<span class="line"><span>query_cache_size = 0</span></span>
+<span class="line"><span>table_open_cache=4000</span></span>
+<span class="line"><span>thread_cache_size=64</span></span></code></pre>
+<ul>
+<li>RAM 8GB → <code>innodb_buffer_pool_size=2G</code> là optimal</li>
+<li><code>innodb_flush_log_at_trx_commit=2</code> giúp tăng tốc 40%</li>
+<li><code>table_open_cache=4000</code> cần thiết cho WooCommerce product table</li>
+</ul>
+<p>Restart MySQL/MariaDB sau khi chỉnh.</p>
+<h4 id="-step-5--object-cache-redis-cho-woocommerce">🔹 STEP 5 – Object Cache (Redis) cho WooCommerce</h4>
+<p>Nếu VPS/Hosting cho phép cài Redis → gợi ý:</p>
+<ol>
+<li>Cài Redis server:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>apt install redis-server -y</span></span></code></pre>
+<p>Chỉnh trong <code>/etc/redis/redis.conf</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>maxmemory 256mb         # tuỳ RAM</span></span>
+<span class="line"><span>maxmemory-policy allkeys-lru</span></span></code></pre>
+<ol start="2">
+<li>WordPress: cài plugin <strong>Redis Object Cache</strong> (by Till Krüss)</li>
+</ol>
+<ul>
+<li>Bật <code>Enable Object Cache</code></li>
+<li>Kiểm tra status “Connected”.</li>
+</ul>
+<p>Redis giúp giảm query DB → rất tốt cho WooCommerce khi có nhiều sản phẩm, nhiều phiên khách.</p>
+<h4 id="-step-7--bảo-vệ-woocommerce--tối-ưu-thêm">🔹 STEP 7 – Bảo vệ WooCommerce &#x26; tối ưu thêm</h4>
+<ol>
+<li>Tắt review, comment nếu không dùng
+→ giảm spam, giảm query.</li>
+<li>Giảm số sản phẩm trên mỗi trang / shop page
+→ 12–16 sản phẩm/trang là đẹp (thumbnail ít → nhẹ).</li>
+<li>Bật lazy-load image (qua plugin hoặc theme nếu Flatsome hỗ trợ).</li>
+<li>Giảm plugin không cần thiết
+Mỗi plugin = thêm PHP + query → ưu tiên gọn.</li>
+</ol>
+<p><strong>Tối ưu thêm Flatsome, bạn nên bật:</strong></p>
+<ul>
+<li>Flatsome → Advanced → Lazy Load Enabled</li>
+<li>Flatsome → Optimizations → Minify CSS/JS Off (đã để LSCWP lo)</li>
+<li>Flatsome → Performance → Smart Loading On</li>
+</ul>
+<h4 id="-step-8--backup--monitoring">🔹 STEP 8 – Backup &#x26; Monitoring</h4>
+<ol>
+<li>
+<p>Backup <a href="/blog/backup-tu-dong-toan-bo-wordpress-stores-len-s3-google-drive-full-guide-tu-hosting-trang-den-production/">(có bài hướng dẫn xem ở đây)</a></p>
+<ul>
+<li>Daily backup full site (files + DB)</li>
+<li>Giữ ít nhất 7–14 ngày</li>
+<li>Lưu ở nơi khác VPS (S3, Google Drive, Backblaze…)</li>
+</ul>
+</li>
+<li>
+<p>Monitoring:</p>
+<ul>
+<li>Dùng uptime monitor (UptimeRobot / BetterUptime)</li>
+<li>Nếu VPS có CLI: cài <code>htop</code>, <code>iftop</code>, <code>vnstat</code> để xem CPU/RAM/Network khi bị tấn công.</li>
+</ul>
+</li>
+</ol>
+<h4 id="checklist-hoàn-hảo-cho-phần-này">Checklist hoàn hảo cho phần này</h4>
+<p><strong>Bạn đang dùng:</strong></p>
+<ul>
+<li>OpenLiteSpeed</li>
+<li>LSCWP plugin</li>
+<li>Redis</li>
+<li>Cloudflare Free (rất tối ưu)</li>
+<li>WooCommerce + Flatsome</li>
+<li>VPS 2 CPU + 8GB RAM</li>
+<li>MariaDB 10.4 + PHP 8.2</li>
+</ul>
+<p>Đây là bộ cấu hình siêu mạnh, nếu làm đầy đủ theo checklist mình viết.</p>
+<p><strong>Hiệu năng bạn đạt được:</strong></p>
+<ul>
+<li>TTFB &#x3C; 80–200ms (USA)</li>
+<li>Page load &#x3C; 1.5s</li>
+<li>95+/100 Lighthouse Performance</li>
+<li>Giảm 80% query DB</li>
+<li>Giảm 60% CPU PHP</li>
+<li>Cloudflare Cache HIT tăng 40–70%</li>
+</ul>
+<p><strong>Bảo mật bạn đạt được:</strong></p>
+<ul>
+<li>Chặn bot tấn công từ Cloudflare → Good</li>
+<li>Chặn XML-RPC, wp-admin brute-force → Good</li>
+<li>Chặn upload shell vào uploads → Good</li>
+<li>File permission secure → Good</li>
+<li>Fail2Ban SSH → Good</li>
+</ul>
+<p><strong>Website gần như bulletproof &#x26; enterprise speed.</strong></p>
+<h2 id="-phần-3--aws-s3--cloudfront-cdn-ảnh">🟦 <strong>PHẦN 3 – AWS S3 + CloudFront (CDN ảnh)</strong></h2>
+<p>Giờ mình sẽ thêm lớp tối ưu + chống lãng phí bandwidth + hạn chế bot hút ảnh cho AWS S3 &#x26; CloudFront.</p>
+<h3 id="31-cloudfront--cấu-hình-viewer--cache-cho-ảnh">3.1. CloudFront – Cấu hình viewer &#x26; cache cho ảnh</h3>
+<p><strong>🔹 Chỉ cho phép GET/HEAD, luôn dùng HTTPS</strong></p>
+<p>Vào CloudFront → Distribution cdn.domain.com → Behaviors (Default behavior):</p>
+<ul>
+<li>Viewer protocol policy: <code>Redirect HTTP to HTTPS</code></li>
+<li>Allowed HTTP methods: <code>GET, HEAD</code> (đối với CDN ảnh là đủ, không cần POST/PUT/DELETE)</li>
+</ul>
+<p>Điều này:</p>
+<ul>
+<li>Giảm surface tấn công</li>
+<li>Tránh request kỳ lạ làm tốn tài nguyên</li>
+</ul>
+<p><strong>🔹 Tạo Cache Policy riêng cho ảnh (TTL dài – tối đa cache)</strong></p>
+<p>Ở Behavior đó:</p>
+<ul>
+<li>Cache policy → chọn <code>Use a cache policy and origin request policy</code></li>
+<li>Tạo mới Cache policy (ví dụ đặt tên: <code>ImagesLongTTL</code>):
+Gợi ý cấu hình:
+<ul>
+<li>TTL
+<ul>
+<li>Min TTL: <code>3600</code> (1 giờ)</li>
+<li>Default TTL: <code>2592000</code> (30 ngày)</li>
+<li>Max TTL: <code>31536000</code> (1 năm)</li>
+</ul>
+</li>
+<li>Cache key – Headers:
+<ul>
+<li>None</li>
+</ul>
+</li>
+<li>Cache key – Query strings:
+<ul>
+<li>Disable (None), trừ khi bạn có version ảnh dạng query (<code>?v=123</code>)</li>
+</ul>
+</li>
+<li>Cache key – Cookies:
+<ul>
+<li>None</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ý tưởng:</p>
+<ul>
+<li>CloudFront sẽ cache ảnh theo URL là đủ.</li>
+<li>Không forward cookie / query linh tinh → tăng cache hit → giảm hit S3 → tiết kiệm tiền.</li>
+</ul>
+<p><strong>🔹 Origin request policy – không gửi thứ không cần thiết về S3</strong></p>
+<p>Trong Behavior:</p>
+<ul>
+<li>Chọn Origin request policy riêng (vd: <code>S3Minimal</code>)
+Gợi ý:
+<ul>
+<li>Headers to origin:
+<ul>
+<li><em>Only required</em>: Host, User-Agent nếu cần log; còn lại càng ít càng tốt.</li>
+</ul>
+</li>
+<li>Query strings: None (trừ khi bạn dùng query versioning)</li>
+<li>Cookies: None</li>
+</ul>
+</li>
+</ul>
+<p><strong>Kết quả:</strong></p>
+<ul>
+<li>1 request CloudFront → 90% serve từ cache.</li>
+<li>10% còn lại đi S3 nhưng nhẹ &#x26; sạch.</li>
+</ul>
+<h3 id="32-s3-bucket---khóa-chặt-bucket--giảm-rủi-ro">3.2. S3 Bucket - Khóa chặt bucket &#x26; giảm rủi ro</h3>
+<ul>
+<li>Block public access</li>
+<li>Private bucket</li>
+<li>Chỉ cho phép CloudFront OAI/OAC đọc</li>
+</ul>
+<p>Bucket policy chuẩn:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  "Version": "2012-10-17",</span></span>
+<span class="line"><span>  "Statement": [</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      "Sid": "AllowCloudFrontReadObjects",</span></span>
+<span class="line"><span>      "Effect": "Allow",</span></span>
+<span class="line"><span>      "Principal": {</span></span>
+<span class="line"><span>        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity XXXXXXXXX"</span></span>
+<span class="line"><span>      },</span></span>
+<span class="line"><span>      "Action": "s3:GetObject",</span></span>
+<span class="line"><span>      "Resource": "arn:aws:s3:::your-bucket-name/*"</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p><strong>Lifecycle rule – tối ưu chi phí lưu trữ</strong></p>
+<p>Nếu bạn có ảnh cũ không đổi, có thể:</p>
+<ul>
+<li>Sau 90 ngày → chuyển sang S3 Standard-IA</li>
+<li>Sau 365 ngày → chuyển sang Glacier Instant Retrieval (tuỳ chiến lược backup)</li>
+</ul>
+<p>Vào S3 → bucket → Management → Lifecycle rules
+→ Tạo rule dựa trên prefix (vd: <code>uploads/2023/</code>)</p>
+<p>Điều này không phải bảo mật, nhưng giảm tiền S3.</p>
+<h3 id="33-hotlink-protection-optional">3.3. <strong>Hotlink protection (optional)</strong></h3>
+<p>Hotlink protection &#x26; chống site khác xài ké ảnh. Hiện tại:</p>
+<ul>
+<li>S3 private → chỉ CloudFront được đọc</li>
+<li>Nhưng bất kỳ ai có URL <code>https://cdn.domain.com/...</code> vẫn embed được ảnh vào site của họ → tốn CloudFront bandwidth.</li>
+</ul>
+<p>Nếu bạn muốn hạn chế hotlink, có 2 mức:</p>
+<p>Dùng CloudFront Function:</p>
+<ul>
+<li>Check <code>Referer</code></li>
+<li>Nếu không phải domain bạn → trả 403</li>
+</ul>
+<p>Ok, làm từng bước cho dễ theo dõi nhé. Mình sẽ hướng dẫn:</p>
+<ol>
+<li>Tạo CloudFront Function <code>anti_hotlink_wp_uploads_safe</code></li>
+<li>Dán full code Safe Mode</li>
+<li>Publish version</li>
+<li>Gắn vào Viewer Request của behavior <code>/wp-content/uploads/*</code></li>
+</ol>
+<h4 id="-step-1--tạo-cloudfront-function-mới">🔹 STEP 1 – Tạo CloudFront Function mới</h4>
+<ol>
+<li>Vào AWS Console → CloudFront</li>
+<li>Menu bên trái → Functions</li>
+<li>Bấm Create function</li>
+</ol>
+<p>Trong màn hình giống hình bạn gửi:</p>
+<ul>
+<li><strong>Name:</strong> <code>anti_hotlink_wp_uploads_safe</code></li>
+<li>**Description (optional):**Anti hotlink for WordPress uploads (safe mode)</li>
+<li><strong>Runtime:</strong> chọncloudfront-js-2.0</li>
+</ul>
+<p>Bấm Create function.</p>
+<h4 id="-step-2--dán-code-safe-mode-vào-function">🔹 STEP 2 – Dán code Safe Mode vào function</h4>
+<p>Sau khi tạo xong, bạn sẽ được đưa vào trang chi tiết function:</p>
+<ol>
+<li>Tab Code (mặc định).</li>
+<li>Trong ô editor sẽ có code mẫu <code>function handler(event) { ... }</code>.</li>
+</ol>
+<p>Xoá hết và dán toàn bộ đoạn code này:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>function isGoodBot(ua) {</span></span>
+<span class="line"><span>  if (!ua) return false;</span></span>
+<span class="line"><span>  ua = ua.toLowerCase();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Bot SEO + Social + Preview phổ biến</span></span>
+<span class="line"><span>  var allowBots = [</span></span>
+<span class="line"><span>    "googlebot",</span></span>
+<span class="line"><span>    "bingbot",</span></span>
+<span class="line"><span>    "yandexbot",</span></span>
+<span class="line"><span>    "duckduckbot",</span></span>
+<span class="line"><span>    "baiduspider",</span></span>
+<span class="line"><span>    "applebot",</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Social &#x26; chat preview</span></span>
+<span class="line"><span>    "facebookexternalhit",</span></span>
+<span class="line"><span>    "twitterbot",</span></span>
+<span class="line"><span>    "linkedinbot",</span></span>
+<span class="line"><span>    "slackbot",</span></span>
+<span class="line"><span>    "discordbot",</span></span>
+<span class="line"><span>    "whatsapp",</span></span>
+<span class="line"><span>    "telegrambot",</span></span>
+<span class="line"><span>    "pinterestbot",</span></span>
+<span class="line"><span>    "vkshare",</span></span>
+<span class="line"><span>    "embedly",</span></span>
+<span class="line"><span>    "quora link preview",</span></span>
+<span class="line"><span>    "redditbot",</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Tool của Google và validator hợp lệ</span></span>
+<span class="line"><span>    "google-structured-data-testing-tool",</span></span>
+<span class="line"><span>    "google-inspectiontool"</span></span>
+<span class="line"><span>  ];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  for (var i = 0; i &#x3C; allowBots.length; i++) {</span></span>
+<span class="line"><span>    if (ua.indexOf(allowBots[i]) !== -1) return true;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  return false;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function looksLikeBrowser(ua) {</span></span>
+<span class="line"><span>  if (!ua) return false;</span></span>
+<span class="line"><span>  ua = ua.toLowerCase();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Nhận diện browser thật (Chrome, Safari, Firefox, Edge…)</span></span>
+<span class="line"><span>  return (</span></span>
+<span class="line"><span>    ua.indexOf("mozilla") !== -1 ||</span></span>
+<span class="line"><span>    ua.indexOf("chrome") !== -1 ||</span></span>
+<span class="line"><span>    ua.indexOf("safari") !== -1 ||</span></span>
+<span class="line"><span>    ua.indexOf("firefox") !== -1 ||</span></span>
+<span class="line"><span>    ua.indexOf("edg") !== -1 ||</span></span>
+<span class="line"><span>    ua.indexOf("opera") !== -1 ||</span></span>
+<span class="line"><span>    ua.indexOf("opr/") !== -1</span></span>
+<span class="line"><span>  );</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function isObviousScript(ua) {</span></span>
+<span class="line"><span>  if (!ua) return false;</span></span>
+<span class="line"><span>  ua = ua.toLowerCase();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Các tool/script hay dùng để cào ảnh, không phải browser</span></span>
+<span class="line"><span>  var badList = [</span></span>
+<span class="line"><span>    "curl",</span></span>
+<span class="line"><span>    "wget",</span></span>
+<span class="line"><span>    "python-requests",</span></span>
+<span class="line"><span>    "python-urllib",</span></span>
+<span class="line"><span>    "httpclient",</span></span>
+<span class="line"><span>    "java/",</span></span>
+<span class="line"><span>    "libwww-perl",</span></span>
+<span class="line"><span>    "go-http-client",</span></span>
+<span class="line"><span>    "okhttp",</span></span>
+<span class="line"><span>    "node-fetch",</span></span>
+<span class="line"><span>    "php/",</span></span>
+<span class="line"><span>    "perl",</span></span>
+<span class="line"><span>    "ruby",</span></span>
+<span class="line"><span>    "powershell",</span></span>
+<span class="line"><span>    "httpget",</span></span>
+<span class="line"><span>    "httpunit",</span></span>
+<span class="line"><span>    "masscan"</span></span>
+<span class="line"><span>  ];</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  for (var i = 0; i &#x3C; badList.length; i++) {</span></span>
+<span class="line"><span>    if (ua.indexOf(badList[i]) !== -1) return true;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>  return false;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function getRootDomain(hostname) {</span></span>
+<span class="line"><span>  if (!hostname) return "";</span></span>
+<span class="line"><span>  hostname = hostname.toLowerCase();</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Xóa port nếu có (vd: example.com:8080)</span></span>
+<span class="line"><span>  var colonIndex = hostname.indexOf(":");</span></span>
+<span class="line"><span>  if (colonIndex !== -1) {</span></span>
+<span class="line"><span>    hostname = hostname.substring(0, colonIndex);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  var parts = hostname.split(".");</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Nếu chỉ có 1–2 phần (localhost, example.com) thì trả luôn</span></span>
+<span class="line"><span>  if (parts.length &#x3C;= 2) {</span></span>
+<span class="line"><span>    return hostname;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Lấy 2 phần cuối: domain + TLD → ví dụ: cdn.domain.com → domain.com</span></span>
+<span class="line"><span>  // (Lưu ý: với domain kiểu .co.uk thì cần logic phức tạp hơn, nhưng cho .com, .net, .org, .io… là ổn)</span></span>
+<span class="line"><span>  return parts[parts.length - 2] + "." + parts[parts.length - 1];</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function getHostFromUrl(url) {</span></span>
+<span class="line"><span>  if (!url) return "";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  var host = url;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Bỏ schema: http://, https://</span></span>
+<span class="line"><span>  var schemeIndex = host.indexOf("://");</span></span>
+<span class="line"><span>  if (schemeIndex !== -1) {</span></span>
+<span class="line"><span>    host = host.substring(schemeIndex + 3);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Cắt phần path: /abc/xyz</span></span>
+<span class="line"><span>  var slashIndex = host.indexOf("/");</span></span>
+<span class="line"><span>  if (slashIndex !== -1) {</span></span>
+<span class="line"><span>    host = host.substring(0, slashIndex);</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  return host;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>function handler(event) {</span></span>
+<span class="line"><span>  var request = event.request;</span></span>
+<span class="line"><span>  var headers = request.headers || {};</span></span>
+<span class="line"><span>  var ua = (headers["user-agent"] &#x26;&#x26; headers["user-agent"].value) || "";</span></span>
+<span class="line"><span>  var hostHeader = (headers.host &#x26;&#x26; headers.host.value) || "";</span></span>
+<span class="line"><span>  var cdnRoot = getRootDomain(hostHeader);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // ===== 0. Safe mode: chỉ áp dụng cho ảnh (optional, phòng trường hợp behavior match rộng) =====</span></span>
+<span class="line"><span>  var uri = request.uri || "";</span></span>
+<span class="line"><span>  var isImagePath =</span></span>
+<span class="line"><span>    uri.indexOf("/wp-content/uploads/") !== -1 &#x26;&#x26;</span></span>
+<span class="line"><span>    (uri.indexOf(".jpg") !== -1 ||</span></span>
+<span class="line"><span>      uri.indexOf(".jpeg") !== -1 ||</span></span>
+<span class="line"><span>      uri.indexOf(".png") !== -1 ||</span></span>
+<span class="line"><span>      uri.indexOf(".gif") !== -1 ||</span></span>
+<span class="line"><span>      uri.indexOf(".webp") !== -1 ||</span></span>
+<span class="line"><span>      uri.indexOf(".avif") !== -1 ||</span></span>
+<span class="line"><span>      uri.indexOf(".svg") !== -1);</span></span>
+<span class="line"><span>  if (!isImagePath) {</span></span>
+<span class="line"><span>    // Không phải ảnh trong uploads → không đụng vào</span></span>
+<span class="line"><span>    return request;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // ===== 1. Allow bot tốt (SEO + social + preview) =====</span></span>
+<span class="line"><span>  if (isGoodBot(ua)) {</span></span>
+<span class="line"><span>    return request;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // ===== 2. Block tool/script cào ảnh rõ ràng, không phải browser, không phải good bot =====</span></span>
+<span class="line"><span>  if (isObviousScript(ua)) {</span></span>
+<span class="line"><span>    return {</span></span>
+<span class="line"><span>      statusCode: 403,</span></span>
+<span class="line"><span>      statusDescription: "Forbidden",</span></span>
+<span class="line"><span>      headers: {</span></span>
+<span class="line"><span>        "content-type": { value: "text/plain" }</span></span>
+<span class="line"><span>      },</span></span>
+<span class="line"><span>      body: "Forbidden"</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // ===== 3. Nếu là browser thật → kiểm tra Referer để chặn hotlink =====</span></span>
+<span class="line"><span>  if (looksLikeBrowser(ua)) {</span></span>
+<span class="line"><span>    var referer = (headers.referer &#x26;&#x26; headers.referer.value) || "";</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Safe mode: không có Referer -> CHO QUA</span></span>
+<span class="line"><span>    if (!referer) {</span></span>
+<span class="line"><span>      return request;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    var refHost = getHostFromUrl(referer);</span></span>
+<span class="line"><span>    var refRoot = getRootDomain(refHost);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Nếu root khác → hotlink từ domain lạ -> block</span></span>
+<span class="line"><span>    if (refRoot &#x26;&#x26; refRoot !== cdnRoot) {</span></span>
+<span class="line"><span>      return {</span></span>
+<span class="line"><span>        statusCode: 403,</span></span>
+<span class="line"><span>        statusDescription: "Forbidden",</span></span>
+<span class="line"><span>        headers: {</span></span>
+<span class="line"><span>          "content-type": { value: "text/plain" }</span></span>
+<span class="line"><span>        },</span></span>
+<span class="line"><span>        body: "Hotlink not allowed"</span></span>
+<span class="line"><span>      };</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Cùng root → là site của bạn hoặc subdomain của bạn → cho qua</span></span>
+<span class="line"><span>    return request;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // ===== 4. Các request còn lại (app, RSS độc lạ, client đặc biệt, no UA…) -> Safe mode: cho qua =====</span></span>
+<span class="line"><span>  return request;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+<p>Xong, bấm <strong>Save changes</strong>.</p>
+<h4 id="-step-3--publish-function">🔹 STEP 3 – Publish function</h4>
+<ol>
+<li>Trong trang function, góc trên bên phải → bấm Publish.</li>
+<li>Nhập mô tả version, ví dụ:v1 initial safe anti hotlink</li>
+<li>Xác nhận Publish.</li>
+</ol>
+<p>Sau khi publish, function sẽ có:</p>
+<ul>
+<li><code>Development</code> version (để sửa code)</li>
+<li><code>Live</code> version (published) dùng được trong Distribution.</li>
+</ul>
+<h4 id="-step-4--gắn-function-vào-behavior">🔹 STEP 4 – Gắn function vào Behavior</h4>
+<p>Giờ chuyển sang distribution CDN:</p>
+<ol>
+<li>Vào CloudFront → Distributions.</li>
+<li>Chọn distribution đang dùng cho <code>cdn.domain.com</code>.</li>
+<li>Tab Behaviors.</li>
+</ol>
+<ul>
+<li>Nếu chưa có behavior riêng:
+<ul>
+<li>Bấm Create behavior.</li>
+<li>Path pattern:/wp-content/uploads/*</li>
+<li>Chọn đúng Origin trỏ đến S3 chứa file WordPress (giống origin behavior <code>*</code> nếu bạn dùng chung).</li>
+<li>Các phần Cache policy / Origin request policy giữ giống behavior hiện tại dùng cho static file là được.</li>
+</ul>
+</li>
+<li>Nếu đã có behavior <code>/wp-content/uploads/*</code> rồi:
+<ul>
+<li>Chọn nó → bấm Edit.</li>
+</ul>
+</li>
+</ul>
+<p>Thêm function vào Viewer Request. Trong phần cấu hình behavior:</p>
+<ol>
+<li>
+<p>Kéo xuống mục Function associations.</p>
+</li>
+<li>
+<p>Ở dòng Viewer request:</p>
+<ul>
+<li>Function type: CloudFront Function</li>
+<li>Function: chọn <code>anti_hotlink_wp_uploads_safe</code></li>
+</ul>
+</li>
+<li>
+<p>Bấm Save changes.</p>
+</li>
+</ol>
+<p>CloudFront sẽ deploy config mới (mất vài phút propagate toàn bộ edge).</p>
+<h4 id="-step-5--kiểm-tra-nhanh">🔹 STEP 5 – Kiểm tra nhanh</h4>
+<p>Sau khi propagate. Mở 1 ảnh từ site của bạn, ví dụ:</p>
+<p><code>https://cdn.domain.com/wp-content/uploads/2025/12/my-product.jpg</code></p>
+<p>…trong tab bình thường của browser → ảnh phải load OK.</p>
+<p>Thử copy URL ảnh đó, dán vào HTML của 1 domain khác (hoặc tạm test bằng cách gửi request với Referer giả bằng</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span># 1) Giả lập browser thật + không Referer -> EXPECT: 200</span></span>
+<span class="line"><span>curl -I \</span></span>
+<span class="line"><span>  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0" \</span></span>
+<span class="line"><span>  "https://cdn.domain.com/wp-content/uploads/20240610060342/2024-Matching-Family-Trip-Magic-Kingdom-Shirts-I-m-Gonna-Ride-Til-I-Can-t-No-More-T-shirt-0.jpg"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 2) Giả lập browser thật + Referer cùng domain -> EXPECT: 200</span></span>
+<span class="line"><span>curl -I \</span></span>
+<span class="line"><span>  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0" \</span></span>
+<span class="line"><span>  -H "Referer: https://cdn.domain.com/some-page" \</span></span>
+<span class="line"><span>  "https://cdn.domain.com/wp-content/uploads/20240610060342/2024-Matching-Family-Trip-Magic-Kingdom-Shirts-I-m-Gonna-Ride-Til-I-Can-t-No-More-T-shirt-0.jpg"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># 3) Giả lập browser thật + Referer domain khác -> EXPECT: 403</span></span>
+<span class="line"><span>curl -I \</span></span>
+<span class="line"><span>  -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0" \</span></span>
+<span class="line"><span>  -H "Referer: https://evil-competitor.com/page" \</span></span>
+<span class="line"><span>  "https://cdn.domain.com/wp-content/uploads/20240610060342/2024-Matching-Family-Trip-Magic-Kingdom-Shirts-I-m-Gonna-Ride-Til-I-Can-t-No-More-T-shirt-0.jpg"</span></span></code></pre>
+<p>Nếu 3 case này ra đúng như mình ghi thì:</p>
+<ul>
+<li>Function đang chạy y như thiết kế.</li>
+<li>Chỉ script/tool như curl/wget/python mới bị block.</li>
+<li>User thật + bot SEO + social preview đều OK.</li>
+</ul>
+<p><strong>CloudFront Function <em>khác</em> Lambda@Edge như thế nào?</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Loại</th><th>Tính phí khi?</th><th>Ghi chú</th></tr></thead><tbody><tr><td><strong>CloudFront Function</strong></td><td>Khi INVOCATION</td><td>Rất rẻ (micro billing)</td></tr><tr><td><strong>Lambda@Edge</strong></td><td>Khi deploy + propagate + invocation + duration</td><td>Phức tạp hơn &#x26; đắt hơn</td></tr></tbody></table>
+<p>Bạn đang dùng CloudFront Function → rẻ và chỉ tính tiền theo số lần chạy.</p>
+<p><strong>Giá tiền cụ thể của CloudFront Function</strong></p>
+<p>CloudFront Function chỉ tính tiền khi có <em>invocation</em> (kích hoạt). Invocation xảy ra khi:</p>
+<ul>
+<li>Bạn gắn function vào một Behavior</li>
+<li>Behavior đó có request đi qua</li>
+<li>Và Event Type đúng (Viewer Request / Viewer Response)</li>
+</ul>
+<blockquote>
+<p>📌 Chi phí = số lần request CloudFront <em>vào behavior có gắn function</em></p>
+</blockquote>
+<p>Không phải số lần người dùng gọi vào website. Mình không quote con số tuyệt đối vì AWS có thể thay đổi, nhưng nó rất rẻ:</p>
+<ul>
+<li>Với vài triệu request/tháng: chỉ tốn vài cent – vài USD</li>
+<li>So với chi phí CloudFront Data Transfer → cloudfront function gần như free</li>
+<li>Chi phí nhỏ hơn rất nhiều so với S3 hoặc băng thông CloudFront</li>
+</ul>
+<p><strong>Ví dụ thực tế</strong></p>
+<p>Nếu bạn có:</p>
+<ul>
+<li>500.000 lượt xem ảnh <code>/wp-content/uploads/*</code> mỗi ngày
+→ 15 triệu request/tháng
+→ Function chạy 15 triệu lần
+→ Chi phí chỉ vài USD (rất nhỏ)</li>
+</ul>
+<p><strong>Nếu bạn có:</strong></p>
+<ul>
+<li>0 request → 0 tiền</li>
+<li>Behavior default <em>không gắn function</em> → 0 tiền</li>
+</ul>
+<h2 id="4-lifecycle-s3-nếu-muốn-tiết-kiệm-storage">4. <strong>Lifecycle S3 (nếu muốn tiết kiệm storage)</strong></h2>
+<p>Nếu website của bạn chỉ tầm 5.000 sản phẩm, mỗi sản phẩm 3–5 ảnh <em>(có nhiều size thumbnail, medium, large, …)</em>, <a href="/blog/chien-luoc-tiet-kiem-chi-phi-toi-uu-amazon-s3-storage-class-cho-backup-website/">Lifecycle chuyển Standard → IA → Glacier IR</a> thường KHÔNG đáng làm, trừ khi dung lượng ảnh lên đến hàng trăm GB / TB và đa số sản phẩm đã nghỉ hưu.</p>
+<h3 id="41-hiểu-đúng-bài-toán-tiền-bạc-một-chút">4.1. Hiểu đúng bài toán tiền bạc một chút</h3>
+<p>Giá S3 (us-east-1, làm tròn):</p>
+<ul>
+<li>Standard: ~0.023$/GB/tháng</li>
+<li>Standard-IA: ~0.0125$/GB/tháng</li>
+<li>Glacier Instant Retrieval: ~0.004$/GB/tháng</li>
+</ul>
+<p>Giả sử:</p>
+<ul>
+<li>Bạn có 5.000 sản phẩm</li>
+<li>Mỗi sản phẩm 3–5 ảnh * nhiều size (thumbnail, medium, large, …)</li>
+<li>Tổng dung lượng ảnh thực tế thường rơi khoảng 20–80GB (đa số site WooCommerce cỡ này)</li>
+</ul>
+<p>Tiền S3 Standard:</p>
+<ul>
+<li>50GB * 0.023 ≈ 1.15$ / tháng</li>
+<li>100GB * 0.023 ≈ 2.3$ / tháng</li>
+</ul>
+<p>Như vậy phần lớn chi phí AWS của bạn không nằm ở S3 storage, mà ở:</p>
+<ul>
+<li>CloudFront bandwidth (truyền tải tới khách)</li>
+<li>Request dạng GET/HEAD</li>
+<li>Có thể là log, Lambda, … (nếu có dùng)</li>
+</ul>
+<p>Tiết kiệm từ Standard → IA/Glacier IR trên vài chục GB ảnh chỉ giúp giảm vài chục ngàn – vài đô mỗi tháng, nhưng đổi lại:</p>
+<ul>
+<li>Cấu hình phức tạp hơn</li>
+<li>Nhiều thứ cần theo dõi hơn</li>
+<li>Dễ lỡ tay làm ảnh hưởng tới hoạt động site</li>
+</ul>
+<p>Với bài toán website store của bạn các sản phẩm 2021 vẫn bán tốt 2025 thì ảnh của chúng vẫn được xem thường xuyên, không phải ít truy cập. Trong khi đó, các storage class IA / Glacier IR được thiết kế cho object thật sự ít được đọc.</p>
+<p>Nếu ảnh được xem đều đều (dù không nhiều như ảnh mới), thì:</p>
+<ul>
+<li>Tiết kiệm được rất ít ở phần storage</li>
+<li>Nhưng phải trả phí retrieval &#x26; request cao hơn (dù CloudFront đã giảm đáng kể)</li>
+<li>Mà bạn còn thêm rủi ro nhầm lẫn cấu hình</li>
+</ul>
+<h3 id="42-lifecycle-có-lợi-nhất-khi-nào">4.2. Lifecycle có lợi nhất khi nào?</h3>
+<p>Lifecycle <code>Standard</code> → <code>IA</code> → <code>Glacier IR</code> chỉ thật sự đáng:</p>
+<ol>
+<li>
+<p><strong>Dung lượng S3 rất lớn</strong></p>
+<ul>
+<li>Ví dụ > 500GB – 1TB chỉ toàn media cũ</li>
+<li>Lúc đó mỗi tháng Standard ≈ 11.5–23$; IA/Glacier IR có thể tiết kiệm >10$/tháng.</li>
+</ul>
+</li>
+<li>
+<p><strong>Phần lớn object thực sự không còn hầu như ai xem</strong></p>
+<ul>
+<li>Ảnh sản phẩm đã ngưng bán</li>
+<li>Ảnh backup nội bộ, log, snapshot,…</li>
+<li>Media cũ của blog/landing page đã không nằm trong sitemap nữa</li>
+</ul>
+</li>
+<li>
+<p><strong>Bạn có số liệu thực tế (S3 Storage Class Analysis / Access Logs) chứng minh:</strong></p>
+<ul>
+<li>Đám object này 6–12 tháng không ai đụng tới.</li>
+</ul>
+</li>
+</ol>
+<h3 id="43-triển-khai-mục-tiêu-cách-làm">4.3. Triển khai mục tiêu cách làm</h3>
+<p>KHÔNG tạo rule kiểu:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Filter: Entire bucket</span></span></code></pre>
+<p>Rất nguy hiểm vì nó có thể áp dụng cho cả file quan trọng như:</p>
+<ul>
+<li>JS, CSS (nếu bạn dùng S3 để chứa assets)</li>
+<li>file cấu hình</li>
+<li>file tạm</li>
+<li>plugin uploads</li>
+</ul>
+<p>(Các file này KHÔNG được chuyển sang IA/Glacier)</p>
+<p>Thiết kế cấu trúc Lifecycle AN TOÀN cho WooCommerce. TUYỆT ĐỐI KHÔNG tạo luật cho toàn bộ bucket</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Prefix: wp-content/uploads/2023/</span></span>
+<span class="line"><span>→ 0 days → Standard (mặc định upload)</span></span>
+<span class="line"><span>→ 90 days → Standard-IA</span></span>
+<span class="line"><span>→ 365 days → Glacier Instant Retrieval</span></span></code></pre>
+<p>Ví dụ Prefix:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>wp-content/uploads/2021/</span></span>
+<span class="line"><span>wp-content/uploads/2022/</span></span>
+<span class="line"><span>wp-content/uploads/2023/</span></span>
+<span class="line"><span>wp-content/uploads/2024/</span></span></code></pre>
+<ul>
+<li>Ảnh năm 2025 (đang hot) không bị tác động.</li>
+<li>Bạn hoàn toàn kiểm soát năm nào chuyển cold storage.</li>
+</ul>
+<p>Đây là chiến lược được khuyến nghị mạnh nhất dành cho site WordPress + S3.</p>
+<h4 id="standard-ia">Standard-IA</h4>
+<p><strong>Standard-IA (Infrequent Access)</strong> là tier dùng để lưu file cũ/ít truy cập.
+CloudFront phục vụ 90–99% ảnh từ edge cache → không đánh vào S3.
+Dù ảnh đã chuyển sang IA, CloudFront vẫn:</p>
+<ul>
+<li>Load ảnh</li>
+<li>Cache lại</li>
+<li>Phục vụ cuối cùng cho user</li>
+</ul>
+<p>User không biết ảnh đến từ tier nào.</p>
+<p>🔹<strong>Price impact</strong></p>
+<ul>
+<li>Storage rẻ hơn ~40% so với Standard</li>
+<li>Tuy nhiên mỗi request S3 sẽ đắt hơn một chút. Nhưng vì CloudFront đã che S3 → request vào S3 cực thấp → bạn không bị tốn thêm nhiều.</li>
+</ul>
+<p>🔹<strong>Không có delay</strong></p>
+<p>Khác với Glacier, Standard-IA không có delay retrieval.</p>
+<p><strong>Kết luận</strong>: Bạn thoải mái chuyển ảnh cũ → IA.</p>
+<h4 id="glacier-instant-retrieval">Glacier Instant Retrieval</h4>
+<p><strong>Glacier IR (Instant Retrieval)</strong> = retrieval thời gian &#x3C; 1 giây (instant).
+Khác với Glacier Flexible/Deep Archive:</p>
+<ul>
+<li>KHÔNG delay</li>
+<li>KHÔNG cần restore</li>
+<li>KHÔNG lỗi 404</li>
+<li>CloudFront vẫn fetch ảnh bình thường</li>
+</ul>
+<p>🔹<strong>100% an toàn cho website</strong></p>
+<p>WordPress → CloudFront → S3 (Glacier IR) → trả lại ảnh → Không có downtime hình ảnh.</p>
+<p>🔹<strong>Giá lưu trữ rất rẻ</strong></p>
+<ul>
+<li>Thấp hơn cả Standard-IA</li>
+<li>Retrieval cost cao hơn một chút, nhưng CloudFront cache hit 95%+ → không đáng kể.</li>
+</ul>
+<p>Nếu bạn chỉ dùng Glacier IR cho ảnh cũ > 365 ngày, thì đây là chiến lược rất hợp lý.</p>
+<h4 id="tránh-nhầm-với-glacier-không-instant-flexible--deep-archive">Tránh nhầm với Glacier không Instant (Flexible / Deep Archive)</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Storage Class</th><th>Truy cập</th><th>Delay</th><th>Ảnh website hiển thị?</th></tr></thead><tbody><tr><td><strong>Standard</strong></td><td>Rất nhanh</td><td>0s</td><td>✔ OK</td></tr><tr><td><strong>Standard-IA</strong></td><td>Nhanh</td><td>0s</td><td>✔ OK</td></tr><tr><td><strong>Glacier Instant Retrieval</strong></td><td>Nhanh</td><td>&#x3C;1s</td><td>✔ OK</td></tr><tr><td><strong>Glacier Flexible Retrieval</strong></td><td>Chậm</td><td><strong>Minutes – hours</strong></td><td>❌ KHÔNG dùng cho CDN ảnh</td></tr><tr><td><strong>Glacier Deep Archive</strong></td><td>Rất chậm</td><td><strong>12–48 hours</strong></td><td>❌ Tuyệt đối cấm dùng cho website</td></tr></tbody></table>
+<p><strong>Chỉ dùng Glacier Instant Retrieval, không dùng Glacier Flexible/Deep Archive</strong>.</p>
+<h3 id="44-hướng-dẫn-chi-tiết-tạo-lifecycle-rule"><strong>4.4. Hướng dẫn chi tiết tạo Lifecycle Rule</strong></h3>
+<p><strong>🔹 STEP 1 – Vào bucket S3</strong></p>
+<p><code>S3</code> → <code>your bucket</code> → <code>Management</code> → <code>Lifecycle Rules</code> → <code>Create rule</code></p>
+<p><strong>🔹 STEP 2 – Đặt tên rule</strong></p>
+<p>VD: <code>lifecycle-images-2023</code></p>
+<p><strong>🔹 STEP 3 – Chọn phạm vi (Filter)</strong></p>
+<p>Chọn <strong>Prefix</strong> và nhập: <code>wp-content/uploads/2023/</code></p>
+<p>Giải thích:</p>
+<ul>
+<li>Chỉ ảnh năm 2023 bị áp dụng rule này.</li>
+<li>Ảnh 2024–2025 không bị đụng tới.</li>
+<li>JS/CSS/asset khác nếu bạn để chỗ khác → không bị ảnh hưởng.</li>
+</ul>
+<p><strong>🔹 STEP 4 – Bật Transition Rule</strong></p>
+<p>Check: <code>Transition current versions of objects between storage classes</code></p>
+<p>Thêm 2 transition:</p>
+<p><strong>Transition 1:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>After 90 days → Move to: Standard-IA</span></span></code></pre>
+<p><strong>Transition 2:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>After 365 days → Move to: Glacier Instant Retrieval</span></span></code></pre>
+<p><strong>Lưu ý:</strong></p>
+<ul>
+<li>KHÔNG chọn Glacier Flexible Retrieval</li>
+<li>KHÔNG chọn Deep Archive</li>
+<li>Chỉ chọn: Glacier Instant Retrieval (GIR)</li>
+</ul>
+<p><strong>🔹 STEP 5 – KHÔNG bật Expiration</strong></p>
+<p>Tuyệt đối không bật:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>Expire current versions of objects</span></span></code></pre>
+<p>Điều này sẽ xóa ảnh → website mất ảnh.</p>
+<p><strong>🔹 STEP 6 – Noncurrent Version Expiration</strong></p>
+<p>KHÔNG bật <strong>Noncurrent Version Expiration</strong> (nếu bạn bật <strong>Versioning</strong>). Chỉ bật nếu bạn muốn xóa version cũ → không cần cho WooCommerce.</p>
+<p>Sau khi tạo rule 2023, bạn có thể clone và tạo rule cho 2022, 2021… tùy nhu cầu.</p>
+<p><strong>Khi bạn push cả JS/CSS/ASSETS lên S3</strong></p>
+<blockquote>
+<p>Nếu tương lại tôi submit cả js, css, assets file lên S3 Storage thì Lifecycle rule này có ảnh hưởng không?</p>
+</blockquote>
+<p>Câu trả lời: Không ảnh hưởng BẤT KỲ thứ gì, nếu bạn làm đúng như mình hướng dẫn (dùng prefix theo năm).</p>
+<p>Vì Lifecycle dùng Filter prefix, ví dụ: <code>wp-content/uploads/2023/</code> → S3 chỉ chạy rule cho các object bắt đầu bằng prefix đó.</p>
+<p>Nếu sau này bạn upload JS/CSS vào:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>assets/js/</span></span>
+<span class="line"><span>assets/css/</span></span>
+<span class="line"><span>cdn/js/</span></span>
+<span class="line"><span>static/</span></span></code></pre>
+<p>⇒ KHÔNG liên quan đến <code>wp-content/uploads/2023/</code>.</p>
+<p><strong>Lưu ý quan trọng nếu tương lai bạn upload JS/CSS vào wp-content</strong></p>
+<p>Nếu bạn upload JS/CSS vào:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>wp-content/uploads/assets/</span></span>
+<span class="line"><span>wp-content/uploads/somefolder/</span></span></code></pre>
+<p>→ Nó NẰM TRONG prefix <code>wp-content/uploads/2023/</code> → S3 vẫn chuyển sang IA/GIR theo lifecycle.</p>
+<p><strong>Cách xử lý:</strong></p>
+<ul>
+<li>Luôn để assets JS/CSS tại thư mục riêng ngoài <code>uploads</code>:
+Ví dụ:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plain"><code><span class="line"><span>wp-content/themes/yourtheme/assets/</span></span>
+<span class="line"><span>cdn/js/</span></span>
+<span class="line"><span>cdn/css/</span></span></code></pre>
+<ul>
+<li>KHÔNG đưa assets vào uploads nếu bạn dùng Lifecycle cho uploads.</li>
+<li>Luôn upload ảnh JPG <code>1200–1500px</code> → LSCWP convert thành WebP</li>
+<li>Dùng tên file SEO-friendly: <code>product-name-keyword-color.jpg</code></li>
+<li>Alt text tự động theo tên sản phẩm</li>
+<li>Xóa ảnh thừa / ảnh không dùng bằng <code>Media Cleaner</code></li>
+</ul>
+<h2 id="kết-luận"><strong>KẾT LUẬN</strong></h2>
+<p><strong>Với full bộ cấu hình từ:</strong></p>
+<ul>
+<li>Cloudflare (WAF + Cache Rules + AntiBot)</li>
+<li>OpenLiteSpeed (PHP 8.2 + QUIC + OPcache)</li>
+<li>LSCache (page cache, object cache, WebP)</li>
+<li>MariaDB tuning</li>
+<li>AWS S3 + CloudFront (CDN ảnh chuẩn tối ưu)</li>
+</ul>
+<p><strong>Bạn sẽ có:</strong></p>
+<ul>
+<li>🚀 Website siêu nhanh (&#x3C;1.5–2s US/UK)</li>
+<li>🔐 Chống bot, chống DDOS, chống scan cực tốt</li>
+<li>💾 Giảm 80–90% tải vào VPS</li>
+<li>💸 Băng thông S3/CloudFront giảm đáng kể</li>
+<li>📈 Điểm SEO &#x26; Core Web Vitals rất cao</li>
+</ul>   <p class="text-slate">Trải nghiệm tốt nhất từ thực hành — Anh Nguyen</p> <a href="/blog/" title="Danh sách bài viết">&larr; Danh sách bài viết</a> </article> </main> <div class="px-10 py-6"> <div id="disqus_thread"></div> <script type="module">(function(){var t=document,e=t.createElement("script");e.src="https://anmitom.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)})();</script> <noscript>Enable JavaScript to view comments powered by Disqus.</noscript> </div> <section class="p-6"> <section class="mt-8"> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: #2dd4bf;">  <div class="flex justify-between items-start"> <h2 class="text-2xl md:text-4xl lg:text-6xl mb-8 dm-serif">
+Có gì mới?
+</h2> <div class="hidden md:block"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem tất cả &rarr; </a> </div> <div class="block md:hidden"> <a href="/blog/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #34d399;"> Xem tất cả </a> </div> </div> <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> <li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Triển khai Blog Astro + CI/CD Đa Nền Tảng</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Deploy code with the Astro GitHub integration.webp?v=33-a7ecadd" alt="Triển khai Blog Astro + CI/CD Đa Nền Tảng" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bài viết mình tổng hợp toàn bộ quá trình triển khai blog cá nhân với Astro (sử dụng Sveltia CMS), multi deploy, CI/CD GitHub Actions, cache busting, multi host (GitHub Pages + Vercel + Render + Netlify + DO + Cloudflare + Neocities + Surge + Wasmer)… từ A → Z.</p>  <div class="flex justify-end my-4"> <a href="/blog/trien-khai-blog-astro-ci-cd-da-nen-tang/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #38bdf8;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/blog/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Blog </span> </a> </li><li> <a class="sanchez" href="/blog/tags/github/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> GitHub </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb923c;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Tối ưu &amp; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &amp; AWS S3 + CloudFront</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Set Up a WordPress Website with SSL Using Amazon S3 Cloudflare.webp?v=33-a7ecadd" alt="Tối ưu &#38; bảo mật website dùng Cloudflare, VPS OpenLiteSpeed &#38; AWS S3 + CloudFront" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Website thương mại điện tử (WooCommerce) cần vừa nhanh – ổn định – bảo mật, lại phải tiết kiệm chi phí băng thông và tài nguyên VPS. Bài viết này tổng hợp toàn bộ các bước cấu hình mà tôi đã triển khai thực tế: Cloudflare Free, VPS 2 CPU – 8GB RAM chạy OpenLiteSpeed + PHP 8.2, WordPress + WooCommerce, AWS S3 + CloudFront làm CDN ảnh.</p>  <div class="flex justify-end my-4"> <a href="/blog/toi-uu-bao-mat-toan-dien-cho-website-woocommerce-dung-cloudflare-vps-openlitespeed-aws-s3-cloudfront/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #a78bfa;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/aws services/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a3e635;"> AWS Services </span> </a> </li><li> <a class="sanchez" href="/blog/tags/wordpress/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #60a5fa;"> Wordpress </span> </a> </li><li> <a class="sanchez" href="/blog/tags/cloudflare/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Cloudflare </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/How to Set HDD SSD as Boot Drive in Windows Ubuntu.webp?v=33-a7ecadd" alt="Tái sinh HDD/SSD Box dùng Ventoy tạo bootable USB drive cho ISO/WIM/IMG/VHD(x)/EFI files" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Nếu ổ cứng HDD/SSD của bạn đã lâu ngày và có dấu hiệu chậm, bad sector, hoặc lỗi ghi, việc làm sạch hoàn toàn (low level format hoặc hard reset) là bước chuẩn nhất trước khi chia lại phân vùng cho mục đích cứu hộ. Dưới đây là hướng dẫn chi tiết và cách làm an toàn để tái sinh ổ HDD/SSD cũ tạo bootable mục đích cứu hộ với Ventoy Tool.</p>  <div class="flex justify-end my-4"> <a href="/blog/tai-sinh-hdd-ssd-box-dung-ventoy-tao-bootable-usb-drive-cho-iso-wim-img-vhd-x-efi-files/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #2dd4bf;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Hệ Thống </span> </a> </li><li> <a class="sanchez" href="/blog/tags/usb bootable/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> USB Bootable </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Install PHP on Windows and Setup a local web server.webp?v=33-a7ecadd" alt="So Sánh toàn diện LocalWP, MAMP, Laragon, XAMPP và WAMP Server Trên Windows" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Bạn đang tìm môi trường local để phát triển PHP hoặc WordPress trên Windows? Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt giữa LocalWP, Laragon, MAMP, XAMPP, và WAMP Server – để chọn ra công cụ tối ưu nhất cho quy trình làm việc của bạn.</p>  <div class="flex justify-end my-4"> <a href="/blog/so-sanh-toan-dien-localwp-mamp-laragon-xampp-va-wamp-server-tren-windows/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #facc15;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/php/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> PHP </span> </a> </li><li> <a class="sanchez" href="/blog/tags/webserver/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #a78bfa;"> Webserver </span> </a> </li><li> <a class="sanchez" href="/blog/tags/lập trình/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> Lập Trình </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/send 2gb file in telegram.webp?v=33-a7ecadd" alt="Script Backup Website siêu nhẹ: GPG + SHA256 + Telegram Upload + Auto Cleanup 7 ngày" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Có thể dùng Telegram làm backup tạm thời hoặc phụ trợ, nhưng không nên xem nó như một giải pháp backup chính hay lâu dài. Dung lượng miễn phí lớn (gửi bao nhiêu file cũng được, miễn &lt;2GB hoặc &lt;4GB nếu có Premium). Nhưng Telegram có thể thay đổi chính sách bất kỳ lúc nào.</p>  <div class="flex justify-end my-4"> <a href="/blog/script-backup-website-sieu-nhe-gpg-sha256-telegram-upload-auto-cleanup-7-ngay/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #e879f9;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #f472b6;"> Hệ Thống </span> </a> </li><li> <a class="sanchez" href="/blog/tags/backup sites/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #c084fc;"> Backup Sites </span> </a> </li> </ul>  </div> </div>   </div> </li><li> <div class="brutal-card" data-astro-cid-hnv2b5w7 style="--color: white;">  <h3 class="poppins text-lg md:text-xl">RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max</h3> <div class="rounded-lg border-3 border-black my-4 h-56"> <img src="/uploads/Rclone Tutorial Install on Windows and Connect.webp?v=33-a7ecadd" alt="RClone biến Google Drive thành ổ đĩa nội bộ trên Windows Explorer với UI mượt, tốc độ max" loading="lazy" decoding="async" fetchpriority="auto" width="800" height="400" class="rounded h-full w-full object-cover"> </div> <p class="poppins">Khám phá cách tích hợp rclone với Google Drive trên Windows để tăng tốc workflow: mount thành ổ X:, backup tự động và quản lý file ngay trong Explorer. Hướng dẫn chạy OAuth qua trình duyệt, sau đó lấy file rclone.conf để sử dụng cho mọi VPS/hosting khác mà không cần xác thực giao diện web nữa.</p>  <div class="flex justify-end my-4"> <a href="/blog/rclone-bien-google-drive-thanh-o-dia-noi-bo-tren-windows-explorer-voi-ui-muot-toc-do-max/" class="brutal-btn" data-astro-cid-p7xutspj style="--color: #2dd4bf;"> Xem chi tiết &rarr; </a> </div> <div class="hidden sm:inline-block"> <p class="poppins mt-2">Cùng chủ đề:</p> <div class="flex justify-between items-center"> <ul class="flex flex-wrap gap-4 mt-2"> <li> <a class="sanchez" href="/blog/tags/rclone/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #2dd4bf;"> rclone </span> </a> </li><li> <a class="sanchez" href="/blog/tags/google drive/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #fb7185;"> Google Drive </span> </a> </li><li> <a class="sanchez" href="/blog/tags/hệ thống/"> <span class="brutal-pill" data-astro-cid-4z4ikc6r style="--color: #4ade80;"> Hệ Thống </span> </a> </li> </ul>  </div> </div>   </div> </li> </ul>  </div> </section> </section>  <footer class="bg-black text-white p-6" data-astro-cid-4jhxmvk6> <h2 class="hidden" data-astro-cid-4jhxmvk6>Footer</h2> <p class="outfit" data-astro-cid-4jhxmvk6>
+Ký sự MITOM — viết bởi <a href="https://www.anhnnp.github.io/" target="_blank" class="text-blue" data-astro-cid-4jhxmvk6>ANH NGUYEN</a>, dành cho những ai thích làm, thử và nghĩ khác.
+</p> </footer>  <script type="module">document.addEventListener("astro:page-load",()=>{const o=document.querySelector(".backToTop"),e=()=>{window.scrollY>250?o?.classList.add("active"):o?.classList.remove("active")};o?.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e)});</script> </body></html>
